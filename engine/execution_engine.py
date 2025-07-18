@@ -22,7 +22,7 @@ from strategies.dfs import DepthFirst
 import sys
 from copy import deepcopy
 from helpers.slang_helpers import get_module_name, init_state
-from pyslang import SymbolicDFS, DefinitionSymbol
+from pyslang import  DefinitionSymbol
 
 CONDITIONALS = (IfStatement, ForStatement, WhileStatement, CaseStatement)
 
@@ -385,7 +385,21 @@ class ExecutionEngine:
         m.init_run_flag = False
         #self.module_count(m, module.items)
 
-    def init_run_sv(self, m: ExecutionManager, module: ModuleDef) -> None:
+    def count_conditionals_sv(self, m: ExecutionManager, items):
+        print("counting conditionals")
+    def lhs_signals_sv(self, m: ExecutionManager, items):
+        print("lhs signals sv")
+
+    def get_assertions_sv(self, m: ExecutionManager, items):
+        print("get assertions sv")
+
+    def init_run_sv(self, m: ExecutionManager, module: DefinitionSymbol) -> None:
+        print("init run sv")
+        #self.count_conditionals_sv(m, module.items)
+        #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
+        #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
+        self.lhs_signals_sv(m, module.items)
+        self.get_assertions_sv(m, module.items)
 
 
     def populate_child_paths(self, manager: ExecutionManager) -> None:
@@ -571,8 +585,10 @@ class ExecutionEngine:
                 manager.seen_mod[sv_module_name] = {}
                 cfgs_by_module[sv_module_name] = []
                 sub_manager = ExecutionManager()
-                self.init_run(sub_manager, module)
-                self.module_count_sv(manager, module) 
+                print(f"type of module {type(module)}")
+                #self.init_run(sub_manager, module)
+                self.init_run_sv(sub_manager, module)
+                #self.module_count_sv(manager, module) 
                 if sv_module_name in manager.instance_count:
                     manager.instances_seen[sv_module_name] = 0
                     manager.instances_loc[sv_module_name] = ""
