@@ -385,22 +385,103 @@ class ExecutionEngine:
         m.init_run_flag = False
         #self.module_count(m, module.items)
 
-    def count_conditionals_sv(self, m: ExecutionManager, items):
-        print("counting conditionals")
-    def lhs_signals_sv(self, m: ExecutionManager, items):
-        print("lhs signals sv")
+    #def count_conditionals_sv(self, m: ExecutionManager, items):
+    #    print("counting conditionals")
+    #def lhs_signals_sv(self, m: ExecutionManager, items):
+    #    print("lhs signals sv")
+    #def get_assertions_sv(self, m: ExecutionManager, items):
+    #    print("get assertions sv")
 
-    def get_assertions_sv(self, m: ExecutionManager, items):
-        print("get assertions sv")
+
+    def count_conditionals_sv(self, m: ExecutionManager, items) -> None:
+        """Count control flow paths for PySlang AST."""
+        if isinstance(items, pyslang.ast.BlockStatement):
+            stmts = items.items
+        else:
+            stmts = items if isinstance(items, list) else [items]
+
+        for item in stmts:
+            if isinstance(item, pyslang.ast.IfStatement):
+                m.num_paths *= 2
+                self.count_conditionals_sv(m, item.true_stmt)
+                self.count_conditionals_sv(m, item.false_stmt)
+            elif isinstance(item, pyslang.ast.CaseStatement):
+                for case in item.items:
+                    m.num_paths *= 2
+                    self.count_conditionals_sv(m, case.stmt)
+            elif isinstance(item, pyslang.ast.LoopStatement):
+                m.num_paths *= 2
+                self.count_conditionals_sv(m, item.stmt)
+            elif isinstance(item, pyslang.ast.BlockStatement):
+                self.count_conditionals_sv(m, item.items)
+            elif isinstance(item, pyslang.ast.ProceduralBlock):
+                self.count_conditionals_sv(m, item.stmt)
+
+        def lhs_signals_sv(self, m: ExecutionManager, items) -> None:
+            """Collect written signals for PySlang AST."""
+            if isinstance(items, pyslang.ast.BlockStatement):
+                stmts = items.items
+            else:
+                stmts = items if isinstance(items, list) else [items]
+
+            for item in stmts:
+                if isinstance(item, pyslang.ast.IfStatement):
+                    self.lhs_signals_sv(m, item.true_stmt)
+                    self.lhs_signals_sv(m, item.false_stmt)
+                elif isinstance(item, pyslang.ast.CaseStatement):
+                    for case in item.items:
+                        self.lhs_signals_sv(m, case.stmt)
+                elif isinstance(item, pyslang.ast.ProceduralBlock):
+                    m.curr_always = item
+                    m.always_writes[item] = []
+                    self.lhs_signals_sv(m, item.stmt)
+                elif isinstance(item, (pyslang.ast.AssignmentExpression, 
+                                      pyslang.ast.BlockingAssignment,
+                                      pyslang.ast.NonblockingAssignment)):
+                    # Handle LHS signal extraction
+                    lhs = item.left
+                    if isinstance(lhs, pyslang.ast.Identifier):
+                        if m.curr_always and lhs.name not in m.always_writes[m.curr_always]:
+                            m.always_writes[m.curr_always].append(lhs.name)
+                    elif isinstance(lhs, pyslang.ast.ElementSelect):
+                        if m.curr_always and lhs.value.name not in m.always_writes[m.curr_always]:
+                            m.always_writes[m.curr_always].append(lhs.value.name)
+                    elif isinstance(lhs, pyslang.ast.Concatenation):
+                        for expr in lhs.expressions:
+                            if isinstance(expr, pyslang.ast.Identifier) and m.curr_always:
+                                if expr.name not in m.always_writes[m.curr_always]:
+                                    m.always_writes[m.curr_always].append(expr.name)
+
+    def get_assertions_sv(self, m: ExecutionManager, items) -> None:
+        """Collect assertions for PySlang AST."""
+        if isinstance(items, pyslang.ast.BlockStatement):
+            stmts = items.items
+        else:
+            stmts = items if isinstance(items, list) else [items]
+
+        for item in stmts:
+            if isinstance(item, pyslang.ast.IfStatement):
+                if isinstance(item.true_stmt, pyslang.ast.ConcurrentAssertion):
+                    m.assertions.append(item.condition)
+                else:
+                    self.get_assertions_sv(m, item.true_stmt)
+                    self.get_assertions_sv(m, item.false_stmt)
+            elif isinstance(item, pyslang.ast.ProceduralBlock):
+                self.get_assertions_sv(m, item.stmt)
+            elif isinstance(item, pyslang.ast.ConcurrentAssertion):
+                # Direct assertions not inside conditionals
+                m.assertions.append(item.expr)
 
     def init_run_sv(self, m: ExecutionManager, module: DefinitionSymbol) -> None:
+        """Initialize run for PySlang AST."""
         print("init run sv")
+        m.init_run_flag = True
         #self.count_conditionals_sv(m, module.items)
         #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
         #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
-        self.lhs_signals_sv(m, module.items)
-        self.get_assertions_sv(m, module.items)
-
+        #self.lhs_signals_sv(m, module.items)
+        #self.get_assertions_sv(m, module.items)
+        m.init_run_flag = False
 
     def populate_child_paths(self, manager: ExecutionManager) -> None:
         """Populates child path codes based on number of paths."""
@@ -587,6 +668,7 @@ class ExecutionEngine:
                 sub_manager = ExecutionManager()
                 print(f"type of module {type(module)}")
                 #self.init_run(sub_manager, module)
+                print(f"getKindString: f{module.getKindString()}")
                 self.init_run_sv(sub_manager, module)
                 #self.module_count_sv(manager, module) 
                 if sv_module_name in manager.instance_count:

@@ -1,0 +1,33 @@
+SV_COV_ASSERTION 20
+SV_COV_CHECK 3
+SV_COV_ERROR -1
+SV_COV_FSM_STATE 21
+SV_COV_HIER 11
+SV_COV_MODULE 10
+SV_COV_NOCOV 0
+SV_COV_OK 1
+SV_COV_OVERFLOW -2
+SV_COV_PARTIAL 2
+SV_COV_RESET 2
+SV_COV_START 0
+SV_COV_STATEMENT 22
+SV_COV_STOP 1
+SV_COV_TOGGLE 23
+__slang__ 1
+__slang_major__ 8
+__slang_minor__ 1
+module type: <class 'pyslang.DefinitionSymbol'>
+modules:[DefinitionSymbol("updowncounter")]
+successful_compilation: True
+reportMacros:
+None
+my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x115ddf0e0>
+Executing for 1 clock cycles
+sv_module_name: updowncounter
+type of module <class 'pyslang.DefinitionSymbol'>
+getKindString: fmodule
+init run sv
+Branch points explored: 0
+symbol_visitor branches:0
+symbol_visitor paths:0
+Elapsed time 0.01315299999999997
