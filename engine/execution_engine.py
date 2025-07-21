@@ -314,35 +314,39 @@ class ExecutionEngine:
             return True
         return False
 
-    def module_count_sv(self, m: ExecutionManager, items) -> None:
+    def module_count_sv(self, m: ExecutionManager, items) -> None: # item: DefinitionSymbol
         """Traverse a top level module and count up the instances of each type of module
         for SystemVerilog."""
         # TODO need to figure out what the node type is for instances
         # TODO do this check for the other block types
+
         if items.__class__.__name__ == "ProceduralBlockSyntax":
             items = items.statement.statements
         if hasattr(items, '__iter__'):
             for item in items:
-                if isinstance(item, InstanceList):
-                    self.module_count(m, item.instances)
-                elif isinstance(item, Instance):
-                    if item.module in m.instance_count:
-                        m.instance_count[item.module] += 1
-                        ...
-                    else:
-                        m.instance_count[item.module] = 1
-                if item.__class__.__name__ == "ProceduralBlockSyntax":
-                    # Always Block
-                    self.module_count(m, item.statement.statement.items)           
-                elif isinstance(item, Initial):
-                    self.module_count(m, item.statement)
+                print(f"name: {item.getKindString()}")
+                #m.instance_count[item.get]
+                #if isinstance(item, InstanceList):
+                #    self.module_count(m, item.instances)
+                #elif isinstance(item, Instance):
+                #    if item.module in m.instance_count:
+                #        m.instance_count[item.module] += 1
+                #        ...
+                #    else:
+                #        m.instance_count[item.module] = 1
+                #if item.__class__.__name__ == "ProceduralBlockSyntax":
+                #    # Always Block
+                #    self.module_count(m, item.statement.statement.items)           
+                #elif isinstance(item, Initial):
+                #    self.module_count(m, item.statement)
         elif items != None:
-                if isinstance(items, InstanceList):
-                    if items.module in m.instance_count:
-                        m.instance_count[items.module] += 1
-                    else:
-                        m.instance_count[items.module] = 1
-                    self.module_count(m, items.instances)
+                print(f"name: {items.getKindString()}")
+                #if isinstance(items, InstanceList):
+                #    if items.module in m.instance_count:
+                #        m.instance_count[items.module] += 1
+                #    else:
+                #        m.instance_count[items.module] = 1
+                #    self.module_count(m, items.instances)
 
     def module_count(self, m: ExecutionManager, items) -> None:
         """Traverse a top level module and count up the instances of each type of module."""
@@ -393,7 +397,7 @@ class ExecutionEngine:
     #    print("get assertions sv")
 
 
-    def count_conditionals_sv(self, m: ExecutionManager, items) -> None:
+    def count_conditionals_sv(self, m: ExecutionManager, items) -> None: # DefinitionSymbol
         """Count control flow paths for PySlang AST."""
         if isinstance(items, pyslang.ast.BlockStatement):
             stmts = items.items
@@ -476,7 +480,7 @@ class ExecutionEngine:
         """Initialize run for PySlang AST."""
         print("init run sv")
         m.init_run_flag = True
-        #self.count_conditionals_sv(m, module.items)
+        self.count_conditionals_sv(m, module.items) # module:DefinitionSymbol
         #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
         #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
         #self.lhs_signals_sv(m, module.items)
@@ -669,8 +673,9 @@ class ExecutionEngine:
                 print(f"type of module {type(module)}")
                 #self.init_run(sub_manager, module)
                 print(f"getKindString: f{module.getKindString()}")
-                self.init_run_sv(sub_manager, module)
-                #self.module_count_sv(manager, module) 
+                self.init_run_sv(sub_manager, module) # module : DefinitionSymbol
+                print(f"module_count_sv:")
+                self.module_count_sv(manager, module) 
                 if sv_module_name in manager.instance_count:
                     manager.instances_seen[sv_module_name] = 0
                     manager.instances_loc[sv_module_name] = ""

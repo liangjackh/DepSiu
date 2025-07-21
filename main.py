@@ -139,11 +139,24 @@ def main():
         driver.processCommandFiles(filelist[0], True, True)
         driver.processOptions()
         driver.parseAllSources()
-        
+
+        #ast = ps.ASTContext()
+        #ast_comp = ast.getCompilation()
+        #comp = ps.Compilation()
+        #ast_ctx = ps.ASTContext(comp)
+        #print(f"ast_ctx: {type(ast_ctx)}")
+
         compilation = driver.createCompilation()
+        trees = driver.syntaxTrees
+        root = trees[0].root
+        for item in trees:
+            print(f"syntaxTreeNode: {item}")
         modules =  compilation.getDefinitions()
         for item in modules:
             print(f"module type: {type(item)}")
+        #always_blocks = compilation.getProceduralBlocks()
+        #for item in always_blocks:
+        #    print(f"always block: {type(item)}")
         successful_compilation = driver.reportCompilation(compilation, True)
         print(f"modules:{modules}")
         print(f"successful_compilation: {successful_compilation}")

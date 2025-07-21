@@ -1,1 +1,1 @@
-designs/test-designs/updowncounter.v
+designs/test-designs/xmas.v
