@@ -15,6 +15,8 @@ def init_state(s: SymbolicState, prev_store, ast, symbol_visitor):
     symbol_visitor.dfs(ast)
     params = expr_symbol_visitor.parameters
     port_list = expr_symbol_visitor.ports
+    print(f"params: {params}")
+    print(f"ports: {port_list}")
     for i, token in enumerate(port_list):
         port = extract_kinds_from_descendants(token, desired_kinds=[ps.SyntaxKind.ImplicitAnsiPort])
         port_list.append(port)
@@ -36,6 +38,7 @@ def init_state(s: SymbolicState, prev_store, ast, symbol_visitor):
 
 def merge_states(state: SymbolicState, store):
     """Merges two states."""
+    print("merging states..")
     for key, val in state.store.items():
         if type(val) != dict:
             continue
@@ -184,7 +187,10 @@ class SlangSymbolVisitor:
 
     def visit(self, symbol):
         if not isinstance(symbol, ps.Symbol):
+            print(f"module: {symbol} is not a Symbol, skipping.")
             return
+        print(f"Visiting symbol: {symbol.name} of kind {symbol.kind}")
+        print(f"Symbol ID: {self.symbol_id}, Source Range: {symbol.syntax.sourceRange if hasattr(symbol.syntax, 'sourceRange') else 'N/A'}")
         if symbol.kind == ps.SymbolKind.Unknown:
             # unknown symbol
             ...
@@ -192,6 +198,7 @@ class SlangSymbolVisitor:
             # root symbol
             ...
         elif symbol.kind == ps.SymbolKind.Definition:
+            #print(f"definition symbol, {symbol.body}")
             # definition symbol
             ...
         elif symbol.kind == ps.SymbolKind.CompilationUnit:
@@ -839,6 +846,7 @@ class ExpressionSymbolCollector:
         self.ports = set()
 
     def visit(self, expr):
+        print(f"Visiting expression: {expr}, type: {type(expr)}")
         if expr is None:
             return
         kind = expr.kind

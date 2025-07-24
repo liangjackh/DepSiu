@@ -152,6 +152,7 @@ def main():
         for item in trees:
             print(f"syntaxTreeNode: {item}")
         modules =  compilation.getDefinitions()
+        print(f"modules type: {type(modules)}")
         for item in modules:
             print(f"module type: {type(item)}")
         #always_blocks = compilation.getProceduralBlocks()
@@ -164,10 +165,12 @@ def main():
             print(f"reportMacros:")
             print(driver.reportMacros())
             my_visitor_for_symbol = SymbolicDFS(num_cycles)
-            print(f"my_visitor_for_symbol: {my_visitor_for_symbol}")
+            print(f"[main]my_visitor_for_symbol: {my_visitor_for_symbol}")
             symbol_visitor = SlangSymbolVisitor(num_cycles)
             engine.execute_sv(my_visitor_for_symbol, modules, None, num_cycles)
-            symbol_visitor.visit(modules)
+
+            for module in modules:
+                symbol_visitor.visit(module)
             print(f"symbol_visitor branches:{symbol_visitor.branch_points}")
             print(f"symbol_visitor paths:{symbol_visitor.paths}")
             

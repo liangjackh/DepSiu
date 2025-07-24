@@ -1,0 +1,840 @@
+class ASTContext:
+class ASTFlags:
+class AbortAssertionExpr(AssertionExpr):
+    class Action:
+class AcceptOnPropertyExprSyntax(PropertyExprSyntax):
+class ActionBlockSyntax(SyntaxNode):
+class AnonymousProgramSymbol(Symbol, Scope):
+class AnonymousProgramSyntax(MemberSyntax):
+class AnsiPortListSyntax(PortListSyntax):
+class AnsiUdpPortListSyntax(UdpPortListSyntax):
+class ArbitrarySymbolExpression(Expression):
+class ArgumentDirection:
+class ArgumentListSyntax(SyntaxNode):
+class ArgumentSyntax(SyntaxNode):
+class ArrayOrRandomizeMethodExpressionSyntax(ExpressionSyntax):
+class AssertionExpr:
+class AssertionExprKind:
+class AssertionInstanceExpression(Expression):
+class AssertionItemPortListSyntax(SyntaxNode):
+class AssertionItemPortSyntax(SyntaxNode):
+class AssertionKind:
+class AssertionPortSymbol(Symbol):
+class AssignmentExpression(Expression):
+class AssignmentPatternExpressionBase(Expression):
+class AssignmentPatternExpressionSyntax(PrimaryExpressionSyntax):
+class AssignmentPatternItemSyntax(SyntaxNode):
+class AssignmentPatternSyntax(SyntaxNode):
+class AssociativeArrayType(Type):
+class AttributeInstanceSyntax(SyntaxNode):
+class AttributeSpecSyntax(SyntaxNode):
+class AttributeSymbol(Symbol):
+class BadExpressionSyntax(ExpressionSyntax):
+class Bag:
+class BeginKeywordsDirectiveSyntax(DirectiveSyntax):
+class BinSelectWithFilterExpr(BinsSelectExpr):
+class BinSelectWithFilterExprSyntax(BinsSelectExpressionSyntax):
+class BinaryAssertionExpr(AssertionExpr):
+class BinaryAssertionOperator:
+class BinaryBinsSelectExpr(BinsSelectExpr):
+    class Op:
+class BinaryBinsSelectExprSyntax(BinsSelectExpressionSyntax):
+class BinaryBlockEventExpressionSyntax(BlockEventExpressionSyntax):
+class BinaryConditionalDirectiveExpressionSyntax(ConditionalDirectiveExpressionSyntax):
+class BinaryEventExpressionSyntax(EventExpressionSyntax):
+class BinaryExpression(Expression):
+class BinaryExpressionSyntax(ExpressionSyntax):
+class BinaryOperator:
+class BinaryPropertyExprSyntax(PropertyExprSyntax):
+class BinarySequenceExprSyntax(SequenceExprSyntax):
+class BindDirectiveSyntax(MemberSyntax):
+class BindTargetListSyntax(SyntaxNode):
+class BinsSelectConditionExprSyntax(BinsSelectExpressionSyntax):
+class BinsSelectExpr:
+class BinsSelectExprKind:
+class BinsSelectExpressionSyntax(SyntaxNode):
+class BinsSelectionSyntax(MemberSyntax):
+class BitSelectSyntax(SelectorSyntax):
+class BlockCoverageEventSyntax(SyntaxNode):
+class BlockEventExpressionSyntax(SyntaxNode):
+class BlockEventListControl(TimingControl):
+    class Event:
+class BlockStatement(Statement):
+class BlockStatementSyntax(StatementSyntax):
+class BreakStatement(Statement):
+class BufferID:
+class BumpAllocator:
+class CHandleType(Type):
+class CallExpression(Expression):
+    class IteratorCallInfo:
+    class RandomizeCallInfo:
+    class SystemCallInfo:
+class CaseAssertionExpr(AssertionExpr):
+    class ItemGroup:
+class CaseGenerateSyntax(MemberSyntax):
+class CaseItemSyntax(SyntaxNode):
+class CasePropertyExprSyntax(PropertyExprSyntax):
+class CaseStatement(Statement):
+    class ItemGroup:
+class CaseStatementCondition:
+class CaseStatementSyntax(StatementSyntax):
+class CastExpressionSyntax(ExpressionSyntax):
+class CellConfigRuleSyntax(ConfigRuleSyntax):
+class ChargeStrengthSyntax(NetStrengthSyntax):
+class CheckerDataDeclarationSyntax(MemberSyntax):
+class CheckerDeclarationSyntax(MemberSyntax):
+class CheckerInstanceBodySymbol(Symbol, Scope):
+class CheckerInstanceStatementSyntax(StatementSyntax):
+class CheckerInstanceSymbol(InstanceSymbolBase):
+    class Connection:
+class CheckerInstantiationSyntax(MemberSyntax):
+class CheckerSymbol(Symbol, Scope):
+class ClassDeclarationSyntax(MemberSyntax):
+    classKeyword: Token
+class ClassMethodDeclarationSyntax(MemberSyntax):
+class ClassMethodPrototypeSyntax(MemberSyntax):
+class ClassNameSyntax(NameSyntax):
+class ClassPropertyDeclarationSyntax(MemberSyntax):
+class ClassPropertySymbol(VariableSymbol):
+class ClassSpecifierSyntax(SyntaxNode):
+class ClassType(Type, Scope):
+class ClockVarSymbol(VariableSymbol):
+class ClockingAssertionExpr(AssertionExpr):
+class ClockingBlockSymbol(Symbol, Scope):
+class ClockingDeclarationSyntax(MemberSyntax):
+class ClockingDirectionSyntax(SyntaxNode):
+class ClockingEventExpression(Expression):
+class ClockingItemSyntax(MemberSyntax):
+class ClockingPropertyExprSyntax(PropertyExprSyntax):
+class ClockingSequenceExprSyntax(SequenceExprSyntax):
+class ClockingSkew:
+class ClockingSkewSyntax(SyntaxNode):
+class ColonExpressionClauseSyntax(SyntaxNode):
+class CommandLineOptions:
+class Compilation:
+    class DefinitionLookupResult:
+class CompilationFlags:
+class CompilationOptions:
+class CompilationUnitSymbol(Symbol, Scope):
+class CompilationUnitSyntax(SyntaxNode):
+class ConcatenationExpression(Expression):
+class ConcatenationExpressionSyntax(PrimaryExpressionSyntax):
+class ConcurrentAssertionMemberSyntax(MemberSyntax):
+class ConcurrentAssertionStatement(Statement):
+class ConcurrentAssertionStatementSyntax(StatementSyntax):
+class ConditionBinsSelectExpr(BinsSelectExpr):
+class ConditionalAssertionExpr(AssertionExpr):
+class ConditionalBranchDirectiveSyntax(DirectiveSyntax):
+class ConditionalConstraint(Constraint):
+class ConditionalConstraintSyntax(ConstraintItemSyntax):
+class ConditionalDirectiveExpressionSyntax(SyntaxNode):
+class ConditionalExpression(Expression):
+    class Condition:
+class ConditionalExpressionSyntax(ExpressionSyntax):
+class ConditionalPathDeclarationSyntax(MemberSyntax):
+class ConditionalPatternSyntax(SyntaxNode):
+class ConditionalPredicateSyntax(SyntaxNode):
+class ConditionalPropertyExprSyntax(PropertyExprSyntax):
+class ConditionalStatement(Statement):
+    class Condition:
+class ConditionalStatementSyntax(StatementSyntax):
+class ConfigBlockSymbol(Symbol, Scope):
+class ConfigCellIdentifierSyntax(SyntaxNode):
+class ConfigDeclarationSyntax(MemberSyntax):
+class ConfigInstanceIdentifierSyntax(SyntaxNode):
+class ConfigLiblistSyntax(ConfigRuleClauseSyntax):
+class ConfigRuleClauseSyntax(SyntaxNode):
+class ConfigRuleSyntax(SyntaxNode):
+class ConfigUseClauseSyntax(ConfigRuleClauseSyntax):
+class ConstantPattern(Pattern):
+class ConstantRange:
+class ConstantValue:
+class Constraint:
+class ConstraintBlockFlags:
+class ConstraintBlockSymbol(Symbol, Scope):
+class ConstraintBlockSyntax(ConstraintItemSyntax):
+class ConstraintDeclarationSyntax(MemberSyntax):
+class ConstraintItemSyntax(SyntaxNode):
+class ConstraintKind:
+class ConstraintList(Constraint):
+class ConstraintPrototypeSyntax(MemberSyntax):
+class ContinueStatement(Statement):
+class ContinuousAssignSymbol(Symbol):
+class ContinuousAssignSyntax(MemberSyntax):
+class ConversionExpression(Expression):
+class ConversionKind:
+class CopyClassExpression(Expression):
+class CopyClassExpressionSyntax(ExpressionSyntax):
+class CoverCrossBodySymbol(Symbol, Scope):
+class CoverCrossSymbol(Symbol, Scope):
+class CoverCrossSyntax(MemberSyntax):
+class CoverageBinInitializerSyntax(SyntaxNode):
+class CoverageBinSymbol(Symbol):
+    class BinKind:
+    class TransRangeList:
+        class RepeatKind:
+class CoverageBinsArraySizeSyntax(SyntaxNode):
+class CoverageBinsSyntax(MemberSyntax):
+class CoverageIffClauseSyntax(SyntaxNode):
+class CoverageOptionSetter:
+class CoverageOptionSyntax(MemberSyntax):
+class CovergroupBodySymbol(Symbol, Scope):
+class CovergroupDeclarationSyntax(MemberSyntax):
+class CovergroupType(Type, Scope):
+class CoverpointSymbol(Symbol, Scope):
+class CoverpointSyntax(MemberSyntax):
+class CrossIdBinsSelectExpr(BinsSelectExpr):
+class CycleDelayControl(TimingControl):
+class DPIExportSyntax(MemberSyntax):
+class DPIImportSyntax(MemberSyntax):
+class DPIOpenArrayType(Type):
+class DataDeclarationSyntax(MemberSyntax):
+class DataTypeExpression(Expression):
+class DataTypeSyntax(ExpressionSyntax):
+class DeclaratorSyntax(SyntaxNode):
+class DeclaredType:
+class DefParamAssignmentSyntax(SyntaxNode):
+class DefParamSymbol(Symbol):
+class DefParamSyntax(MemberSyntax):
+class DefaultCaseItemSyntax(CaseItemSyntax):
+class DefaultClockingReferenceSyntax(MemberSyntax):
+class DefaultConfigRuleSyntax(ConfigRuleSyntax):
+class DefaultCoverageBinInitializerSyntax(CoverageBinInitializerSyntax):
+class DefaultDecayTimeDirectiveSyntax(DirectiveSyntax):
+class DefaultDisableDeclarationSyntax(MemberSyntax):
+class DefaultDistItemSyntax(DistItemBaseSyntax):
+class DefaultExtendsClauseArgSyntax(SyntaxNode):
+class DefaultFunctionPortSyntax(FunctionPortBaseSyntax):
+class DefaultNetTypeDirectiveSyntax(DirectiveSyntax):
+class DefaultPropertyCaseItemSyntax(PropertyCaseItemSyntax):
+class DefaultRsCaseItemSyntax(RsCaseItemSyntax):
+class DefaultSkewItemSyntax(MemberSyntax):
+class DefaultTriregStrengthDirectiveSyntax(DirectiveSyntax):
+class DeferredAssertionSyntax(SyntaxNode):
+class DefineDirectiveSyntax(DirectiveSyntax):
+class DefinitionKind:
+class DefinitionSymbol(Symbol):
+class Delay3Control(TimingControl):
+class Delay3Syntax(TimingControlSyntax):
+class DelayControl(TimingControl):
+class DelaySyntax(TimingControlSyntax):
+class DelayedSequenceElementSyntax(SyntaxNode):
+class DelayedSequenceExprSyntax(SequenceExprSyntax):
+class DiagCode:
+class DiagGroup:
+class DiagSubsystem:
+class Diagnostic:
+class DiagnosticClient:
+class DiagnosticEngine:
+class DiagnosticSeverity:
+class Diagnostics:
+class Diags:
+class DimensionKind:
+class DimensionSpecifierSyntax(SyntaxNode):
+class DirectiveSyntax(SyntaxNode):
+class DisableConstraintSyntax(ConstraintItemSyntax):
+class DisableForkStatement(Statement):
+class DisableForkStatementSyntax(StatementSyntax):
+class DisableIffAssertionExpr(AssertionExpr):
+class DisableIffSyntax(SyntaxNode):
+class DisableSoftConstraint(Constraint):
+class DisableStatement(Statement):
+class DisableStatementSyntax(StatementSyntax):
+class DistConstraintListSyntax(SyntaxNode):
+class DistExpression(Expression):
+    class DistItem:
+    class DistWeight:
+        class Kind:
+class DistItemBaseSyntax(SyntaxNode):
+class DistItemSyntax(DistItemBaseSyntax):
+class DistWeightSyntax(SyntaxNode):
+class DividerClauseSyntax(SyntaxNode):
+class DoWhileLoopStatement(Statement):
+class DoWhileStatementSyntax(StatementSyntax):
+class DotMemberClauseSyntax(SyntaxNode):
+class DriveStrengthSyntax(NetStrengthSyntax):
+class Driver:
+class DriverKind:
+class DynamicArrayType(Type):
+class EdgeControlSpecifierSyntax(SyntaxNode):
+class EdgeDescriptorSyntax(SyntaxNode):
+class EdgeKind:
+class EdgeSensitivePathSuffixSyntax(PathSuffixSyntax):
+class ElabSystemTaskKind:
+class ElabSystemTaskSymbol(Symbol):
+class ElabSystemTaskSyntax(MemberSyntax):
+class ElementSelectExpression(Expression):
+class ElementSelectExpressionSyntax(ExpressionSyntax):
+class ElementSelectSyntax(SyntaxNode):
+class ElseClauseSyntax(SyntaxNode):
+class ElseConstraintClauseSyntax(SyntaxNode):
+class ElsePropertyClauseSyntax(SyntaxNode):
+class EmptyArgumentExpression(Expression):
+class EmptyArgumentSyntax(ArgumentSyntax):
+class EmptyIdentifierNameSyntax(NameSyntax):
+class EmptyMemberSymbol(Symbol):
+class EmptyMemberSyntax(MemberSyntax):
+class EmptyNonAnsiPortSyntax(NonAnsiPortSyntax):
+class EmptyPortConnectionSyntax(PortConnectionSyntax):
+class EmptyQueueExpressionSyntax(PrimaryExpressionSyntax):
+class EmptyStatement(Statement):
+class EmptyStatementSyntax(StatementSyntax):
+class EmptyTimingCheckArgSyntax(TimingCheckArgSyntax):
+class EnumType(IntegralType, Scope):
+class EnumTypeSyntax(DataTypeSyntax):
+class EnumValueSymbol(ValueSymbol):
+class EqualsAssertionArgClauseSyntax(SyntaxNode):
+class EqualsTypeClauseSyntax(SyntaxNode):
+class EqualsValueClauseSyntax(SyntaxNode):
+class ErrorType(Type):
+class EvalContext:
+    class Frame:
+class EvalFlags:
+class EvaluatedDimension:
+class EventControlSyntax(TimingControlSyntax):
+class EventControlWithExpressionSyntax(TimingControlSyntax):
+class EventExpressionSyntax(SequenceExprSyntax):
+class EventListControl(TimingControl):
+class EventTriggerStatement(Statement):
+class EventTriggerStatementSyntax(StatementSyntax):
+class EventType(Type):
+class ExplicitAnsiPortSyntax(MemberSyntax):
+class ExplicitImportSymbol(Symbol):
+class ExplicitNonAnsiPortSyntax(NonAnsiPortSyntax):
+class Expression:
+class ExpressionConstraint(Constraint):
+class ExpressionConstraintSyntax(ConstraintItemSyntax):
+class ExpressionCoverageBinInitializerSyntax(CoverageBinInitializerSyntax):
+class ExpressionKind:
+class ExpressionOrDistSyntax(ExpressionSyntax):
+class ExpressionPatternSyntax(PatternSyntax):
+class ExpressionStatement(Statement):
+class ExpressionStatementSyntax(StatementSyntax):
+class ExpressionSyntax(SyntaxNode):
+class ExpressionTimingCheckArgSyntax(TimingCheckArgSyntax):
+class ExtendsClauseSyntax(SyntaxNode):
+class ExternInterfaceMethodSyntax(MemberSyntax):
+class ExternModuleDeclSyntax(MemberSyntax):
+class ExternUdpDeclSyntax(MemberSyntax):
+class FieldSymbol(VariableSymbol):
+class FilePathSpecSyntax(SyntaxNode):
+class FirstMatchAssertionExpr(AssertionExpr):
+class FirstMatchSequenceExprSyntax(SequenceExprSyntax):
+class FixedSizeUnpackedArrayType(Type):
+class FloatingType(Type):
+    class Kind:
+class ForLoopStatement(Statement):
+class ForLoopStatementSyntax(StatementSyntax):
+class ForVariableDeclarationSyntax(SyntaxNode):
+class ForeachConstraint(Constraint):
+class ForeachLoopListSyntax(SyntaxNode):
+class ForeachLoopStatement(Statement):
+    class LoopDim:
+class ForeachLoopStatementSyntax(StatementSyntax):
+class ForeverLoopStatement(Statement):
+class ForeverStatementSyntax(StatementSyntax):
+class FormalArgumentSymbol(VariableSymbol):
+class ForwardTypeRestriction:
+class ForwardTypeRestrictionSyntax(SyntaxNode):
+class ForwardTypedefDeclarationSyntax(MemberSyntax):
+class ForwardingTypedefSymbol(Symbol):
+class FunctionDeclarationSyntax(MemberSyntax):
+class FunctionPortBaseSyntax(SyntaxNode):
+class FunctionPortListSyntax(SyntaxNode):
+class FunctionPortSyntax(FunctionPortBaseSyntax):
+class FunctionPrototypeSyntax(SyntaxNode):
+class GenerateBlockArraySymbol(Symbol, Scope):
+class GenerateBlockSymbol(Symbol, Scope):
+class GenerateBlockSyntax(MemberSyntax):
+class GenerateRegionSyntax(MemberSyntax):
+class GenericClassDefSymbol(Symbol):
+class GenvarDeclarationSyntax(MemberSyntax):
+class GenvarSymbol(Symbol):
+class HierarchicalInstanceSyntax(SyntaxNode):
+class HierarchicalValueExpression(ValueExpressionBase):
+class HierarchyInstantiationSyntax(MemberSyntax):
+class IdWithExprCoverageBinInitializerSyntax(CoverageBinInitializerSyntax):
+class IdentifierNameSyntax(NameSyntax):
+class IdentifierSelectNameSyntax(NameSyntax):
+class IfGenerateSyntax(MemberSyntax):
+class IfNonePathDeclarationSyntax(MemberSyntax):
+class IffEventClauseSyntax(SyntaxNode):
+class ImmediateAssertionMemberSyntax(MemberSyntax):
+class ImmediateAssertionStatement(Statement):
+class ImmediateAssertionStatementSyntax(StatementSyntax):
+class ImplementsClauseSyntax(SyntaxNode):
+class ImplicationConstraint(Constraint):
+class ImplicationConstraintSyntax(ConstraintItemSyntax):
+class ImplicitAnsiPortSyntax(MemberSyntax):
+class ImplicitEventControl(TimingControl):
+class ImplicitEventControlSyntax(TimingControlSyntax):
+class ImplicitNonAnsiPortSyntax(NonAnsiPortSyntax):
+class ImplicitTypeSyntax(DataTypeSyntax):
+class IncludeDirectiveSyntax(DirectiveSyntax):
+class InsideExpression(Expression):
+class InsideExpressionSyntax(ExpressionSyntax):
+class InstanceArraySymbol(Symbol, Scope):
+class InstanceBodySymbol(Symbol, Scope):
+class InstanceConfigRuleSyntax(ConfigRuleSyntax):
+class InstanceNameSyntax(SyntaxNode):
+class InstanceSymbol(InstanceSymbolBase):
+class InstanceSymbolBase(Symbol):
+class IntegerLiteral(Expression):
+class IntegerTypeSyntax(DataTypeSyntax):
+class IntegerVectorExpressionSyntax(PrimaryExpressionSyntax):
+class IntegralFlags:
+class IntegralType(Type):
+class InterfacePortHeaderSyntax(PortHeaderSyntax):
+class InterfacePortSymbol(Symbol):
+class IntersectClauseSyntax(SyntaxNode):
+class InvalidAssertionExpr(AssertionExpr):
+class InvalidBinsSelectExpr(BinsSelectExpr):
+class InvalidConstraint(Constraint):
+class InvalidExpression(Expression):
+class InvalidPattern(Pattern):
+class InvalidStatement(Statement):
+class InvalidTimingControl(TimingControl):
+class InvocationExpressionSyntax(ExpressionSyntax):
+class IteratorSymbol(TempVarSymbol):
+class JumpStatementSyntax(StatementSyntax):
+class KeywordNameSyntax(NameSyntax):
+class KeywordTypeSyntax(DataTypeSyntax):
+class LValue:
+class LValueReferenceExpression(Expression):
+class LanguageVersion:
+class LetDeclSymbol(Symbol, Scope):
+class LetDeclarationSyntax(MemberSyntax):
+class LexerOptions:
+class LibraryDeclarationSyntax(MemberSyntax):
+class LibraryIncDirClauseSyntax(SyntaxNode):
+class LibraryIncludeStatementSyntax(MemberSyntax):
+class LibraryMapSyntax(SyntaxNode):
+class LineDirectiveSyntax(DirectiveSyntax):
+class LiteralBase:
+class LiteralExpressionSyntax(PrimaryExpressionSyntax):
+class LocalAssertionVarSymbol(VariableSymbol):
+class LocalVariableDeclarationSyntax(MemberSyntax):
+class Lookup:
+class LookupFlags:
+class LookupLocation:
+class LookupResult:
+    class MemberSelector:
+class LookupResultFlags:
+class LoopConstraintSyntax(ConstraintItemSyntax):
+class LoopGenerateSyntax(MemberSyntax):
+class LoopStatementSyntax(StatementSyntax):
+class MacroActualArgumentListSyntax(SyntaxNode):
+class MacroActualArgumentSyntax(SyntaxNode):
+class MacroArgumentDefaultSyntax(SyntaxNode):
+class MacroFormalArgumentListSyntax(SyntaxNode):
+class MacroFormalArgumentSyntax(SyntaxNode):
+class MacroUsageSyntax(DirectiveSyntax):
+class MatchesClauseSyntax(SyntaxNode):
+class MemberAccessExpression(Expression):
+class MemberAccessExpressionSyntax(ExpressionSyntax):
+class MemberSyntax(SyntaxNode):
+class MethodFlags:
+class MethodPrototypeSymbol(Symbol, Scope):
+    class ExternImpl:
+class MinTypMax:
+class MinTypMaxExpression(Expression):
+class MinTypMaxExpressionSyntax(ExpressionSyntax):
+class ModportClockingPortSyntax(MemberSyntax):
+class ModportClockingSymbol(Symbol):
+class ModportDeclarationSyntax(MemberSyntax):
+class ModportExplicitPortSyntax(ModportPortSyntax):
+class ModportItemSyntax(SyntaxNode):
+class ModportNamedPortSyntax(ModportPortSyntax):
+class ModportPortSymbol(ValueSymbol):
+class ModportPortSyntax(SyntaxNode):
+class ModportSimplePortListSyntax(MemberSyntax):
+class ModportSubroutinePortListSyntax(MemberSyntax):
+class ModportSubroutinePortSyntax(ModportPortSyntax):
+class ModportSymbol(Symbol, Scope):
+class ModuleDeclarationSyntax(MemberSyntax):
+class ModuleHeaderSyntax(SyntaxNode):
+class MultiPortSymbol(Symbol):
+class MultipleConcatenationExpressionSyntax(PrimaryExpressionSyntax):
+class NameSyntax(ExpressionSyntax):
+class NameValuePragmaExpressionSyntax(PragmaExpressionSyntax):
+class NamedArgumentSyntax(ArgumentSyntax):
+class NamedBlockClauseSyntax(SyntaxNode):
+class NamedConditionalDirectiveExpressionSyntax(ConditionalDirectiveExpressionSyntax):
+class NamedLabelSyntax(SyntaxNode):
+class NamedParamAssignmentSyntax(ParamAssignmentSyntax):
+class NamedPortConnectionSyntax(PortConnectionSyntax):
+class NamedStructurePatternMemberSyntax(StructurePatternMemberSyntax):
+class NamedTypeSyntax(DataTypeSyntax):
+class NamedValueExpression(ValueExpressionBase):
+class NetAliasSymbol(Symbol):
+class NetAliasSyntax(MemberSyntax):
+class NetDeclarationSyntax(MemberSyntax):
+class NetPortHeaderSyntax(PortHeaderSyntax):
+class NetStrengthSyntax(SyntaxNode):
+class NetSymbol(ValueSymbol):
+    class ExpansionHint:
+class NetType(Symbol):
+    class NetKind:
+class NetTypeDeclarationSyntax(MemberSyntax):
+class NewArrayExpression(Expression):
+class NewArrayExpressionSyntax(ExpressionSyntax):
+class NewClassExpression(Expression):
+class NewClassExpressionSyntax(ExpressionSyntax):
+class NewCovergroupExpression(Expression):
+class NonAnsiPortListSyntax(PortListSyntax):
+class NonAnsiPortSyntax(SyntaxNode):
+class NonAnsiUdpPortListSyntax(UdpPortListSyntax):
+class NonConstantFunction(SimpleSystemSubroutine):
+class Null:
+class NullLiteral(Expression):
+class NullType(Type):
+class NumberPragmaExpressionSyntax(PragmaExpressionSyntax):
+class OneStepDelayControl(TimingControl):
+class OneStepDelaySyntax(TimingControlSyntax):
+class OrderedArgumentSyntax(ArgumentSyntax):
+class OrderedParamAssignmentSyntax(ParamAssignmentSyntax):
+class OrderedPortConnectionSyntax(PortConnectionSyntax):
+class OrderedStructurePatternMemberSyntax(StructurePatternMemberSyntax):
+class PackageExportAllDeclarationSyntax(MemberSyntax):
+class PackageExportDeclarationSyntax(MemberSyntax):
+class PackageImportDeclarationSyntax(MemberSyntax):
+class PackageImportItemSyntax(SyntaxNode):
+class PackageSymbol(Symbol, Scope):
+class PackedArrayType(IntegralType):
+class PackedStructType(IntegralType, Scope):
+class PackedUnionType(IntegralType, Scope):
+class ParamAssignmentSyntax(SyntaxNode):
+class ParameterDeclarationBaseSyntax(SyntaxNode):
+class ParameterDeclarationStatementSyntax(MemberSyntax):
+class ParameterDeclarationSyntax(ParameterDeclarationBaseSyntax):
+class ParameterPortListSyntax(SyntaxNode):
+class ParameterSymbol(ValueSymbol, ParameterSymbolBase):
+class ParameterSymbolBase:
+class ParameterValueAssignmentSyntax(SyntaxNode):
+class ParenExpressionListSyntax(SyntaxNode):
+class ParenPragmaExpressionSyntax(PragmaExpressionSyntax):
+class ParenthesizedBinsSelectExprSyntax(BinsSelectExpressionSyntax):
+class ParenthesizedConditionalDirectiveExpressionSyntax(ConditionalDirectiveExpressionSyntax):
+class ParenthesizedEventExpressionSyntax(EventExpressionSyntax):
+class ParenthesizedExpressionSyntax(PrimaryExpressionSyntax):
+class ParenthesizedPatternSyntax(PatternSyntax):
+class ParenthesizedPropertyExprSyntax(PropertyExprSyntax):
+class ParenthesizedSequenceExprSyntax(SequenceExprSyntax):
+class ParserOptions:
+class PathDeclarationSyntax(MemberSyntax):
+class PathDescriptionSyntax(SyntaxNode):
+class PathSuffixSyntax(SyntaxNode):
+class Pattern:
+class PatternCaseItemSyntax(CaseItemSyntax):
+class PatternCaseStatement(Statement):
+    class ItemGroup:
+class PatternKind:
+class PatternSyntax(SyntaxNode):
+class PatternVarSymbol(TempVarSymbol):
+class PortConcatenationSyntax(PortExpressionSyntax):
+class PortConnection:
+class PortConnectionSyntax(SyntaxNode):
+class PortDeclarationSyntax(MemberSyntax):
+class PortExpressionSyntax(SyntaxNode):
+class PortHeaderSyntax(SyntaxNode):
+class PortListSyntax(SyntaxNode):
+class PortReferenceSyntax(PortExpressionSyntax):
+class PortSymbol(Symbol):
+class PostfixUnaryExpressionSyntax(ExpressionSyntax):
+class PragmaDirectiveSyntax(DirectiveSyntax):
+class PragmaExpressionSyntax(SyntaxNode):
+class PredefinedIntegerType(IntegralType):
+    class Kind:
+class PrefixUnaryExpressionSyntax(ExpressionSyntax):
+class PreprocessorOptions:
+class PrimaryBlockEventExpressionSyntax(BlockEventExpressionSyntax):
+class PrimaryExpressionSyntax(ExpressionSyntax):
+class PrimitiveInstanceSymbol(InstanceSymbolBase):
+class PrimitiveInstantiationSyntax(MemberSyntax):
+class PrimitivePortDirection:
+class PrimitivePortSymbol(ValueSymbol):
+class PrimitiveSymbol(Symbol, Scope):
+    class PrimitiveKind:
+    class TableEntry:
+class ProceduralAssignStatement(Statement):
+class ProceduralAssignStatementSyntax(StatementSyntax):
+class ProceduralBlockKind:
+class ProceduralBlockSymbol(Symbol):
+class ProceduralBlockSyntax(MemberSyntax):
+class ProceduralCheckerStatement(Statement):
+class ProceduralDeassignStatement(Statement):
+class ProceduralDeassignStatementSyntax(StatementSyntax):
+class ProductionSyntax(SyntaxNode):
+class PropertyCaseItemSyntax(SyntaxNode):
+class PropertyDeclarationSyntax(MemberSyntax):
+class PropertyExprSyntax(SyntaxNode):
+class PropertySpecSyntax(SyntaxNode):
+class PropertySymbol(Symbol, Scope):
+class PropertyType(Type):
+class PullStrengthSyntax(NetStrengthSyntax):
+class PulseStyleDeclarationSyntax(MemberSyntax):
+class PulseStyleKind:
+class PulseStyleSymbol(Symbol):
+class QueueDimensionSpecifierSyntax(DimensionSpecifierSyntax):
+class QueueType(Type):
+class RandCaseItemSyntax(SyntaxNode):
+class RandCaseStatement(Statement):
+    class Item:
+class RandCaseStatementSyntax(StatementSyntax):
+class RandJoinClauseSyntax(SyntaxNode):
+class RandMode:
+class RandSeqProductionSymbol(Symbol, Scope):
+    class CaseItem:
+    class CaseProd(RandSeqProductionSymbol.ProdBase):
+    class CodeBlockProd(RandSeqProductionSymbol.ProdBase):
+    class IfElseProd(RandSeqProductionSymbol.ProdBase):
+    class ProdBase:
+    class ProdItem(RandSeqProductionSymbol.ProdBase):
+    class ProdKind:
+    class RepeatProd(RandSeqProductionSymbol.ProdBase):
+    class Rule:
+class RandSequenceStatement(Statement):
+class RandSequenceStatementSyntax(StatementSyntax):
+class RangeCoverageBinInitializerSyntax(CoverageBinInitializerSyntax):
+class RangeDimensionSpecifierSyntax(DimensionSpecifierSyntax):
+class RangeListSyntax(SyntaxNode):
+class RangeSelectExpression(Expression):
+class RangeSelectSyntax(SelectorSyntax):
+class RangeSelectionKind:
+class RealLiteral(Expression):
+class RepeatLoopStatement(Statement):
+class RepeatedEventControl(TimingControl):
+class RepeatedEventControlSyntax(TimingControlSyntax):
+class ReplicatedAssignmentPatternExpression(AssignmentPatternExpressionBase):
+class ReplicatedAssignmentPatternSyntax(AssignmentPatternSyntax):
+class ReplicationExpression(Expression):
+class ReportedDiagnostic:
+class ReturnStatement(Statement):
+class ReturnStatementSyntax(StatementSyntax):
+class RootSymbol(Symbol, Scope):
+class RsCaseItemSyntax(SyntaxNode):
+class RsCaseSyntax(RsProdSyntax):
+class RsCodeBlockSyntax(RsProdSyntax):
+class RsElseClauseSyntax(SyntaxNode):
+class RsIfElseSyntax(RsProdSyntax):
+class RsProdItemSyntax(RsProdSyntax):
+class RsProdSyntax(SyntaxNode):
+class RsRepeatSyntax(RsProdSyntax):
+class RsRuleSyntax(SyntaxNode):
+class RsWeightClauseSyntax(SyntaxNode):
+class SVInt:
+class ScalarType(IntegralType):
+    class Kind:
+class Scope:
+class ScopedNameSyntax(NameSyntax):
+class ScriptSession:
+class SelectorSyntax(SyntaxNode):
+class SequenceConcatExpr(AssertionExpr):
+    class Element:
+class SequenceDeclarationSyntax(MemberSyntax):
+class SequenceExprSyntax(SyntaxNode):
+class SequenceMatchListSyntax(SyntaxNode):
+class SequenceRange:
+class SequenceRepetition:
+    class Kind:
+class SequenceRepetitionSyntax(SyntaxNode):
+class SequenceSymbol(Symbol, Scope):
+class SequenceType(Type):
+class SequenceWithMatchExpr(AssertionExpr):
+class SetExprBinsSelectExpr(BinsSelectExpr):
+class SignalEventControl(TimingControl):
+class SignalEventExpressionSyntax(EventExpressionSyntax):
+class SignedCastExpressionSyntax(ExpressionSyntax):
+class SimpleAssertionExpr(AssertionExpr):
+class SimpleAssignmentPatternExpression(AssignmentPatternExpressionBase):
+class SimpleAssignmentPatternSyntax(AssignmentPatternSyntax):
+class SimpleBinsSelectExprSyntax(BinsSelectExpressionSyntax):
+class SimpleDirectiveSyntax(DirectiveSyntax):
+class SimplePathSuffixSyntax(PathSuffixSyntax):
+class SimplePragmaExpressionSyntax(PragmaExpressionSyntax):
+class SimplePropertyExprSyntax(PropertyExprSyntax):
+class SimpleSequenceExprSyntax(SequenceExprSyntax):
+class SimpleSystemSubroutine(SystemSubroutine):
+class SolveBeforeConstraint(Constraint):
+class SolveBeforeConstraintSyntax(ConstraintItemSyntax):
+class SourceBuffer:
+class SourceLibrary:
+class SourceLoader:
+class SourceLocation:
+class SourceManager:
+class SourceOptions:
+class SourceRange:
+class SpecifyBlockSymbol(Symbol, Scope):
+class SpecifyBlockSyntax(MemberSyntax):
+class SpecparamDeclarationSyntax(MemberSyntax):
+class SpecparamDeclaratorSyntax(SyntaxNode):
+class SpecparamSymbol(ValueSymbol):
+class StandardCaseItemSyntax(CaseItemSyntax):
+class StandardPropertyCaseItemSyntax(PropertyCaseItemSyntax):
+class StandardRsCaseItemSyntax(RsCaseItemSyntax):
+class Statement:
+    class EvalResult:
+class StatementBlockKind:
+class StatementBlockSymbol(Symbol, Scope):
+class StatementKind:
+class StatementList(Statement):
+class StatementSyntax(SyntaxNode):
+class StreamExpressionSyntax(SyntaxNode):
+class StreamExpressionWithRangeSyntax(SyntaxNode):
+class StreamingConcatenationExpression(Expression):
+    class StreamExpression:
+class StreamingConcatenationExpressionSyntax(PrimaryExpressionSyntax):
+class StringLiteral(Expression):
+class StringType(Type):
+class StrongWeakAssertionExpr(AssertionExpr):
+    class Strength:
+class StrongWeakPropertyExprSyntax(PropertyExprSyntax):
+class StructUnionMemberSyntax(SyntaxNode):
+class StructUnionTypeSyntax(DataTypeSyntax):
+class StructurePattern(Pattern):
+    class FieldPattern:
+class StructurePatternMemberSyntax(SyntaxNode):
+class StructurePatternSyntax(PatternSyntax):
+class StructuredAssignmentPatternExpression(AssignmentPatternExpressionBase):
+    class IndexSetter:
+    class MemberSetter:
+    class TypeSetter:
+class StructuredAssignmentPatternSyntax(AssignmentPatternSyntax):
+class SubroutineKind:
+class SubroutineSymbol(Symbol, Scope):
+class SuperNewDefaultedArgsExpressionSyntax(ExpressionSyntax):
+class Symbol:
+class SymbolKind:
+class SyntaxKind:
+class SyntaxNode:
+class SyntaxPrinter:
+class SyntaxTree:
+class SystemNameSyntax(NameSyntax):
+class SystemSubroutine:
+    class WithClauseMode:
+class SystemTimingCheckKind:
+class SystemTimingCheckSymbol(Symbol):
+    class Arg:
+class SystemTimingCheckSyntax(MemberSyntax):
+class TaggedPattern(Pattern):
+class TaggedPatternSyntax(PatternSyntax):
+class TaggedUnionExpression(Expression):
+class TaggedUnionExpressionSyntax(ExpressionSyntax):
+class TempVarSymbol(VariableSymbol):
+class TextDiagnosticClient(DiagnosticClient):
+class TimeLiteral(Expression):
+class TimeScale:
+class TimeScaleDirectiveSyntax(DirectiveSyntax):
+class TimeScaleMagnitude:
+class TimeScaleValue:
+class TimeUnit:
+class TimeUnitsDeclarationSyntax(MemberSyntax):
+class TimedStatement(Statement):
+class TimingCheckArgSyntax(SyntaxNode):
+class TimingCheckEventArgSyntax(TimingCheckArgSyntax):
+class TimingCheckEventConditionSyntax(SyntaxNode):
+class TimingControl:
+class TimingControlExpressionSyntax(ExpressionSyntax):
+class TimingControlKind:
+class TimingControlStatementSyntax(StatementSyntax):
+class TimingControlSyntax(SyntaxNode):
+class TimingPathSymbol(Symbol):
+    class ConnectionKind:
+    class Polarity:
+class Token:
+class TokenKind:
+class TransListCoverageBinInitializerSyntax(CoverageBinInitializerSyntax):
+class TransRangeSyntax(SyntaxNode):
+class TransRepeatRangeSyntax(SyntaxNode):
+class TransSetSyntax(SyntaxNode):
+class TransparentMemberSymbol(Symbol):
+class Trivia:
+class TriviaKind:
+class Type(Symbol):
+class TypeAliasType(Type):
+class TypeAssignmentSyntax(SyntaxNode):
+class TypeParameterDeclarationSyntax(ParameterDeclarationBaseSyntax):
+class TypeParameterSymbol(Symbol, ParameterSymbolBase):
+class TypePrinter:
+class TypePrintingOptions:
+    class AnonymousTypeStyle:
+class TypeRefType(Type):
+class TypeReferenceExpression(Expression):
+class TypeReferenceSyntax(DataTypeSyntax):
+class TypedefDeclarationSyntax(MemberSyntax):
+class UdpBodySyntax(SyntaxNode):
+class UdpDeclarationSyntax(MemberSyntax):
+class UdpEdgeFieldSyntax(UdpFieldBaseSyntax):
+class UdpEntrySyntax(SyntaxNode):
+class UdpFieldBaseSyntax(SyntaxNode):
+class UdpInitialStmtSyntax(SyntaxNode):
+class UdpInputPortDeclSyntax(UdpPortDeclSyntax):
+class UdpOutputPortDeclSyntax(UdpPortDeclSyntax):
+class UdpPortDeclSyntax(SyntaxNode):
+class UdpPortListSyntax(SyntaxNode):
+class UdpSimpleFieldSyntax(UdpFieldBaseSyntax):
+class UnaryAssertionExpr(AssertionExpr):
+class UnaryAssertionOperator:
+class UnaryBinsSelectExpr(BinsSelectExpr):
+    class Op:
+class UnaryBinsSelectExprSyntax(BinsSelectExpressionSyntax):
+class UnaryConditionalDirectiveExpressionSyntax(ConditionalDirectiveExpressionSyntax):
+class UnaryExpression(Expression):
+class UnaryOperator:
+class UnaryPropertyExprSyntax(PropertyExprSyntax):
+class UnarySelectPropertyExprSyntax(PropertyExprSyntax):
+class UnbasedUnsizedIntegerLiteral(Expression):
+class Unbounded:
+class UnboundedLiteral(Expression):
+class UnboundedType(Type):
+class UnconditionalBranchDirectiveSyntax(DirectiveSyntax):
+class UnconnectedDrive:
+class UnconnectedDriveDirectiveSyntax(DirectiveSyntax):
+class UndefDirectiveSyntax(DirectiveSyntax):
+class UninstantiatedDefSymbol(Symbol):
+class UniquePriorityCheck:
+class UniquenessConstraint(Constraint):
+class UniquenessConstraintSyntax(ConstraintItemSyntax):
+class UnpackedStructType(Type, Scope):
+class UnpackedUnionType(Type, Scope):
+class UntypedType(Type):
+class UserDefinedNetDeclarationSyntax(MemberSyntax):
+class ValueDriver:
+class ValueExpressionBase(Expression):
+class ValueRangeExpression(Expression):
+class ValueRangeExpressionSyntax(ExpressionSyntax):
+class ValueRangeKind:
+class ValueSymbol(Symbol):
+class VariableDeclStatement(Statement):
+class VariableDimensionSyntax(SyntaxNode):
+class VariableFlags:
+class VariableLifetime:
+class VariablePattern(Pattern):
+class VariablePatternSyntax(PatternSyntax):
+class VariablePortHeaderSyntax(PortHeaderSyntax):
+class VariableSymbol(ValueSymbol):
+class VersionInfo:
+class VirtualInterfaceType(Type):
+class VirtualInterfaceTypeSyntax(DataTypeSyntax):
+class Visibility:
+class VisitAction:
+class VoidCastedCallStatementSyntax(StatementSyntax):
+class VoidType(Type):
+class WaitForkStatement(Statement):
+class WaitForkStatementSyntax(StatementSyntax):
+class WaitOrderStatement(Statement):
+class WaitOrderStatementSyntax(StatementSyntax):
+class WaitStatement(Statement):
+class WaitStatementSyntax(StatementSyntax):
+class WhileLoopStatement(Statement):
+class WildcardDimensionSpecifierSyntax(DimensionSpecifierSyntax):
+class WildcardImportSymbol(Symbol):
+class WildcardPattern(Pattern):
+class WildcardPatternSyntax(PatternSyntax):
+class WildcardPortConnectionSyntax(PortConnectionSyntax):
+class WildcardPortListSyntax(PortListSyntax):
+class WildcardUdpPortListSyntax(UdpPortListSyntax):
+class WithClauseSyntax(SyntaxNode):
+class WithFunctionClauseSyntax(SyntaxNode):
+class WithFunctionSampleSyntax(SyntaxNode):
+class logic_t:

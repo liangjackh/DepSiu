@@ -16,18 +16,41 @@ SV_COV_TOGGLE 23
 __slang__ 1
 __slang_major__ 8
 __slang_minor__ 1
+syntaxTreeNode: <pyslang.SyntaxTree object at 0x7999aca6dab0>
+modules type: <class 'list'>
 module type: <class 'pyslang.DefinitionSymbol'>
-modules:[DefinitionSymbol("updowncounter")]
+module type: <class 'pyslang.DefinitionSymbol'>
+modules:[DefinitionSymbol("queue"), DefinitionSymbol("top")]
 successful_compilation: True
 reportMacros:
 None
-my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x115ddf0e0>
+my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x7999ac7c8140>
 Executing for 1 clock cycles
-sv_module_name: updowncounter
-type of module <class 'pyslang.DefinitionSymbol'>
+sv_module_name: queue
+type of queue: <class 'pyslang.DefinitionSymbol'>
 getKindString: fmodule
+instanceCount of a module: 2
 init run sv
+module_count_sv:
+name: module
+sv_module_name: top
+type of top: <class 'pyslang.DefinitionSymbol'>
+getKindString: fmodule
+instanceCount of a module: 0
+init run sv
+module_count_sv:
+name: module
 Branch points explored: 0
+Total paths: 1
+------------------------
+initializing state
+params: set()
+ports: set()
+merging states..
+Visiting symbol: queue of kind SymbolKind.Definition
+Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x7999acb21070>
+Visiting symbol: top of kind SymbolKind.Definition
+Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x7999acbe9eb0>
 symbol_visitor branches:0
 symbol_visitor paths:0
-Elapsed time 0.01315299999999997
+Elapsed time 0.015593249999999781

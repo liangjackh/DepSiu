@@ -397,7 +397,7 @@ class ExecutionEngine:
     #    print("get assertions sv")
 
 
-    def count_conditionals_sv(self, m: ExecutionManager, items) -> None: # DefinitionSymbol
+    def count_conditionals_sv(self, m: ExecutionManager, module) -> None: # DefinitionSymbol
         """Count control flow paths for PySlang AST."""
         if isinstance(items, pyslang.ast.BlockStatement):
             stmts = items.items
@@ -480,7 +480,8 @@ class ExecutionEngine:
         """Initialize run for PySlang AST."""
         print("init run sv")
         m.init_run_flag = True
-        self.count_conditionals_sv(m, module.items) # module:DefinitionSymbol
+        #TODO
+        #self.count_conditionals_sv(m, module) # module:DefinitionSymbol
         #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
         #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
         #self.lhs_signals_sv(m, module.items)
@@ -649,6 +650,8 @@ class ExecutionEngine:
 
     def execute_sv(self, visitor, modules, manager: Optional[ExecutionManager], num_cycles: int) -> None:
         """Drives symbolic execution for SystemVerilog designs."""
+        # modules => List of DefinitionSymbol
+        # visitor => SymbolicDFS
         gc.collect()
         print(f"Executing for {num_cycles} clock cycles")
         self.module_depth += 1
@@ -670,9 +673,11 @@ class ExecutionEngine:
                 manager.seen_mod[sv_module_name] = {}
                 cfgs_by_module[sv_module_name] = []
                 sub_manager = ExecutionManager()
-                print(f"type of module {type(module)}")
+                print(f"type of {module.name}: {type(module)}")
                 #self.init_run(sub_manager, module)
                 print(f"getKindString: f{module.getKindString()}")
+                instanceCount = module.instanceCount
+                print(f"instanceCount of {module.getArticleKindString()}: {instanceCount}")
                 self.init_run_sv(sub_manager, module) # module : DefinitionSymbol
                 print(f"module_count_sv:")
                 self.module_count_sv(manager, module) 
@@ -795,9 +800,12 @@ class ExecutionEngine:
 
         # for each combinatoin of multicycle paths
 
+        print(f"Total paths: {len(total_paths)}")
         for i in range(len(total_paths)):
             manager.prev_store = state.store
-            init_state(state, manager.prev_store, module, visitor)
+            print("------------------------")
+            print("initializing state")
+            init_state(state, manager.prev_store, module, visitor) # state, module, SymbolicDFS
             # initalize inputs with symbols for all submodules too
             for module_name in manager.names_list:
                 manager.curr_module = module_name
