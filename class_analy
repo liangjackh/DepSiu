@@ -1,0 +1,3144 @@
+=== 类继承关系分析 ===
+
+总类数: 784
+
+根类 (122个):
+- ASTContext
+- ASTFlags
+- ArgumentDirection
+- AssertionExpr
+- AssertionExprKind
+- AssertionKind
+- Bag
+- BinaryAssertionOperator
+- BinaryOperator
+- BinsSelectExpr
+- BinsSelectExprKind
+- BufferID
+- BumpAllocator
+- CaseStatementCondition
+- ClockingSkew
+- CommandLineOptions
+- Compilation
+- CompilationFlags
+- CompilationOptions
+- ConstantRange
+- ConstantValue
+- Constraint
+- ConstraintBlockFlags
+- ConstraintKind
+- ConversionKind
+- CoverageOptionSetter
+- DeclaredType
+- DefinitionKind
+- DiagCode
+- DiagGroup
+- DiagSubsystem
+- Diagnostic
+- DiagnosticClient
+- DiagnosticEngine
+- DiagnosticSeverity
+- Diagnostics
+- Diags
+- DimensionKind
+- Driver
+- DriverKind
+- EdgeKind
+- ElabSystemTaskKind
+- EvalContext
+- EvalFlags
+- EvaluatedDimension
+- Expression
+- ExpressionKind
+- ForwardTypeRestriction
+- IntegralFlags
+- LValue
+- LanguageVersion
+- LexerOptions
+- LiteralBase
+- Lookup
+- LookupFlags
+- LookupLocation
+- LookupResult
+- LookupResultFlags
+- MethodFlags
+- MinTypMax
+- Null
+- ParameterSymbolBase
+- ParserOptions
+- Pattern
+- PatternKind
+- PortConnection
+- PreprocessorOptions
+- PrimitivePortDirection
+- ProceduralBlockKind
+- PulseStyleKind
+- RandMode
+- RangeSelectionKind
+- ReportedDiagnostic
+- SVInt
+- Scope
+- ScriptSession
+- SequenceRange
+- SequenceRepetition
+- SourceBuffer
+- SourceLibrary
+- SourceLoader
+- SourceLocation
+- SourceManager
+- SourceOptions
+- SourceRange
+- Statement
+- StatementBlockKind
+- StatementKind
+- SubroutineKind
+- Symbol
+- SymbolKind
+- SyntaxKind
+- SyntaxNode
+- SyntaxPrinter
+- SyntaxTree
+- SystemSubroutine
+- SystemTimingCheckKind
+- TimeScale
+- TimeScaleMagnitude
+- TimeScaleValue
+- TimeUnit
+- TimingControl
+- TimingControlKind
+- Token
+- TokenKind
+- Trivia
+- TriviaKind
+- TypePrinter
+- TypePrintingOptions
+- UnaryAssertionOperator
+- UnaryOperator
+- Unbounded
+- UnconnectedDrive
+- UniquePriorityCheck
+- ValueDriver
+- ValueRangeKind
+- VariableFlags
+- VariableLifetime
+- VersionInfo
+- Visibility
+- VisitAction
+- logic_t
+
+
+=== 详细继承关系 ===
+
+类: ASTContext
+  没有子类
+
+类: ASTFlags
+  没有子类
+
+类: AbortAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: AcceptOnPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: ActionBlockSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AnonymousProgramSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: AnonymousProgramSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: AnsiPortListSyntax
+  继承自: PortListSyntax
+  没有子类
+
+类: AnsiUdpPortListSyntax
+  继承自: UdpPortListSyntax
+  没有子类
+
+类: ArbitrarySymbolExpression
+  继承自: Expression
+  没有子类
+
+类: ArgumentDirection
+  没有子类
+
+类: ArgumentListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ArgumentSyntax
+  继承自: SyntaxNode
+  子类: EmptyArgumentSyntax, NamedArgumentSyntax, OrderedArgumentSyntax
+
+类: ArrayOrRandomizeMethodExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: AssertionExpr
+  子类: AbortAssertionExpr, BinaryAssertionExpr, CaseAssertionExpr, ClockingAssertionExpr, ConditionalAssertionExpr, DisableIffAssertionExpr, FirstMatchAssertionExpr, InvalidAssertionExpr, SequenceConcatExpr, SequenceWithMatchExpr, SimpleAssertionExpr, StrongWeakAssertionExpr, UnaryAssertionExpr
+
+类: AssertionExprKind
+  没有子类
+
+类: AssertionInstanceExpression
+  继承自: Expression
+  没有子类
+
+类: AssertionItemPortListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AssertionItemPortSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AssertionKind
+  没有子类
+
+类: AssertionPortSymbol
+  继承自: Symbol
+  没有子类
+
+类: AssignmentExpression
+  继承自: Expression
+  没有子类
+
+类: AssignmentPatternExpressionBase
+  继承自: Expression
+  子类: ReplicatedAssignmentPatternExpression, SimpleAssignmentPatternExpression, StructuredAssignmentPatternExpression
+
+类: AssignmentPatternExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: AssignmentPatternItemSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AssignmentPatternSyntax
+  继承自: SyntaxNode
+  子类: ReplicatedAssignmentPatternSyntax, SimpleAssignmentPatternSyntax, StructuredAssignmentPatternSyntax
+
+类: AssociativeArrayType
+  继承自: Type
+  没有子类
+
+类: AttributeInstanceSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AttributeSpecSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: AttributeSymbol
+  继承自: Symbol
+  没有子类
+
+类: BadExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: Bag
+  没有子类
+
+类: BeginKeywordsDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: BinSelectWithFilterExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: BinSelectWithFilterExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: BinaryAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: BinaryAssertionOperator
+  没有子类
+
+类: BinaryBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: BinaryBinsSelectExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: BinaryBlockEventExpressionSyntax
+  继承自: BlockEventExpressionSyntax
+  没有子类
+
+类: BinaryConditionalDirectiveExpressionSyntax
+  继承自: ConditionalDirectiveExpressionSyntax
+  没有子类
+
+类: BinaryEventExpressionSyntax
+  继承自: EventExpressionSyntax
+  没有子类
+
+类: BinaryExpression
+  继承自: Expression
+  没有子类
+
+类: BinaryExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: BinaryOperator
+  没有子类
+
+类: BinaryPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: BinarySequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: BindDirectiveSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: BindTargetListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: BinsSelectConditionExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: BinsSelectExpr
+  子类: BinSelectWithFilterExpr, BinaryBinsSelectExpr, ConditionBinsSelectExpr, CrossIdBinsSelectExpr, InvalidBinsSelectExpr, SetExprBinsSelectExpr, UnaryBinsSelectExpr
+
+类: BinsSelectExprKind
+  没有子类
+
+类: BinsSelectExpressionSyntax
+  继承自: SyntaxNode
+  子类: BinSelectWithFilterExprSyntax, BinaryBinsSelectExprSyntax, BinsSelectConditionExprSyntax, ParenthesizedBinsSelectExprSyntax, SimpleBinsSelectExprSyntax, UnaryBinsSelectExprSyntax
+
+类: BinsSelectionSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: BitSelectSyntax
+  继承自: SelectorSyntax
+  没有子类
+
+类: BlockCoverageEventSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: BlockEventExpressionSyntax
+  继承自: SyntaxNode
+  子类: BinaryBlockEventExpressionSyntax, PrimaryBlockEventExpressionSyntax
+
+类: BlockEventListControl
+  继承自: TimingControl
+  没有子类
+
+类: BlockStatement
+  继承自: Statement
+  没有子类
+
+类: BlockStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: BreakStatement
+  继承自: Statement
+  没有子类
+
+类: BufferID
+  没有子类
+
+类: BumpAllocator
+  没有子类
+
+类: CHandleType
+  继承自: Type
+  没有子类
+
+类: CallExpression
+  继承自: Expression
+  没有子类
+
+类: CaseAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: CaseGenerateSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CaseItemSyntax
+  继承自: SyntaxNode
+  子类: DefaultCaseItemSyntax, PatternCaseItemSyntax, StandardCaseItemSyntax
+
+类: CasePropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: CaseStatement
+  继承自: Statement
+  没有子类
+
+类: CaseStatementCondition
+  没有子类
+
+类: CaseStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: CastExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: CellConfigRuleSyntax
+  继承自: ConfigRuleSyntax
+  没有子类
+
+类: ChargeStrengthSyntax
+  继承自: NetStrengthSyntax
+  没有子类
+
+类: CheckerDataDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CheckerDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CheckerInstanceBodySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CheckerInstanceStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: CheckerInstanceSymbol
+  继承自: InstanceSymbolBase
+  没有子类
+
+类: CheckerInstantiationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CheckerSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ClassDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClassMethodDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClassMethodPrototypeSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClassNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: ClassPropertyDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClassPropertySymbol
+  继承自: VariableSymbol
+  没有子类
+
+类: ClassSpecifierSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ClassType
+  继承自: Type, Scope
+  没有子类
+
+类: ClockVarSymbol
+  继承自: VariableSymbol
+  没有子类
+
+类: ClockingAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: ClockingBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ClockingDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClockingDirectionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ClockingEventExpression
+  继承自: Expression
+  没有子类
+
+类: ClockingItemSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ClockingPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: ClockingSequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: ClockingSkew
+  没有子类
+
+类: ClockingSkewSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ColonExpressionClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: CommandLineOptions
+  没有子类
+
+类: Compilation
+  没有子类
+
+类: CompilationFlags
+  没有子类
+
+类: CompilationOptions
+  没有子类
+
+类: CompilationUnitSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CompilationUnitSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ConcatenationExpression
+  继承自: Expression
+  没有子类
+
+类: ConcatenationExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: ConcurrentAssertionMemberSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ConcurrentAssertionStatement
+  继承自: Statement
+  没有子类
+
+类: ConcurrentAssertionStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ConditionBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: ConditionalAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: ConditionalBranchDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: ConditionalConstraint
+  继承自: Constraint
+  没有子类
+
+类: ConditionalConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: ConditionalDirectiveExpressionSyntax
+  继承自: SyntaxNode
+  子类: BinaryConditionalDirectiveExpressionSyntax, NamedConditionalDirectiveExpressionSyntax, ParenthesizedConditionalDirectiveExpressionSyntax, UnaryConditionalDirectiveExpressionSyntax
+
+类: ConditionalExpression
+  继承自: Expression
+  没有子类
+
+类: ConditionalExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: ConditionalPathDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ConditionalPatternSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ConditionalPredicateSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ConditionalPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: ConditionalStatement
+  继承自: Statement
+  没有子类
+
+类: ConditionalStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ConfigBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ConfigCellIdentifierSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ConfigDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ConfigInstanceIdentifierSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ConfigLiblistSyntax
+  继承自: ConfigRuleClauseSyntax
+  没有子类
+
+类: ConfigRuleClauseSyntax
+  继承自: SyntaxNode
+  子类: ConfigLiblistSyntax, ConfigUseClauseSyntax
+
+类: ConfigRuleSyntax
+  继承自: SyntaxNode
+  子类: CellConfigRuleSyntax, DefaultConfigRuleSyntax, InstanceConfigRuleSyntax
+
+类: ConfigUseClauseSyntax
+  继承自: ConfigRuleClauseSyntax
+  没有子类
+
+类: ConstantPattern
+  继承自: Pattern
+  没有子类
+
+类: ConstantRange
+  没有子类
+
+类: ConstantValue
+  没有子类
+
+类: Constraint
+  子类: ConditionalConstraint, ConstraintList, DisableSoftConstraint, ExpressionConstraint, ForeachConstraint, ImplicationConstraint, InvalidConstraint, SolveBeforeConstraint, UniquenessConstraint
+
+类: ConstraintBlockFlags
+  没有子类
+
+类: ConstraintBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ConstraintBlockSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: ConstraintDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ConstraintItemSyntax
+  继承自: SyntaxNode
+  子类: ConditionalConstraintSyntax, ConstraintBlockSyntax, DisableConstraintSyntax, ExpressionConstraintSyntax, ImplicationConstraintSyntax, LoopConstraintSyntax, SolveBeforeConstraintSyntax, UniquenessConstraintSyntax
+
+类: ConstraintKind
+  没有子类
+
+类: ConstraintList
+  继承自: Constraint
+  没有子类
+
+类: ConstraintPrototypeSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ContinueStatement
+  继承自: Statement
+  没有子类
+
+类: ContinuousAssignSymbol
+  继承自: Symbol
+  没有子类
+
+类: ContinuousAssignSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ConversionExpression
+  继承自: Expression
+  没有子类
+
+类: ConversionKind
+  没有子类
+
+类: CopyClassExpression
+  继承自: Expression
+  没有子类
+
+类: CopyClassExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: CoverCrossBodySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CoverCrossSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CoverCrossSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CoverageBinInitializerSyntax
+  继承自: SyntaxNode
+  子类: DefaultCoverageBinInitializerSyntax, ExpressionCoverageBinInitializerSyntax, IdWithExprCoverageBinInitializerSyntax, RangeCoverageBinInitializerSyntax, TransListCoverageBinInitializerSyntax
+
+类: CoverageBinSymbol
+  继承自: Symbol
+  没有子类
+
+类: CoverageBinsArraySizeSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: CoverageBinsSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CoverageIffClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: CoverageOptionSetter
+  没有子类
+
+类: CoverageOptionSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CovergroupBodySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CovergroupDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CovergroupType
+  继承自: Type, Scope
+  没有子类
+
+类: CoverpointSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: CoverpointSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: CrossIdBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: CycleDelayControl
+  继承自: TimingControl
+  没有子类
+
+类: DPIExportSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DPIImportSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DPIOpenArrayType
+  继承自: Type
+  没有子类
+
+类: DataDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DataTypeExpression
+  继承自: Expression
+  没有子类
+
+类: DataTypeSyntax
+  继承自: ExpressionSyntax
+  子类: EnumTypeSyntax, ImplicitTypeSyntax, IntegerTypeSyntax, KeywordTypeSyntax, NamedTypeSyntax, StructUnionTypeSyntax, TypeReferenceSyntax, VirtualInterfaceTypeSyntax
+
+类: DeclaratorSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DeclaredType
+  没有子类
+
+类: DefParamAssignmentSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DefParamSymbol
+  继承自: Symbol
+  没有子类
+
+类: DefParamSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DefaultCaseItemSyntax
+  继承自: CaseItemSyntax
+  没有子类
+
+类: DefaultClockingReferenceSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DefaultConfigRuleSyntax
+  继承自: ConfigRuleSyntax
+  没有子类
+
+类: DefaultCoverageBinInitializerSyntax
+  继承自: CoverageBinInitializerSyntax
+  没有子类
+
+类: DefaultDecayTimeDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: DefaultDisableDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DefaultDistItemSyntax
+  继承自: DistItemBaseSyntax
+  没有子类
+
+类: DefaultExtendsClauseArgSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DefaultFunctionPortSyntax
+  继承自: FunctionPortBaseSyntax
+  没有子类
+
+类: DefaultNetTypeDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: DefaultPropertyCaseItemSyntax
+  继承自: PropertyCaseItemSyntax
+  没有子类
+
+类: DefaultRsCaseItemSyntax
+  继承自: RsCaseItemSyntax
+  没有子类
+
+类: DefaultSkewItemSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: DefaultTriregStrengthDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: DeferredAssertionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DefineDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: DefinitionKind
+  没有子类
+
+类: DefinitionSymbol
+  继承自: Symbol
+  没有子类
+
+类: Delay3Control
+  继承自: TimingControl
+  没有子类
+
+类: Delay3Syntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: DelayControl
+  继承自: TimingControl
+  没有子类
+
+类: DelaySyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: DelayedSequenceElementSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DelayedSequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: DiagCode
+  没有子类
+
+类: DiagGroup
+  没有子类
+
+类: DiagSubsystem
+  没有子类
+
+类: Diagnostic
+  没有子类
+
+类: DiagnosticClient
+  子类: TextDiagnosticClient
+
+类: DiagnosticEngine
+  没有子类
+
+类: DiagnosticSeverity
+  没有子类
+
+类: Diagnostics
+  没有子类
+
+类: Diags
+  没有子类
+
+类: DimensionKind
+  没有子类
+
+类: DimensionSpecifierSyntax
+  继承自: SyntaxNode
+  子类: QueueDimensionSpecifierSyntax, RangeDimensionSpecifierSyntax, WildcardDimensionSpecifierSyntax
+
+类: DirectiveSyntax
+  继承自: SyntaxNode
+  子类: BeginKeywordsDirectiveSyntax, ConditionalBranchDirectiveSyntax, DefaultDecayTimeDirectiveSyntax, DefaultNetTypeDirectiveSyntax, DefaultTriregStrengthDirectiveSyntax, DefineDirectiveSyntax, IncludeDirectiveSyntax, LineDirectiveSyntax, MacroUsageSyntax, PragmaDirectiveSyntax, SimpleDirectiveSyntax, TimeScaleDirectiveSyntax, UnconditionalBranchDirectiveSyntax, UnconnectedDriveDirectiveSyntax, UndefDirectiveSyntax
+
+类: DisableConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: DisableForkStatement
+  继承自: Statement
+  没有子类
+
+类: DisableForkStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: DisableIffAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: DisableIffSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DisableSoftConstraint
+  继承自: Constraint
+  没有子类
+
+类: DisableStatement
+  继承自: Statement
+  没有子类
+
+类: DisableStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: DistConstraintListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DistExpression
+  继承自: Expression
+  没有子类
+
+类: DistItemBaseSyntax
+  继承自: SyntaxNode
+  子类: DefaultDistItemSyntax, DistItemSyntax
+
+类: DistItemSyntax
+  继承自: DistItemBaseSyntax
+  没有子类
+
+类: DistWeightSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DividerClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DoWhileLoopStatement
+  继承自: Statement
+  没有子类
+
+类: DoWhileStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: DotMemberClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: DriveStrengthSyntax
+  继承自: NetStrengthSyntax
+  没有子类
+
+类: Driver
+  没有子类
+
+类: DriverKind
+  没有子类
+
+类: DynamicArrayType
+  继承自: Type
+  没有子类
+
+类: EdgeControlSpecifierSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: EdgeDescriptorSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: EdgeKind
+  没有子类
+
+类: EdgeSensitivePathSuffixSyntax
+  继承自: PathSuffixSyntax
+  没有子类
+
+类: ElabSystemTaskKind
+  没有子类
+
+类: ElabSystemTaskSymbol
+  继承自: Symbol
+  没有子类
+
+类: ElabSystemTaskSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ElementSelectExpression
+  继承自: Expression
+  没有子类
+
+类: ElementSelectExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: ElementSelectSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ElseClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ElseConstraintClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ElsePropertyClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: EmptyArgumentExpression
+  继承自: Expression
+  没有子类
+
+类: EmptyArgumentSyntax
+  继承自: ArgumentSyntax
+  没有子类
+
+类: EmptyIdentifierNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: EmptyMemberSymbol
+  继承自: Symbol
+  没有子类
+
+类: EmptyMemberSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: EmptyNonAnsiPortSyntax
+  继承自: NonAnsiPortSyntax
+  没有子类
+
+类: EmptyPortConnectionSyntax
+  继承自: PortConnectionSyntax
+  没有子类
+
+类: EmptyQueueExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: EmptyStatement
+  继承自: Statement
+  没有子类
+
+类: EmptyStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: EmptyTimingCheckArgSyntax
+  继承自: TimingCheckArgSyntax
+  没有子类
+
+类: EnumType
+  继承自: IntegralType, Scope
+  没有子类
+
+类: EnumTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: EnumValueSymbol
+  继承自: ValueSymbol
+  没有子类
+
+类: EqualsAssertionArgClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: EqualsTypeClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: EqualsValueClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ErrorType
+  继承自: Type
+  没有子类
+
+类: EvalContext
+  没有子类
+
+类: EvalFlags
+  没有子类
+
+类: EvaluatedDimension
+  没有子类
+
+类: EventControlSyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: EventControlWithExpressionSyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: EventExpressionSyntax
+  继承自: SequenceExprSyntax
+  子类: BinaryEventExpressionSyntax, ParenthesizedEventExpressionSyntax, SignalEventExpressionSyntax
+
+类: EventListControl
+  继承自: TimingControl
+  没有子类
+
+类: EventTriggerStatement
+  继承自: Statement
+  没有子类
+
+类: EventTriggerStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: EventType
+  继承自: Type
+  没有子类
+
+类: ExplicitAnsiPortSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ExplicitImportSymbol
+  继承自: Symbol
+  没有子类
+
+类: ExplicitNonAnsiPortSyntax
+  继承自: NonAnsiPortSyntax
+  没有子类
+
+类: Expression
+  子类: ArbitrarySymbolExpression, AssertionInstanceExpression, AssignmentExpression, AssignmentPatternExpressionBase, BinaryExpression, CallExpression, ClockingEventExpression, ConcatenationExpression, ConditionalExpression, ConversionExpression, CopyClassExpression, DataTypeExpression, DistExpression, ElementSelectExpression, EmptyArgumentExpression, InsideExpression, IntegerLiteral, InvalidExpression, LValueReferenceExpression, MemberAccessExpression, MinTypMaxExpression, NewArrayExpression, NewClassExpression, NewCovergroupExpression, NullLiteral, RangeSelectExpression, RealLiteral, ReplicationExpression, StreamingConcatenationExpression, StringLiteral, TaggedUnionExpression, TimeLiteral, TypeReferenceExpression, UnaryExpression, UnbasedUnsizedIntegerLiteral, UnboundedLiteral, ValueExpressionBase, ValueRangeExpression
+
+类: ExpressionConstraint
+  继承自: Constraint
+  没有子类
+
+类: ExpressionConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: ExpressionCoverageBinInitializerSyntax
+  继承自: CoverageBinInitializerSyntax
+  没有子类
+
+类: ExpressionKind
+  没有子类
+
+类: ExpressionOrDistSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: ExpressionPatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: ExpressionStatement
+  继承自: Statement
+  没有子类
+
+类: ExpressionStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ExpressionSyntax
+  继承自: SyntaxNode
+  子类: ArrayOrRandomizeMethodExpressionSyntax, BadExpressionSyntax, BinaryExpressionSyntax, CastExpressionSyntax, ConditionalExpressionSyntax, CopyClassExpressionSyntax, DataTypeSyntax, ElementSelectExpressionSyntax, ExpressionOrDistSyntax, InsideExpressionSyntax, InvocationExpressionSyntax, MemberAccessExpressionSyntax, MinTypMaxExpressionSyntax, NameSyntax, NewArrayExpressionSyntax, NewClassExpressionSyntax, PostfixUnaryExpressionSyntax, PrefixUnaryExpressionSyntax, PrimaryExpressionSyntax, SignedCastExpressionSyntax, SuperNewDefaultedArgsExpressionSyntax, TaggedUnionExpressionSyntax, TimingControlExpressionSyntax, ValueRangeExpressionSyntax
+
+类: ExpressionTimingCheckArgSyntax
+  继承自: TimingCheckArgSyntax
+  没有子类
+
+类: ExtendsClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ExternInterfaceMethodSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ExternModuleDeclSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ExternUdpDeclSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: FieldSymbol
+  继承自: VariableSymbol
+  没有子类
+
+类: FilePathSpecSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: FirstMatchAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: FirstMatchSequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: FixedSizeUnpackedArrayType
+  继承自: Type
+  没有子类
+
+类: FloatingType
+  继承自: Type
+  没有子类
+
+类: ForLoopStatement
+  继承自: Statement
+  没有子类
+
+类: ForLoopStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ForVariableDeclarationSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ForeachConstraint
+  继承自: Constraint
+  没有子类
+
+类: ForeachLoopListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ForeachLoopStatement
+  继承自: Statement
+  没有子类
+
+类: ForeachLoopStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ForeverLoopStatement
+  继承自: Statement
+  没有子类
+
+类: ForeverStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: FormalArgumentSymbol
+  继承自: VariableSymbol
+  没有子类
+
+类: ForwardTypeRestriction
+  没有子类
+
+类: ForwardTypeRestrictionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ForwardTypedefDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ForwardingTypedefSymbol
+  继承自: Symbol
+  没有子类
+
+类: FunctionDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: FunctionPortBaseSyntax
+  继承自: SyntaxNode
+  子类: DefaultFunctionPortSyntax, FunctionPortSyntax
+
+类: FunctionPortListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: FunctionPortSyntax
+  继承自: FunctionPortBaseSyntax
+  没有子类
+
+类: FunctionPrototypeSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: GenerateBlockArraySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: GenerateBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: GenerateBlockSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: GenerateRegionSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: GenericClassDefSymbol
+  继承自: Symbol
+  没有子类
+
+类: GenvarDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: GenvarSymbol
+  继承自: Symbol
+  没有子类
+
+类: HierarchicalInstanceSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: HierarchicalValueExpression
+  继承自: ValueExpressionBase
+  没有子类
+
+类: HierarchyInstantiationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: IdWithExprCoverageBinInitializerSyntax
+  继承自: CoverageBinInitializerSyntax
+  没有子类
+
+类: IdentifierNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: IdentifierSelectNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: IfGenerateSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: IfNonePathDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: IffEventClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ImmediateAssertionMemberSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ImmediateAssertionStatement
+  继承自: Statement
+  没有子类
+
+类: ImmediateAssertionStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ImplementsClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ImplicationConstraint
+  继承自: Constraint
+  没有子类
+
+类: ImplicationConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: ImplicitAnsiPortSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ImplicitEventControl
+  继承自: TimingControl
+  没有子类
+
+类: ImplicitEventControlSyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: ImplicitNonAnsiPortSyntax
+  继承自: NonAnsiPortSyntax
+  没有子类
+
+类: ImplicitTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: IncludeDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: InsideExpression
+  继承自: Expression
+  没有子类
+
+类: InsideExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: InstanceArraySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: InstanceBodySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: InstanceConfigRuleSyntax
+  继承自: ConfigRuleSyntax
+  没有子类
+
+类: InstanceNameSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: InstanceSymbol
+  继承自: InstanceSymbolBase
+  没有子类
+
+类: InstanceSymbolBase
+  继承自: Symbol
+  子类: CheckerInstanceSymbol, InstanceSymbol, PrimitiveInstanceSymbol
+
+类: IntegerLiteral
+  继承自: Expression
+  没有子类
+
+类: IntegerTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: IntegerVectorExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: IntegralFlags
+  没有子类
+
+类: IntegralType
+  继承自: Type
+  子类: EnumType, PackedArrayType, PackedStructType, PackedUnionType, PredefinedIntegerType, ScalarType
+
+类: InterfacePortHeaderSyntax
+  继承自: PortHeaderSyntax
+  没有子类
+
+类: InterfacePortSymbol
+  继承自: Symbol
+  没有子类
+
+类: IntersectClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: InvalidAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: InvalidBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: InvalidConstraint
+  继承自: Constraint
+  没有子类
+
+类: InvalidExpression
+  继承自: Expression
+  没有子类
+
+类: InvalidPattern
+  继承自: Pattern
+  没有子类
+
+类: InvalidStatement
+  继承自: Statement
+  没有子类
+
+类: InvalidTimingControl
+  继承自: TimingControl
+  没有子类
+
+类: InvocationExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: IteratorSymbol
+  继承自: TempVarSymbol
+  没有子类
+
+类: JumpStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: KeywordNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: KeywordTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: LValue
+  没有子类
+
+类: LValueReferenceExpression
+  继承自: Expression
+  没有子类
+
+类: LanguageVersion
+  没有子类
+
+类: LetDeclSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: LetDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: LexerOptions
+  没有子类
+
+类: LibraryDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: LibraryIncDirClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: LibraryIncludeStatementSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: LibraryMapSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: LineDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: LiteralBase
+  没有子类
+
+类: LiteralExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: LocalAssertionVarSymbol
+  继承自: VariableSymbol
+  没有子类
+
+类: LocalVariableDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: Lookup
+  没有子类
+
+类: LookupFlags
+  没有子类
+
+类: LookupLocation
+  没有子类
+
+类: LookupResult
+  没有子类
+
+类: LookupResultFlags
+  没有子类
+
+类: LoopConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: LoopGenerateSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: LoopStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: MacroActualArgumentListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MacroActualArgumentSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MacroArgumentDefaultSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MacroFormalArgumentListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MacroFormalArgumentSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MacroUsageSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: MatchesClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MemberAccessExpression
+  继承自: Expression
+  没有子类
+
+类: MemberAccessExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: MemberSyntax
+  继承自: SyntaxNode
+  子类: AnonymousProgramSyntax, BindDirectiveSyntax, BinsSelectionSyntax, CaseGenerateSyntax, CheckerDataDeclarationSyntax, CheckerDeclarationSyntax, CheckerInstantiationSyntax, ClassDeclarationSyntax, ClassMethodDeclarationSyntax, ClassMethodPrototypeSyntax, ClassPropertyDeclarationSyntax, ClockingDeclarationSyntax, ClockingItemSyntax, ConcurrentAssertionMemberSyntax, ConditionalPathDeclarationSyntax, ConfigDeclarationSyntax, ConstraintDeclarationSyntax, ConstraintPrototypeSyntax, ContinuousAssignSyntax, CoverCrossSyntax, CoverageBinsSyntax, CoverageOptionSyntax, CovergroupDeclarationSyntax, CoverpointSyntax, DPIExportSyntax, DPIImportSyntax, DataDeclarationSyntax, DefParamSyntax, DefaultClockingReferenceSyntax, DefaultDisableDeclarationSyntax, DefaultSkewItemSyntax, ElabSystemTaskSyntax, EmptyMemberSyntax, ExplicitAnsiPortSyntax, ExternInterfaceMethodSyntax, ExternModuleDeclSyntax, ExternUdpDeclSyntax, ForwardTypedefDeclarationSyntax, FunctionDeclarationSyntax, GenerateBlockSyntax, GenerateRegionSyntax, GenvarDeclarationSyntax, HierarchyInstantiationSyntax, IfGenerateSyntax, IfNonePathDeclarationSyntax, ImmediateAssertionMemberSyntax, ImplicitAnsiPortSyntax, LetDeclarationSyntax, LibraryDeclarationSyntax, LibraryIncludeStatementSyntax, LocalVariableDeclarationSyntax, LoopGenerateSyntax, ModportClockingPortSyntax, ModportDeclarationSyntax, ModportSimplePortListSyntax, ModportSubroutinePortListSyntax, ModuleDeclarationSyntax, NetAliasSyntax, NetDeclarationSyntax, NetTypeDeclarationSyntax, PackageExportAllDeclarationSyntax, PackageExportDeclarationSyntax, PackageImportDeclarationSyntax, ParameterDeclarationStatementSyntax, PathDeclarationSyntax, PortDeclarationSyntax, PrimitiveInstantiationSyntax, ProceduralBlockSyntax, PropertyDeclarationSyntax, PulseStyleDeclarationSyntax, SequenceDeclarationSyntax, SpecifyBlockSyntax, SpecparamDeclarationSyntax, SystemTimingCheckSyntax, TimeUnitsDeclarationSyntax, TypedefDeclarationSyntax, UdpDeclarationSyntax, UserDefinedNetDeclarationSyntax
+
+类: MethodFlags
+  没有子类
+
+类: MethodPrototypeSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: MinTypMax
+  没有子类
+
+类: MinTypMaxExpression
+  继承自: Expression
+  没有子类
+
+类: MinTypMaxExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: ModportClockingPortSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ModportClockingSymbol
+  继承自: Symbol
+  没有子类
+
+类: ModportDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ModportExplicitPortSyntax
+  继承自: ModportPortSyntax
+  没有子类
+
+类: ModportItemSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ModportNamedPortSyntax
+  继承自: ModportPortSyntax
+  没有子类
+
+类: ModportPortSymbol
+  继承自: ValueSymbol
+  没有子类
+
+类: ModportPortSyntax
+  继承自: SyntaxNode
+  子类: ModportExplicitPortSyntax, ModportNamedPortSyntax, ModportSubroutinePortSyntax
+
+类: ModportSimplePortListSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ModportSubroutinePortListSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ModportSubroutinePortSyntax
+  继承自: ModportPortSyntax
+  没有子类
+
+类: ModportSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ModuleDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ModuleHeaderSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: MultiPortSymbol
+  继承自: Symbol
+  没有子类
+
+类: MultipleConcatenationExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: NameSyntax
+  继承自: ExpressionSyntax
+  子类: ClassNameSyntax, EmptyIdentifierNameSyntax, IdentifierNameSyntax, IdentifierSelectNameSyntax, KeywordNameSyntax, ScopedNameSyntax, SystemNameSyntax
+
+类: NameValuePragmaExpressionSyntax
+  继承自: PragmaExpressionSyntax
+  没有子类
+
+类: NamedArgumentSyntax
+  继承自: ArgumentSyntax
+  没有子类
+
+类: NamedBlockClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: NamedConditionalDirectiveExpressionSyntax
+  继承自: ConditionalDirectiveExpressionSyntax
+  没有子类
+
+类: NamedLabelSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: NamedParamAssignmentSyntax
+  继承自: ParamAssignmentSyntax
+  没有子类
+
+类: NamedPortConnectionSyntax
+  继承自: PortConnectionSyntax
+  没有子类
+
+类: NamedStructurePatternMemberSyntax
+  继承自: StructurePatternMemberSyntax
+  没有子类
+
+类: NamedTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: NamedValueExpression
+  继承自: ValueExpressionBase
+  没有子类
+
+类: NetAliasSymbol
+  继承自: Symbol
+  没有子类
+
+类: NetAliasSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: NetDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: NetPortHeaderSyntax
+  继承自: PortHeaderSyntax
+  没有子类
+
+类: NetStrengthSyntax
+  继承自: SyntaxNode
+  子类: ChargeStrengthSyntax, DriveStrengthSyntax, PullStrengthSyntax
+
+类: NetSymbol
+  继承自: ValueSymbol
+  没有子类
+
+类: NetType
+  继承自: Symbol
+  没有子类
+
+类: NetTypeDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: NewArrayExpression
+  继承自: Expression
+  没有子类
+
+类: NewArrayExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: NewClassExpression
+  继承自: Expression
+  没有子类
+
+类: NewClassExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: NewCovergroupExpression
+  继承自: Expression
+  没有子类
+
+类: NonAnsiPortListSyntax
+  继承自: PortListSyntax
+  没有子类
+
+类: NonAnsiPortSyntax
+  继承自: SyntaxNode
+  子类: EmptyNonAnsiPortSyntax, ExplicitNonAnsiPortSyntax, ImplicitNonAnsiPortSyntax
+
+类: NonAnsiUdpPortListSyntax
+  继承自: UdpPortListSyntax
+  没有子类
+
+类: NonConstantFunction
+  继承自: SimpleSystemSubroutine
+  没有子类
+
+类: Null
+  没有子类
+
+类: NullLiteral
+  继承自: Expression
+  没有子类
+
+类: NullType
+  继承自: Type
+  没有子类
+
+类: NumberPragmaExpressionSyntax
+  继承自: PragmaExpressionSyntax
+  没有子类
+
+类: OneStepDelayControl
+  继承自: TimingControl
+  没有子类
+
+类: OneStepDelaySyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: OrderedArgumentSyntax
+  继承自: ArgumentSyntax
+  没有子类
+
+类: OrderedParamAssignmentSyntax
+  继承自: ParamAssignmentSyntax
+  没有子类
+
+类: OrderedPortConnectionSyntax
+  继承自: PortConnectionSyntax
+  没有子类
+
+类: OrderedStructurePatternMemberSyntax
+  继承自: StructurePatternMemberSyntax
+  没有子类
+
+类: PackageExportAllDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PackageExportDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PackageImportDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PackageImportItemSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: PackageSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: PackedArrayType
+  继承自: IntegralType
+  没有子类
+
+类: PackedStructType
+  继承自: IntegralType, Scope
+  没有子类
+
+类: PackedUnionType
+  继承自: IntegralType, Scope
+  没有子类
+
+类: ParamAssignmentSyntax
+  继承自: SyntaxNode
+  子类: NamedParamAssignmentSyntax, OrderedParamAssignmentSyntax
+
+类: ParameterDeclarationBaseSyntax
+  继承自: SyntaxNode
+  子类: ParameterDeclarationSyntax, TypeParameterDeclarationSyntax
+
+类: ParameterDeclarationStatementSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ParameterDeclarationSyntax
+  继承自: ParameterDeclarationBaseSyntax
+  没有子类
+
+类: ParameterPortListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ParameterSymbol
+  继承自: ValueSymbol, ParameterSymbolBase
+  没有子类
+
+类: ParameterSymbolBase
+  子类: ParameterSymbol, TypeParameterSymbol
+
+类: ParameterValueAssignmentSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ParenExpressionListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: ParenPragmaExpressionSyntax
+  继承自: PragmaExpressionSyntax
+  没有子类
+
+类: ParenthesizedBinsSelectExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: ParenthesizedConditionalDirectiveExpressionSyntax
+  继承自: ConditionalDirectiveExpressionSyntax
+  没有子类
+
+类: ParenthesizedEventExpressionSyntax
+  继承自: EventExpressionSyntax
+  没有子类
+
+类: ParenthesizedExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: ParenthesizedPatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: ParenthesizedPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: ParenthesizedSequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: ParserOptions
+  没有子类
+
+类: PathDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PathDescriptionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: PathSuffixSyntax
+  继承自: SyntaxNode
+  子类: EdgeSensitivePathSuffixSyntax, SimplePathSuffixSyntax
+
+类: Pattern
+  子类: ConstantPattern, InvalidPattern, StructurePattern, TaggedPattern, VariablePattern, WildcardPattern
+
+类: PatternCaseItemSyntax
+  继承自: CaseItemSyntax
+  没有子类
+
+类: PatternCaseStatement
+  继承自: Statement
+  没有子类
+
+类: PatternKind
+  没有子类
+
+类: PatternSyntax
+  继承自: SyntaxNode
+  子类: ExpressionPatternSyntax, ParenthesizedPatternSyntax, StructurePatternSyntax, TaggedPatternSyntax, VariablePatternSyntax, WildcardPatternSyntax
+
+类: PatternVarSymbol
+  继承自: TempVarSymbol
+  没有子类
+
+类: PortConcatenationSyntax
+  继承自: PortExpressionSyntax
+  没有子类
+
+类: PortConnection
+  没有子类
+
+类: PortConnectionSyntax
+  继承自: SyntaxNode
+  子类: EmptyPortConnectionSyntax, NamedPortConnectionSyntax, OrderedPortConnectionSyntax, WildcardPortConnectionSyntax
+
+类: PortDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PortExpressionSyntax
+  继承自: SyntaxNode
+  子类: PortConcatenationSyntax, PortReferenceSyntax
+
+类: PortHeaderSyntax
+  继承自: SyntaxNode
+  子类: InterfacePortHeaderSyntax, NetPortHeaderSyntax, VariablePortHeaderSyntax
+
+类: PortListSyntax
+  继承自: SyntaxNode
+  子类: AnsiPortListSyntax, NonAnsiPortListSyntax, WildcardPortListSyntax
+
+类: PortReferenceSyntax
+  继承自: PortExpressionSyntax
+  没有子类
+
+类: PortSymbol
+  继承自: Symbol
+  没有子类
+
+类: PostfixUnaryExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: PragmaDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: PragmaExpressionSyntax
+  继承自: SyntaxNode
+  子类: NameValuePragmaExpressionSyntax, NumberPragmaExpressionSyntax, ParenPragmaExpressionSyntax, SimplePragmaExpressionSyntax
+
+类: PredefinedIntegerType
+  继承自: IntegralType
+  没有子类
+
+类: PrefixUnaryExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: PreprocessorOptions
+  没有子类
+
+类: PrimaryBlockEventExpressionSyntax
+  继承自: BlockEventExpressionSyntax
+  没有子类
+
+类: PrimaryExpressionSyntax
+  继承自: ExpressionSyntax
+  子类: AssignmentPatternExpressionSyntax, ConcatenationExpressionSyntax, EmptyQueueExpressionSyntax, IntegerVectorExpressionSyntax, LiteralExpressionSyntax, MultipleConcatenationExpressionSyntax, ParenthesizedExpressionSyntax, StreamingConcatenationExpressionSyntax
+
+类: PrimitiveInstanceSymbol
+  继承自: InstanceSymbolBase
+  没有子类
+
+类: PrimitiveInstantiationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PrimitivePortDirection
+  没有子类
+
+类: PrimitivePortSymbol
+  继承自: ValueSymbol
+  没有子类
+
+类: PrimitiveSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: ProceduralAssignStatement
+  继承自: Statement
+  没有子类
+
+类: ProceduralAssignStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ProceduralBlockKind
+  没有子类
+
+类: ProceduralBlockSymbol
+  继承自: Symbol
+  没有子类
+
+类: ProceduralBlockSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ProceduralCheckerStatement
+  继承自: Statement
+  没有子类
+
+类: ProceduralDeassignStatement
+  继承自: Statement
+  没有子类
+
+类: ProceduralDeassignStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: ProductionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: PropertyCaseItemSyntax
+  继承自: SyntaxNode
+  子类: DefaultPropertyCaseItemSyntax, StandardPropertyCaseItemSyntax
+
+类: PropertyDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PropertyExprSyntax
+  继承自: SyntaxNode
+  子类: AcceptOnPropertyExprSyntax, BinaryPropertyExprSyntax, CasePropertyExprSyntax, ClockingPropertyExprSyntax, ConditionalPropertyExprSyntax, ParenthesizedPropertyExprSyntax, SimplePropertyExprSyntax, StrongWeakPropertyExprSyntax, UnaryPropertyExprSyntax, UnarySelectPropertyExprSyntax
+
+类: PropertySpecSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: PropertySymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: PropertyType
+  继承自: Type
+  没有子类
+
+类: PullStrengthSyntax
+  继承自: NetStrengthSyntax
+  没有子类
+
+类: PulseStyleDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: PulseStyleKind
+  没有子类
+
+类: PulseStyleSymbol
+  继承自: Symbol
+  没有子类
+
+类: QueueDimensionSpecifierSyntax
+  继承自: DimensionSpecifierSyntax
+  没有子类
+
+类: QueueType
+  继承自: Type
+  没有子类
+
+类: RandCaseItemSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: RandCaseStatement
+  继承自: Statement
+  没有子类
+
+类: RandCaseStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: RandJoinClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: RandMode
+  没有子类
+
+类: RandSeqProductionSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: RandSequenceStatement
+  继承自: Statement
+  没有子类
+
+类: RandSequenceStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: RangeCoverageBinInitializerSyntax
+  继承自: CoverageBinInitializerSyntax
+  没有子类
+
+类: RangeDimensionSpecifierSyntax
+  继承自: DimensionSpecifierSyntax
+  没有子类
+
+类: RangeListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: RangeSelectExpression
+  继承自: Expression
+  没有子类
+
+类: RangeSelectSyntax
+  继承自: SelectorSyntax
+  没有子类
+
+类: RangeSelectionKind
+  没有子类
+
+类: RealLiteral
+  继承自: Expression
+  没有子类
+
+类: RepeatLoopStatement
+  继承自: Statement
+  没有子类
+
+类: RepeatedEventControl
+  继承自: TimingControl
+  没有子类
+
+类: RepeatedEventControlSyntax
+  继承自: TimingControlSyntax
+  没有子类
+
+类: ReplicatedAssignmentPatternExpression
+  继承自: AssignmentPatternExpressionBase
+  没有子类
+
+类: ReplicatedAssignmentPatternSyntax
+  继承自: AssignmentPatternSyntax
+  没有子类
+
+类: ReplicationExpression
+  继承自: Expression
+  没有子类
+
+类: ReportedDiagnostic
+  没有子类
+
+类: ReturnStatement
+  继承自: Statement
+  没有子类
+
+类: ReturnStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: RootSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: RsCaseItemSyntax
+  继承自: SyntaxNode
+  子类: DefaultRsCaseItemSyntax, StandardRsCaseItemSyntax
+
+类: RsCaseSyntax
+  继承自: RsProdSyntax
+  没有子类
+
+类: RsCodeBlockSyntax
+  继承自: RsProdSyntax
+  没有子类
+
+类: RsElseClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: RsIfElseSyntax
+  继承自: RsProdSyntax
+  没有子类
+
+类: RsProdItemSyntax
+  继承自: RsProdSyntax
+  没有子类
+
+类: RsProdSyntax
+  继承自: SyntaxNode
+  子类: RsCaseSyntax, RsCodeBlockSyntax, RsIfElseSyntax, RsProdItemSyntax, RsRepeatSyntax
+
+类: RsRepeatSyntax
+  继承自: RsProdSyntax
+  没有子类
+
+类: RsRuleSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: RsWeightClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: SVInt
+  没有子类
+
+类: ScalarType
+  继承自: IntegralType
+  没有子类
+
+类: Scope
+  子类: AnonymousProgramSymbol, CheckerInstanceBodySymbol, CheckerSymbol, ClassType, ClockingBlockSymbol, CompilationUnitSymbol, ConfigBlockSymbol, ConstraintBlockSymbol, CoverCrossBodySymbol, CoverCrossSymbol, CovergroupBodySymbol, CovergroupType, CoverpointSymbol, EnumType, GenerateBlockArraySymbol, GenerateBlockSymbol, InstanceArraySymbol, InstanceBodySymbol, LetDeclSymbol, MethodPrototypeSymbol, ModportSymbol, PackageSymbol, PackedStructType, PackedUnionType, PrimitiveSymbol, PropertySymbol, RandSeqProductionSymbol, RootSymbol, SequenceSymbol, SpecifyBlockSymbol, StatementBlockSymbol, SubroutineSymbol, UnpackedStructType, UnpackedUnionType
+
+类: ScopedNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: ScriptSession
+  没有子类
+
+类: SelectorSyntax
+  继承自: SyntaxNode
+  子类: BitSelectSyntax, RangeSelectSyntax
+
+类: SequenceConcatExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: SequenceDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: SequenceExprSyntax
+  继承自: SyntaxNode
+  子类: BinarySequenceExprSyntax, ClockingSequenceExprSyntax, DelayedSequenceExprSyntax, EventExpressionSyntax, FirstMatchSequenceExprSyntax, ParenthesizedSequenceExprSyntax, SimpleSequenceExprSyntax
+
+类: SequenceMatchListSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: SequenceRange
+  没有子类
+
+类: SequenceRepetition
+  没有子类
+
+类: SequenceRepetitionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: SequenceSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: SequenceType
+  继承自: Type
+  没有子类
+
+类: SequenceWithMatchExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: SetExprBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: SignalEventControl
+  继承自: TimingControl
+  没有子类
+
+类: SignalEventExpressionSyntax
+  继承自: EventExpressionSyntax
+  没有子类
+
+类: SignedCastExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: SimpleAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: SimpleAssignmentPatternExpression
+  继承自: AssignmentPatternExpressionBase
+  没有子类
+
+类: SimpleAssignmentPatternSyntax
+  继承自: AssignmentPatternSyntax
+  没有子类
+
+类: SimpleBinsSelectExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: SimpleDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: SimplePathSuffixSyntax
+  继承自: PathSuffixSyntax
+  没有子类
+
+类: SimplePragmaExpressionSyntax
+  继承自: PragmaExpressionSyntax
+  没有子类
+
+类: SimplePropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: SimpleSequenceExprSyntax
+  继承自: SequenceExprSyntax
+  没有子类
+
+类: SimpleSystemSubroutine
+  继承自: SystemSubroutine
+  子类: NonConstantFunction
+
+类: SolveBeforeConstraint
+  继承自: Constraint
+  没有子类
+
+类: SolveBeforeConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: SourceBuffer
+  没有子类
+
+类: SourceLibrary
+  没有子类
+
+类: SourceLoader
+  没有子类
+
+类: SourceLocation
+  没有子类
+
+类: SourceManager
+  没有子类
+
+类: SourceOptions
+  没有子类
+
+类: SourceRange
+  没有子类
+
+类: SpecifyBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: SpecifyBlockSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: SpecparamDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: SpecparamDeclaratorSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: SpecparamSymbol
+  继承自: ValueSymbol
+  没有子类
+
+类: StandardCaseItemSyntax
+  继承自: CaseItemSyntax
+  没有子类
+
+类: StandardPropertyCaseItemSyntax
+  继承自: PropertyCaseItemSyntax
+  没有子类
+
+类: StandardRsCaseItemSyntax
+  继承自: RsCaseItemSyntax
+  没有子类
+
+类: Statement
+  子类: BlockStatement, BreakStatement, CaseStatement, ConcurrentAssertionStatement, ConditionalStatement, ContinueStatement, DisableForkStatement, DisableStatement, DoWhileLoopStatement, EmptyStatement, EventTriggerStatement, ExpressionStatement, ForLoopStatement, ForeachLoopStatement, ForeverLoopStatement, ImmediateAssertionStatement, InvalidStatement, PatternCaseStatement, ProceduralAssignStatement, ProceduralCheckerStatement, ProceduralDeassignStatement, RandCaseStatement, RandSequenceStatement, RepeatLoopStatement, ReturnStatement, StatementList, TimedStatement, VariableDeclStatement, WaitForkStatement, WaitOrderStatement, WaitStatement, WhileLoopStatement
+
+类: StatementBlockKind
+  没有子类
+
+类: StatementBlockSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: StatementKind
+  没有子类
+
+类: StatementList
+  继承自: Statement
+  没有子类
+
+类: StatementSyntax
+  继承自: SyntaxNode
+  子类: BlockStatementSyntax, CaseStatementSyntax, CheckerInstanceStatementSyntax, ConcurrentAssertionStatementSyntax, ConditionalStatementSyntax, DisableForkStatementSyntax, DisableStatementSyntax, DoWhileStatementSyntax, EmptyStatementSyntax, EventTriggerStatementSyntax, ExpressionStatementSyntax, ForLoopStatementSyntax, ForeachLoopStatementSyntax, ForeverStatementSyntax, ImmediateAssertionStatementSyntax, JumpStatementSyntax, LoopStatementSyntax, ProceduralAssignStatementSyntax, ProceduralDeassignStatementSyntax, RandCaseStatementSyntax, RandSequenceStatementSyntax, ReturnStatementSyntax, TimingControlStatementSyntax, VoidCastedCallStatementSyntax, WaitForkStatementSyntax, WaitOrderStatementSyntax, WaitStatementSyntax
+
+类: StreamExpressionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: StreamExpressionWithRangeSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: StreamingConcatenationExpression
+  继承自: Expression
+  没有子类
+
+类: StreamingConcatenationExpressionSyntax
+  继承自: PrimaryExpressionSyntax
+  没有子类
+
+类: StringLiteral
+  继承自: Expression
+  没有子类
+
+类: StringType
+  继承自: Type
+  没有子类
+
+类: StrongWeakAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: StrongWeakPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: StructUnionMemberSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: StructUnionTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: StructurePattern
+  继承自: Pattern
+  没有子类
+
+类: StructurePatternMemberSyntax
+  继承自: SyntaxNode
+  子类: NamedStructurePatternMemberSyntax, OrderedStructurePatternMemberSyntax
+
+类: StructurePatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: StructuredAssignmentPatternExpression
+  继承自: AssignmentPatternExpressionBase
+  没有子类
+
+类: StructuredAssignmentPatternSyntax
+  继承自: AssignmentPatternSyntax
+  没有子类
+
+类: SubroutineKind
+  没有子类
+
+类: SubroutineSymbol
+  继承自: Symbol, Scope
+  没有子类
+
+类: SuperNewDefaultedArgsExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: Symbol
+  子类: AnonymousProgramSymbol, AssertionPortSymbol, AttributeSymbol, CheckerInstanceBodySymbol, CheckerSymbol, ClockingBlockSymbol, CompilationUnitSymbol, ConfigBlockSymbol, ConstraintBlockSymbol, ContinuousAssignSymbol, CoverCrossBodySymbol, CoverCrossSymbol, CoverageBinSymbol, CovergroupBodySymbol, CoverpointSymbol, DefParamSymbol, DefinitionSymbol, ElabSystemTaskSymbol, EmptyMemberSymbol, ExplicitImportSymbol, ForwardingTypedefSymbol, GenerateBlockArraySymbol, GenerateBlockSymbol, GenericClassDefSymbol, GenvarSymbol, InstanceArraySymbol, InstanceBodySymbol, InstanceSymbolBase, InterfacePortSymbol, LetDeclSymbol, MethodPrototypeSymbol, ModportClockingSymbol, ModportSymbol, MultiPortSymbol, NetAliasSymbol, NetType, PackageSymbol, PortSymbol, PrimitiveSymbol, ProceduralBlockSymbol, PropertySymbol, PulseStyleSymbol, RandSeqProductionSymbol, RootSymbol, SequenceSymbol, SpecifyBlockSymbol, StatementBlockSymbol, SubroutineSymbol, SystemTimingCheckSymbol, TimingPathSymbol, TransparentMemberSymbol, Type, TypeParameterSymbol, UninstantiatedDefSymbol, ValueSymbol, WildcardImportSymbol
+
+类: SymbolKind
+  没有子类
+
+类: SyntaxKind
+  没有子类
+
+类: SyntaxNode
+  子类: ActionBlockSyntax, ArgumentListSyntax, ArgumentSyntax, AssertionItemPortListSyntax, AssertionItemPortSyntax, AssignmentPatternItemSyntax, AssignmentPatternSyntax, AttributeInstanceSyntax, AttributeSpecSyntax, BindTargetListSyntax, BinsSelectExpressionSyntax, BlockCoverageEventSyntax, BlockEventExpressionSyntax, CaseItemSyntax, ClassSpecifierSyntax, ClockingDirectionSyntax, ClockingSkewSyntax, ColonExpressionClauseSyntax, CompilationUnitSyntax, ConditionalDirectiveExpressionSyntax, ConditionalPatternSyntax, ConditionalPredicateSyntax, ConfigCellIdentifierSyntax, ConfigInstanceIdentifierSyntax, ConfigRuleClauseSyntax, ConfigRuleSyntax, ConstraintItemSyntax, CoverageBinInitializerSyntax, CoverageBinsArraySizeSyntax, CoverageIffClauseSyntax, DeclaratorSyntax, DefParamAssignmentSyntax, DefaultExtendsClauseArgSyntax, DeferredAssertionSyntax, DelayedSequenceElementSyntax, DimensionSpecifierSyntax, DirectiveSyntax, DisableIffSyntax, DistConstraintListSyntax, DistItemBaseSyntax, DistWeightSyntax, DividerClauseSyntax, DotMemberClauseSyntax, EdgeControlSpecifierSyntax, EdgeDescriptorSyntax, ElementSelectSyntax, ElseClauseSyntax, ElseConstraintClauseSyntax, ElsePropertyClauseSyntax, EqualsAssertionArgClauseSyntax, EqualsTypeClauseSyntax, EqualsValueClauseSyntax, ExpressionSyntax, ExtendsClauseSyntax, FilePathSpecSyntax, ForVariableDeclarationSyntax, ForeachLoopListSyntax, ForwardTypeRestrictionSyntax, FunctionPortBaseSyntax, FunctionPortListSyntax, FunctionPrototypeSyntax, HierarchicalInstanceSyntax, IffEventClauseSyntax, ImplementsClauseSyntax, InstanceNameSyntax, IntersectClauseSyntax, LibraryIncDirClauseSyntax, LibraryMapSyntax, MacroActualArgumentListSyntax, MacroActualArgumentSyntax, MacroArgumentDefaultSyntax, MacroFormalArgumentListSyntax, MacroFormalArgumentSyntax, MatchesClauseSyntax, MemberSyntax, ModportItemSyntax, ModportPortSyntax, ModuleHeaderSyntax, NamedBlockClauseSyntax, NamedLabelSyntax, NetStrengthSyntax, NonAnsiPortSyntax, PackageImportItemSyntax, ParamAssignmentSyntax, ParameterDeclarationBaseSyntax, ParameterPortListSyntax, ParameterValueAssignmentSyntax, ParenExpressionListSyntax, PathDescriptionSyntax, PathSuffixSyntax, PatternSyntax, PortConnectionSyntax, PortExpressionSyntax, PortHeaderSyntax, PortListSyntax, PragmaExpressionSyntax, ProductionSyntax, PropertyCaseItemSyntax, PropertyExprSyntax, PropertySpecSyntax, RandCaseItemSyntax, RandJoinClauseSyntax, RangeListSyntax, RsCaseItemSyntax, RsElseClauseSyntax, RsProdSyntax, RsRuleSyntax, RsWeightClauseSyntax, SelectorSyntax, SequenceExprSyntax, SequenceMatchListSyntax, SequenceRepetitionSyntax, SpecparamDeclaratorSyntax, StatementSyntax, StreamExpressionSyntax, StreamExpressionWithRangeSyntax, StructUnionMemberSyntax, StructurePatternMemberSyntax, TimingCheckArgSyntax, TimingCheckEventConditionSyntax, TimingControlSyntax, TransRangeSyntax, TransRepeatRangeSyntax, TransSetSyntax, TypeAssignmentSyntax, UdpBodySyntax, UdpEntrySyntax, UdpFieldBaseSyntax, UdpInitialStmtSyntax, UdpPortDeclSyntax, UdpPortListSyntax, VariableDimensionSyntax, WithClauseSyntax, WithFunctionClauseSyntax, WithFunctionSampleSyntax
+
+类: SyntaxPrinter
+  没有子类
+
+类: SyntaxTree
+  没有子类
+
+类: SystemNameSyntax
+  继承自: NameSyntax
+  没有子类
+
+类: SystemSubroutine
+  子类: SimpleSystemSubroutine
+
+类: SystemTimingCheckKind
+  没有子类
+
+类: SystemTimingCheckSymbol
+  继承自: Symbol
+  没有子类
+
+类: SystemTimingCheckSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: TaggedPattern
+  继承自: Pattern
+  没有子类
+
+类: TaggedPatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: TaggedUnionExpression
+  继承自: Expression
+  没有子类
+
+类: TaggedUnionExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: TempVarSymbol
+  继承自: VariableSymbol
+  子类: IteratorSymbol, PatternVarSymbol
+
+类: TextDiagnosticClient
+  继承自: DiagnosticClient
+  没有子类
+
+类: TimeLiteral
+  继承自: Expression
+  没有子类
+
+类: TimeScale
+  没有子类
+
+类: TimeScaleDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: TimeScaleMagnitude
+  没有子类
+
+类: TimeScaleValue
+  没有子类
+
+类: TimeUnit
+  没有子类
+
+类: TimeUnitsDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: TimedStatement
+  继承自: Statement
+  没有子类
+
+类: TimingCheckArgSyntax
+  继承自: SyntaxNode
+  子类: EmptyTimingCheckArgSyntax, ExpressionTimingCheckArgSyntax, TimingCheckEventArgSyntax
+
+类: TimingCheckEventArgSyntax
+  继承自: TimingCheckArgSyntax
+  没有子类
+
+类: TimingCheckEventConditionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: TimingControl
+  子类: BlockEventListControl, CycleDelayControl, Delay3Control, DelayControl, EventListControl, ImplicitEventControl, InvalidTimingControl, OneStepDelayControl, RepeatedEventControl, SignalEventControl
+
+类: TimingControlExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: TimingControlKind
+  没有子类
+
+类: TimingControlStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: TimingControlSyntax
+  继承自: SyntaxNode
+  子类: Delay3Syntax, DelaySyntax, EventControlSyntax, EventControlWithExpressionSyntax, ImplicitEventControlSyntax, OneStepDelaySyntax, RepeatedEventControlSyntax
+
+类: TimingPathSymbol
+  继承自: Symbol
+  没有子类
+
+类: Token
+  没有子类
+
+类: TokenKind
+  没有子类
+
+类: TransListCoverageBinInitializerSyntax
+  继承自: CoverageBinInitializerSyntax
+  没有子类
+
+类: TransRangeSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: TransRepeatRangeSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: TransSetSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: TransparentMemberSymbol
+  继承自: Symbol
+  没有子类
+
+类: Trivia
+  没有子类
+
+类: TriviaKind
+  没有子类
+
+类: Type
+  继承自: Symbol
+  子类: AssociativeArrayType, CHandleType, ClassType, CovergroupType, DPIOpenArrayType, DynamicArrayType, ErrorType, EventType, FixedSizeUnpackedArrayType, FloatingType, IntegralType, NullType, PropertyType, QueueType, SequenceType, StringType, TypeAliasType, TypeRefType, UnboundedType, UnpackedStructType, UnpackedUnionType, UntypedType, VirtualInterfaceType, VoidType
+
+类: TypeAliasType
+  继承自: Type
+  没有子类
+
+类: TypeAssignmentSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: TypeParameterDeclarationSyntax
+  继承自: ParameterDeclarationBaseSyntax
+  没有子类
+
+类: TypeParameterSymbol
+  继承自: Symbol, ParameterSymbolBase
+  没有子类
+
+类: TypePrinter
+  没有子类
+
+类: TypePrintingOptions
+  没有子类
+
+类: TypeRefType
+  继承自: Type
+  没有子类
+
+类: TypeReferenceExpression
+  继承自: Expression
+  没有子类
+
+类: TypeReferenceSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: TypedefDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: UdpBodySyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: UdpDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: UdpEdgeFieldSyntax
+  继承自: UdpFieldBaseSyntax
+  没有子类
+
+类: UdpEntrySyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: UdpFieldBaseSyntax
+  继承自: SyntaxNode
+  子类: UdpEdgeFieldSyntax, UdpSimpleFieldSyntax
+
+类: UdpInitialStmtSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: UdpInputPortDeclSyntax
+  继承自: UdpPortDeclSyntax
+  没有子类
+
+类: UdpOutputPortDeclSyntax
+  继承自: UdpPortDeclSyntax
+  没有子类
+
+类: UdpPortDeclSyntax
+  继承自: SyntaxNode
+  子类: UdpInputPortDeclSyntax, UdpOutputPortDeclSyntax
+
+类: UdpPortListSyntax
+  继承自: SyntaxNode
+  子类: AnsiUdpPortListSyntax, NonAnsiUdpPortListSyntax, WildcardUdpPortListSyntax
+
+类: UdpSimpleFieldSyntax
+  继承自: UdpFieldBaseSyntax
+  没有子类
+
+类: UnaryAssertionExpr
+  继承自: AssertionExpr
+  没有子类
+
+类: UnaryAssertionOperator
+  没有子类
+
+类: UnaryBinsSelectExpr
+  继承自: BinsSelectExpr
+  没有子类
+
+类: UnaryBinsSelectExprSyntax
+  继承自: BinsSelectExpressionSyntax
+  没有子类
+
+类: UnaryConditionalDirectiveExpressionSyntax
+  继承自: ConditionalDirectiveExpressionSyntax
+  没有子类
+
+类: UnaryExpression
+  继承自: Expression
+  没有子类
+
+类: UnaryOperator
+  没有子类
+
+类: UnaryPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: UnarySelectPropertyExprSyntax
+  继承自: PropertyExprSyntax
+  没有子类
+
+类: UnbasedUnsizedIntegerLiteral
+  继承自: Expression
+  没有子类
+
+类: Unbounded
+  没有子类
+
+类: UnboundedLiteral
+  继承自: Expression
+  没有子类
+
+类: UnboundedType
+  继承自: Type
+  没有子类
+
+类: UnconditionalBranchDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: UnconnectedDrive
+  没有子类
+
+类: UnconnectedDriveDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: UndefDirectiveSyntax
+  继承自: DirectiveSyntax
+  没有子类
+
+类: UninstantiatedDefSymbol
+  继承自: Symbol
+  没有子类
+
+类: UniquePriorityCheck
+  没有子类
+
+类: UniquenessConstraint
+  继承自: Constraint
+  没有子类
+
+类: UniquenessConstraintSyntax
+  继承自: ConstraintItemSyntax
+  没有子类
+
+类: UnpackedStructType
+  继承自: Type, Scope
+  没有子类
+
+类: UnpackedUnionType
+  继承自: Type, Scope
+  没有子类
+
+类: UntypedType
+  继承自: Type
+  没有子类
+
+类: UserDefinedNetDeclarationSyntax
+  继承自: MemberSyntax
+  没有子类
+
+类: ValueDriver
+  没有子类
+
+类: ValueExpressionBase
+  继承自: Expression
+  子类: HierarchicalValueExpression, NamedValueExpression
+
+类: ValueRangeExpression
+  继承自: Expression
+  没有子类
+
+类: ValueRangeExpressionSyntax
+  继承自: ExpressionSyntax
+  没有子类
+
+类: ValueRangeKind
+  没有子类
+
+类: ValueSymbol
+  继承自: Symbol
+  子类: EnumValueSymbol, ModportPortSymbol, NetSymbol, ParameterSymbol, PrimitivePortSymbol, SpecparamSymbol, VariableSymbol
+
+类: VariableDeclStatement
+  继承自: Statement
+  没有子类
+
+类: VariableDimensionSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: VariableFlags
+  没有子类
+
+类: VariableLifetime
+  没有子类
+
+类: VariablePattern
+  继承自: Pattern
+  没有子类
+
+类: VariablePatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: VariablePortHeaderSyntax
+  继承自: PortHeaderSyntax
+  没有子类
+
+类: VariableSymbol
+  继承自: ValueSymbol
+  子类: ClassPropertySymbol, ClockVarSymbol, FieldSymbol, FormalArgumentSymbol, LocalAssertionVarSymbol, TempVarSymbol
+
+类: VersionInfo
+  没有子类
+
+类: VirtualInterfaceType
+  继承自: Type
+  没有子类
+
+类: VirtualInterfaceTypeSyntax
+  继承自: DataTypeSyntax
+  没有子类
+
+类: Visibility
+  没有子类
+
+类: VisitAction
+  没有子类
+
+类: VoidCastedCallStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: VoidType
+  继承自: Type
+  没有子类
+
+类: WaitForkStatement
+  继承自: Statement
+  没有子类
+
+类: WaitForkStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: WaitOrderStatement
+  继承自: Statement
+  没有子类
+
+类: WaitOrderStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: WaitStatement
+  继承自: Statement
+  没有子类
+
+类: WaitStatementSyntax
+  继承自: StatementSyntax
+  没有子类
+
+类: WhileLoopStatement
+  继承自: Statement
+  没有子类
+
+类: WildcardDimensionSpecifierSyntax
+  继承自: DimensionSpecifierSyntax
+  没有子类
+
+类: WildcardImportSymbol
+  继承自: Symbol
+  没有子类
+
+类: WildcardPattern
+  继承自: Pattern
+  没有子类
+
+类: WildcardPatternSyntax
+  继承自: PatternSyntax
+  没有子类
+
+类: WildcardPortConnectionSyntax
+  继承自: PortConnectionSyntax
+  没有子类
+
+类: WildcardPortListSyntax
+  继承自: PortListSyntax
+  没有子类
+
+类: WildcardUdpPortListSyntax
+  继承自: UdpPortListSyntax
+  没有子类
+
+类: WithClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: WithFunctionClauseSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: WithFunctionSampleSyntax
+  继承自: SyntaxNode
+  没有子类
+
+类: logic_t
+  没有子类
