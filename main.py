@@ -147,14 +147,26 @@ def main():
         #print(f"ast_ctx: {type(ast_ctx)}")
 
         compilation = driver.createCompilation()
+        definitionLookupRes = compilation.DefinitionLookupResult()
+        print(f"parse name: {type(compilation.parseName('top'))}")
+        print(f"configRoot: {definitionLookupRes.configRoot}")
+        print(f"defaultLibrary: {compilation.defaultLibrary}")
+
+        printer = ps.SyntaxPrinter()
         trees = driver.syntaxTrees
+        for tree in trees:
+            printer.print(tree)
+        print(f"[print tree end] ............................")
         root = trees[0].root
         for item in trees:
             print(f"syntaxTreeNode: {item}")
-        modules =  compilation.getDefinitions()
+        modules =  compilation.getDefinitions() # list[DefinitionSymbol]
         print(f"modules type: {type(modules)}")
         for item in modules:
             print(f"module type: {type(item)}")
+            print(f"{item.name} hierachicalPath: {item.hierarchicalPath}")
+            print(f"{item.name} lexicalPath: {item.lexicalPath}")
+            print(f"{item.name}  syntax type: {type(item.syntax)}")
         #always_blocks = compilation.getProceduralBlocks()
         #for item in always_blocks:
         #    print(f"always block: {type(item)}")
@@ -163,13 +175,14 @@ def main():
         print(f"successful_compilation: {successful_compilation}")
         if successful_compilation:
             print(f"reportMacros:")
-            print(driver.reportMacros())
+            driver.reportMacros()
             my_visitor_for_symbol = SymbolicDFS(num_cycles)
             print(f"[main]my_visitor_for_symbol: {my_visitor_for_symbol}")
             symbol_visitor = SlangSymbolVisitor(num_cycles)
             engine.execute_sv(my_visitor_for_symbol, modules, None, num_cycles)
 
-            for module in modules:
+            #module: DefinitionSymbol
+            for module in modules: 
                 symbol_visitor.visit(module)
             print(f"symbol_visitor branches:{symbol_visitor.branch_points}")
             print(f"symbol_visitor paths:{symbol_visitor.paths}")

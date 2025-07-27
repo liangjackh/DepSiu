@@ -675,7 +675,7 @@ class ExecutionEngine:
                 sub_manager = ExecutionManager()
                 print(f"type of {module.name}: {type(module)}")
                 #self.init_run(sub_manager, module)
-                print(f"getKindString: f{module.getKindString()}")
+                #print(f"[execute_sv]getKindString: f{module.getKindString()}")
                 instanceCount = module.instanceCount
                 print(f"instanceCount of {module.getArticleKindString()}: {instanceCount}")
                 self.init_run_sv(sub_manager, module) # module : DefinitionSymbol

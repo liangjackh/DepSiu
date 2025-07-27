@@ -10,7 +10,7 @@ module memory(
   output reg [7:0] data_out;
   input wire read_write, chip_en;
 
-  reg [7:0] mem [0:255];
+  reg [7:0] mem [0:255]; //data DataDeclarationSyntax
 
   always @ (address or data_in or read_write or chip_en)
     if (read_write == 1 && chip_en == 1) begin
