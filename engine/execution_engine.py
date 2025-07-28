@@ -22,7 +22,7 @@ from strategies.dfs import DepthFirst
 import sys
 from copy import deepcopy
 from helpers.slang_helpers import get_module_name, init_state
-from pyslang import  DefinitionSymbol
+from pyslang import  DefinitionSymbol, VisitAction
 
 CONDITIONALS = (IfStatement, ForStatement, WhileStatement, CaseStatement)
 
@@ -399,62 +399,76 @@ class ExecutionEngine:
 
     def count_conditionals_sv(self, m: ExecutionManager, module) -> None: # DefinitionSymbol
         """Count control flow paths for PySlang AST."""
-        if isinstance(items, pyslang.ast.BlockStatement):
-            stmts = items.items
+        print(f"[count_conditionals_sv] defaultNetType: {module.defaultNetType}")
+        print(f"[count_conditionals_sv] definitionKind: {module.definitionKind}")
+        print(f"[count_conditionals_sv] decalredType: {module.declaredType}")
+        print(f"[count_conditionals_sv] declaringDefinition: {module.declaringDefinition}")
+        print(f"[count_conditionals_sv] hierarchicalPath: {module.hierarchicalPath}")
+        print(f"[count_conditionals_sv] kind : {module.kind}")
+        print(f"[count_conditionals_sv] articleKind: {module.getArticleKindString}")
+        print(f"[count_conditionals_sv] {module.name} syntax member : {module.syntax.members}")
+        next_sibling = module.nextSibling
+        if next_sibling is not None:
+            print(f"[count_conditionals_sv] next_sibling: {next_sibling.name}")
         else:
-            stmts = items if isinstance(items, list) else [items]
+            print("[count_conditionals_sv] next_sibling: None")
 
-        for item in stmts:
-            if isinstance(item, pyslang.ast.IfStatement):
-                m.num_paths *= 2
-                self.count_conditionals_sv(m, item.true_stmt)
-                self.count_conditionals_sv(m, item.false_stmt)
-            elif isinstance(item, pyslang.ast.CaseStatement):
-                for case in item.items:
-                    m.num_paths *= 2
-                    self.count_conditionals_sv(m, case.stmt)
-            elif isinstance(item, pyslang.ast.LoopStatement):
-                m.num_paths *= 2
-                self.count_conditionals_sv(m, item.stmt)
-            elif isinstance(item, pyslang.ast.BlockStatement):
-                self.count_conditionals_sv(m, item.items)
-            elif isinstance(item, pyslang.ast.ProceduralBlock):
-                self.count_conditionals_sv(m, item.stmt)
+        #if isinstance(module., pyslang.ast.BlockStatement):
+        #    stmts = items.items
+        #else:
+        #    stmts = items if isinstance(items, list) else [items]
 
-        def lhs_signals_sv(self, m: ExecutionManager, items) -> None:
-            """Collect written signals for PySlang AST."""
-            if isinstance(items, pyslang.ast.BlockStatement):
-                stmts = items.items
-            else:
-                stmts = items if isinstance(items, list) else [items]
+        #for item in stmts:
+        #    if isinstance(item, pyslang.ast.IfStatement):
+        #        m.num_paths *= 2
+        #        self.count_conditionals_sv(m, item.true_stmt)
+        #        self.count_conditionals_sv(m, item.false_stmt)
+        #    elif isinstance(item, pyslang.ast.CaseStatement):
+        #        for case in item.items:
+        #            m.num_paths *= 2
+        #            self.count_conditionals_sv(m, case.stmt)
+        #    elif isinstance(item, pyslang.ast.LoopStatement):
+        #        m.num_paths *= 2
+        #        self.count_conditionals_sv(m, item.stmt)
+        #    elif isinstance(item, pyslang.ast.BlockStatement):
+        #        self.count_conditionals_sv(m, item.items)
+        #    elif isinstance(item, pyslang.ast.ProceduralBlock):
+        #        self.count_conditionals_sv(m, item.stmt)
 
-            for item in stmts:
-                if isinstance(item, pyslang.ast.IfStatement):
-                    self.lhs_signals_sv(m, item.true_stmt)
-                    self.lhs_signals_sv(m, item.false_stmt)
-                elif isinstance(item, pyslang.ast.CaseStatement):
-                    for case in item.items:
-                        self.lhs_signals_sv(m, case.stmt)
-                elif isinstance(item, pyslang.ast.ProceduralBlock):
-                    m.curr_always = item
-                    m.always_writes[item] = []
-                    self.lhs_signals_sv(m, item.stmt)
-                elif isinstance(item, (pyslang.ast.AssignmentExpression, 
-                                      pyslang.ast.BlockingAssignment,
-                                      pyslang.ast.NonblockingAssignment)):
-                    # Handle LHS signal extraction
-                    lhs = item.left
-                    if isinstance(lhs, pyslang.ast.Identifier):
-                        if m.curr_always and lhs.name not in m.always_writes[m.curr_always]:
-                            m.always_writes[m.curr_always].append(lhs.name)
-                    elif isinstance(lhs, pyslang.ast.ElementSelect):
-                        if m.curr_always and lhs.value.name not in m.always_writes[m.curr_always]:
-                            m.always_writes[m.curr_always].append(lhs.value.name)
-                    elif isinstance(lhs, pyslang.ast.Concatenation):
-                        for expr in lhs.expressions:
-                            if isinstance(expr, pyslang.ast.Identifier) and m.curr_always:
-                                if expr.name not in m.always_writes[m.curr_always]:
-                                    m.always_writes[m.curr_always].append(expr.name)
+        #def lhs_signals_sv(self, m: ExecutionManager, items) -> None:
+        #    """Collect written signals for PySlang AST."""
+        #    if isinstance(items, pyslang.ast.BlockStatement):
+        #        stmts = items.items
+        #    else:
+        #        stmts = items if isinstance(items, list) else [items]
+
+        #    for item in stmts:
+        #        if isinstance(item, pyslang.ast.IfStatement):
+        #            self.lhs_signals_sv(m, item.true_stmt)
+        #            self.lhs_signals_sv(m, item.false_stmt)
+        #        elif isinstance(item, pyslang.ast.CaseStatement):
+        #            for case in item.items:
+        #                self.lhs_signals_sv(m, case.stmt)
+        #        elif isinstance(item, pyslang.ast.ProceduralBlock):
+        #            m.curr_always = item
+        #            m.always_writes[item] = []
+        #            self.lhs_signals_sv(m, item.stmt)
+        #        elif isinstance(item, (pyslang.ast.AssignmentExpression, 
+        #                              pyslang.ast.BlockingAssignment,
+        #                              pyslang.ast.NonblockingAssignment)):
+        #            # Handle LHS signal extraction
+        #            lhs = item.left
+        #            if isinstance(lhs, pyslang.ast.Identifier):
+        #                if m.curr_always and lhs.name not in m.always_writes[m.curr_always]:
+        #                    m.always_writes[m.curr_always].append(lhs.name)
+        #            elif isinstance(lhs, pyslang.ast.ElementSelect):
+        #                if m.curr_always and lhs.value.name not in m.always_writes[m.curr_always]:
+        #                    m.always_writes[m.curr_always].append(lhs.value.name)
+        #            elif isinstance(lhs, pyslang.ast.Concatenation):
+        #                for expr in lhs.expressions:
+        #                    if isinstance(expr, pyslang.ast.Identifier) and m.curr_always:
+        #                        if expr.name not in m.always_writes[m.curr_always]:
+        #                            m.always_writes[m.curr_always].append(expr.name)
 
     def get_assertions_sv(self, m: ExecutionManager, items) -> None:
         """Collect assertions for PySlang AST."""
@@ -481,7 +495,7 @@ class ExecutionEngine:
         print("init run sv")
         m.init_run_flag = True
         #TODO
-        #self.count_conditionals_sv(m, module) # module:DefinitionSymbol
+        self.count_conditionals_sv(m, module) # module:DefinitionSymbol
         #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
         #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
         #self.lhs_signals_sv(m, module.items)
@@ -647,6 +661,10 @@ class ExecutionEngine:
             for i in range(len(paths)):
                 for j in range(len(paths[i])):
                     manager.config[manager.names_list[j]] = paths[i][j]
+    
+    def visitSlangModule(self, module: Symbol) -> VisitAction:
+        act = VisitAction()
+
 
     def execute_sv(self, visitor, modules, manager: Optional[ExecutionManager], num_cycles: int) -> None:
         """Drives symbolic execution for SystemVerilog designs."""
@@ -763,7 +781,7 @@ class ExecutionEngine:
             
             #print(total_paths)
 
-        print(f"Branch points explored: {manager.branch_count}")
+        print(f"[execute_sv]Branch points explored: {manager.branch_count}")
         if self.debug:
             manager.debug = True
         self.assertions_always_intersect(manager)

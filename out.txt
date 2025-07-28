@@ -16,50 +16,100 @@ SV_COV_TOGGLE 23
 __slang__ 1
 __slang_major__ 8
 __slang_minor__ 1
+parse name: <class 'pyslang.IdentifierNameSyntax'>
+configRoot: None
+defaultLibrary: <pyslang.SourceLibrary object at 0x7e276a0fc8f0>
 [print tree end] ............................
-syntaxTreeNode: <pyslang.SyntaxTree object at 0x10b6410f0>
+syntaxTreeNode: <pyslang.SyntaxTree object at 0x7e276a0fc930>
 modules type: <class 'list'>
 module type: <class 'pyslang.DefinitionSymbol'>
-hierachicalPaht: queue
+queue hierachicalPath: queue
+queue lexicalPath: queue
+queue  syntax type: <class 'pyslang.ModuleDeclarationSyntax'>
 module type: <class 'pyslang.DefinitionSymbol'>
-hierachicalPaht: top
+top hierachicalPath: top
+top lexicalPath: top
+top  syntax type: <class 'pyslang.ModuleDeclarationSyntax'>
 modules:[DefinitionSymbol("queue"), DefinitionSymbol("top")]
 successful_compilation: True
 reportMacros:
-None
-[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x10b4270e0>
+[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x7e276b0e7380>
 Executing for 1 clock cycles
 sv_module_name: queue
 type of queue: <class 'pyslang.DefinitionSymbol'>
-getKindString: fmodule
 instanceCount of a module: 2
 init run sv
+[count_conditionals_sv] defaultNetType: Symbol(SymbolKind.NetType, "wire")
+[count_conditionals_sv] definitionKind: DefinitionKind.Module
+[count_conditionals_sv] decalredType: None
+[count_conditionals_sv] declaringDefinition: None
+[count_conditionals_sv] hierarchicalPath: queue
+[count_conditionals_sv] kind : SymbolKind.Definition
+[count_conditionals_sv] articleKind: <bound method PyCapsule.getArticleKindString of DefinitionSymbol("queue")>
+[count_conditionals_sv] queue syntax member : 
+    
+    reg [31:0] contents = 0;
+    reg [1:0] in_use = 0;
+    always @(posedge clk) begin
+        if (write_en) begin
+            contents <= write_data;
+            in_use <= 1;
+        end
+        if (read_en) begin
+            in_use <= 0;
+        end
+    end
+    assign read_data = (read_en) ? contents : 0;
+    assign is_empty = in_use[0];
+    assign is_full = ~is_empty;
+[count_conditionals_sv] next_sibling: None
 module_count_sv:
 name: module
 sv_module_name: top
 type of top: <class 'pyslang.DefinitionSymbol'>
-getKindString: fmodule
 instanceCount of a module: 0
 init run sv
+[count_conditionals_sv] defaultNetType: Symbol(SymbolKind.NetType, "wire")
+[count_conditionals_sv] definitionKind: DefinitionKind.Module
+[count_conditionals_sv] decalredType: None
+[count_conditionals_sv] declaringDefinition: None
+[count_conditionals_sv] hierarchicalPath: top
+[count_conditionals_sv] kind : SymbolKind.Definition
+[count_conditionals_sv] articleKind: <bound method PyCapsule.getArticleKindString of DefinitionSymbol("top")>
+[count_conditionals_sv] top syntax member : 
+    wire [31:0] data;
+    wire irdy, trdy;
+    wire q1_is_empty, q1_is_full;
+    wire q2_is_empty, q2_is_full;
+    queue q1(.clk(clk),
+             .write_data(i_data),
+             .write_en(i_irdy), .read_en(trdy),
+             .read_data(data),
+             .is_empty(q1_is_empty), .is_full(q1_is_full));
+    // Handshake signals
+    assign irdy = ~q1_is_empty;
+    assign trdy = ~q2_is_full;
+    assign i_trdy = ~q1_is_full;
+    assign o_irdy = ~q2_is_empty;
+    queue q2(.clk(clk),
+             .write_data(data),
+             .write_en(irdy), .read_en(o_trdy),
+             .read_data(o_data),
+             .is_empty(q2_is_empty), .is_full(q2_is_full));
+[count_conditionals_sv] next_sibling: None
 module_count_sv:
 name: module
-Branch points explored: 0
+[execute_sv]Branch points explored: 0
 Total paths: 1
 ------------------------
 initializing state
 params: set()
 ports: set()
-merging states..e
+merging states..
 Visiting symbol: queue of kind SymbolKind.Definition
-Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x10b429ef0>
+Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x7e276ab5cbb0>
 Visiting symbol: top of kind SymbolKind.Definition
-Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x10b641470>
+Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x7e276ab5cbb0>
 symbol_visitor branches:0
 symbol_visitor paths:0
-Elapsed time 0.014586000000000043
-5413bqueuht199999999999ce4147 queue lexicalPath: queue
-queue  syntax: 
-module queue (
-    input clk, 
-    input [31:0] write_data,
-    input wr7088e0656999999999975
+Elapsed time 0.015322879000000178
