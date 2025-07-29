@@ -662,10 +662,10 @@ class ExecutionEngine:
                 for j in range(len(paths[i])):
                     manager.config[manager.names_list[j]] = paths[i][j]
     
-    def visitSlangModule(self, module: Symbol) -> VisitAction:
-        act = VisitAction()
-
-
+    #def visitSlangModule(self, module: Symbol) -> VisitAction:
+    #    act = VisitAction()
+#
+#
     def execute_sv(self, visitor, modules, manager: Optional[ExecutionManager], num_cycles: int) -> None:
         """Drives symbolic execution for SystemVerilog designs."""
         # modules => List of DefinitionSymbol
@@ -829,6 +829,7 @@ class ExecutionEngine:
                 manager.curr_module = module_name
                 # actually want to terminate this part after the decl and comb part
                 #compilation.getRoot().visit(my_visitor_for_symbol.visit)
+                print(f"module name: {type(modules_dict[module_name])}")
                 visitor.dfs(modules_dict[module_name])
                 #self.search_strategy.visit_module(manager, state, ast, modules_dict)
                 

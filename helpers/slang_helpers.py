@@ -528,6 +528,7 @@ class SymbolicDFS:
 
     def dfs(self, symbol):
         if not isinstance(symbol, ps.Symbol):
+            print(f"not a symbol, but {type(symbol)}")
             return
 
         if symbol is None or symbol in self.visited:
