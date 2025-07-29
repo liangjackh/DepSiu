@@ -56,7 +56,20 @@ def showVersion():
     print(VERSION)
     print(USAGE)
     sys.exit()
-    
+
+
+class Visitor_instance:
+    def __init__(self):
+        self.count_proceduralBlockSymbol = 0
+        self.count_definitionsymbol = 0
+    def visit(self, node: Node):
+        """Visit a node and increment the count."""
+        print(f"[visitor] node type: {type(node)}, kind: {node.kind}")
+        if isinstance(node, ps.DefinitionSymbol):
+            self.count_definitionsymbol += 1
+        return ps.VisitAction.Advance
+
+
 def main():
     """Entrypoint of the program."""
     engine: ExecutionEngine = ExecutionEngine()
@@ -154,10 +167,22 @@ def main():
 
         printer = ps.SyntaxPrinter()
         trees = driver.syntaxTrees
+        print(f"trees amount: {len(trees)}")
         for tree in trees:
-            printer.print(tree)
+            print(f"type of tree: {type(tree)}")
         print(f"[print tree end] ............................")
         root = trees[0].root
+        root =compilation.getRoot()
+        print((f"root name: {root.name} type: {type(root)}"))
+        for instance in root.topInstances: # list[ps.InstanceSymbol]
+            print(f"instance: {instance.name} type: {type(instance)}")
+            print(f"        body: {instance.body}")
+            print(f"        body type: {type(instance.body)}")
+            print(f"        array name: {instance.arrayName}")
+            print(f"        array path: {instance.arrayPath}")
+
+
+        v_ins = Visitor_instance()
         for item in trees:
             print(f"syntaxTreeNode: {item}")
         modules =  compilation.getDefinitions() # list[DefinitionSymbol]
@@ -167,6 +192,9 @@ def main():
             print(f"{item.name} hierachicalPath: {item.hierarchicalPath}")
             print(f"{item.name} lexicalPath: {item.lexicalPath}")
             print(f"{item.name}  syntax type: {type(item.syntax)}")
+            item.visit(v_ins.visit)
+            print(f"proceduralBlockSymbol count: {v_ins.count_proceduralBlockSymbol}")
+            print(f"definitionsymbol count: {v_ins.count_definitionsymbol}")
         #always_blocks = compilation.getProceduralBlocks()
         #for item in always_blocks:
         #    print(f"always block: {type(item)}")

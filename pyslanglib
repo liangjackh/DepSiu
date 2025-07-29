@@ -10515,7 +10515,7 @@ class SyntaxKind:
     AlwaysCombBlock: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AlwaysCombBlock: 9>
     AlwaysFFBlock: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AlwaysFFBlock: 10>
     AlwaysLatchBlock: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AlwaysLatchBlock: 11>
-    AndAssignmentExpression: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AndAssignmentExpression: 12>
+    AndAssignmentExpression: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AndmemberAssignmentExpression: 12>
     AndPropertyExpr: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AndPropertyExpr: 13>
     AndSequenceExpr: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AndSequenceExpr: 14>
     AnonymousProgram: typing.ClassVar[SyntaxKind]  # value = <SyntaxKind.AnonymousProgram: 15>

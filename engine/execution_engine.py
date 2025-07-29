@@ -23,6 +23,7 @@ import sys
 from copy import deepcopy
 from helpers.slang_helpers import get_module_name, init_state
 from pyslang import  DefinitionSymbol, VisitAction
+#import pyslang
 
 CONDITIONALS = (IfStatement, ForStatement, WhileStatement, CaseStatement)
 
@@ -399,14 +400,21 @@ class ExecutionEngine:
 
     def count_conditionals_sv(self, m: ExecutionManager, module) -> None: # DefinitionSymbol
         """Count control flow paths for PySlang AST."""
-        print(f"[count_conditionals_sv] defaultNetType: {module.defaultNetType}")
+        print(f"[count_conditionals_sv] {module.name} defaultNetType: {module.defaultNetType}")
         print(f"[count_conditionals_sv] definitionKind: {module.definitionKind}")
+        print(f"[count_conditionals_sv] definitionKind.value: {module.definitionKind.value}")
         print(f"[count_conditionals_sv] decalredType: {module.declaredType}")
         print(f"[count_conditionals_sv] declaringDefinition: {module.declaringDefinition}")
         print(f"[count_conditionals_sv] hierarchicalPath: {module.hierarchicalPath}")
         print(f"[count_conditionals_sv] kind : {module.kind}")
         print(f"[count_conditionals_sv] articleKind: {module.getArticleKindString}")
-        print(f"[count_conditionals_sv] {module.name} syntax member : {module.syntax.members}")
+        print(f"[count_conditionals_sv] {module.name} syntax kind : {module.syntax.__getitem__}")
+        #print(f"----------test members begins-----------")
+        #for name, member in module.definitionKind.__members__.items():
+        #    print(f"name, member, member.value: {name}, {type(member)}, {member.value}")
+
+        #print(f"----------test members ends  -----------")
+
         next_sibling = module.nextSibling
         if next_sibling is not None:
             print(f"[count_conditionals_sv] next_sibling: {next_sibling.name}")
@@ -664,8 +672,7 @@ class ExecutionEngine:
     
     #def visitSlangModule(self, module: Symbol) -> VisitAction:
     #    act = VisitAction()
-#
-#
+
     def execute_sv(self, visitor, modules, manager: Optional[ExecutionManager], num_cycles: int) -> None:
         """Drives symbolic execution for SystemVerilog designs."""
         # modules => List of DefinitionSymbol
@@ -828,7 +835,7 @@ class ExecutionEngine:
             for module_name in manager.names_list:
                 manager.curr_module = module_name
                 # actually want to terminate this part after the decl and comb part
-                #compilation.getRoot().visit(my_visitor_for_symbol.visit)
+                # TODO:compilation.getRoot().visit(my_visitor_for_symbol.visit)
                 print(f"module name: {type(modules_dict[module_name])}")
                 visitor.dfs(modules_dict[module_name])
                 #self.search_strategy.visit_module(manager, state, ast, modules_dict)

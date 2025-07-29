@@ -187,10 +187,10 @@ class SlangSymbolVisitor:
 
     def visit(self, symbol):
         if not isinstance(symbol, ps.Symbol):
-            print(f"module: {symbol} is not a Symbol, skipping.")
+            print(f"[SlangSymbolVisitor.visit]module: {symbol} is not a Symbol, skipping.")
             return
-        print(f"Visiting symbol: {symbol.name} of kind {symbol.kind}")
-        print(f"Symbol ID: {self.symbol_id}, Source Range: {symbol.syntax.sourceRange if hasattr(symbol.syntax, 'sourceRange') else 'N/A'}")
+        print(f"[SlangSymbolVisitor.visit]Visiting symbol: {symbol.name} of kind {symbol.kind}")
+        print(f"[SlangSymbolVisitor.visit]Symbol ID: {self.symbol_id}, Source Range: {symbol.syntax.sourceRange if hasattr(symbol.syntax, 'sourceRange') else 'N/A'}")
         if symbol.kind == ps.SymbolKind.Unknown:
             # unknown symbol
             ...
