@@ -18,7 +18,7 @@ __slang_major__ 8
 __slang_minor__ 1
 parse name: <class 'pyslang.IdentifierNameSyntax'>
 configRoot: None
-defaultLibrary: <pyslang.SourceLibrary object at 0x734d672c8ef0>
+defaultLibrary: <pyslang.SourceLibrary object at 0x70496fef10f0>
 trees amount: 1
 type of tree: <class 'pyslang.SyntaxTree'>
 [print tree end] ............................
@@ -28,7 +28,7 @@ instance: top type: <class 'pyslang.InstanceSymbol'>
         body type: <class 'pyslang.InstanceBodySymbol'>
         array name: top
         array path: []
-syntaxTreeNode: <pyslang.SyntaxTree object at 0x734d672c8f30>
+syntaxTreeNode: <pyslang.SyntaxTree object at 0x704970032cb0>
 modules type: <class 'list'>
 module type: <class 'pyslang.DefinitionSymbol'>
 queue hierachicalPath: queue
@@ -47,7 +47,7 @@ definitionsymbol count: 2
 modules:[DefinitionSymbol("queue"), DefinitionSymbol("top")]
 successful_compilation: True
 reportMacros:
-[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x734d67d5b470>
+[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x704970351730>
 Executing for 1 clock cycles
 sv_module_name: queue
 type of queue: <class 'pyslang.DefinitionSymbol'>
@@ -93,9 +93,9 @@ not a symbol, but <class 'str'>
 module name: <class 'str'>
 not a symbol, but <class 'str'>
 [SlangSymbolVisitor.visit]Visiting symbol: queue of kind SymbolKind.Definition
-[SlangSymbolVisitor.visit]Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x734d672c9ef0>
+[SlangSymbolVisitor.visit]Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x70496fef3130>
 [SlangSymbolVisitor.visit]Visiting symbol: top of kind SymbolKind.Definition
-[SlangSymbolVisitor.visit]Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x734d672cb3f0>
+[SlangSymbolVisitor.visit]Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x70496fef3470>
 symbol_visitor branches:0
 symbol_visitor paths:0
-Elapsed time 0.0178071580000001
+Elapsed time 0.01319670499999992

@@ -5484,7 +5484,7 @@ class InstanceSymbol(InstanceSymbolBase):
     @typing.overload
     def getPortConnection(self, port: MultiPortSymbol) -> PortConnection:
         ...
-    @typing.overload
+    @typing.overloaj
     def getPortConnection(self, port: InterfacePortSymbol) -> PortConnection:
         ...
     @property
