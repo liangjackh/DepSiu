@@ -22,39 +22,56 @@ class DetailedSystemVerilogParser:
         """解析SystemVerilog文件"""
         print(f"=== 开始解析文件: {verilog_file} ===")
         
-        # 1. 创建Driver并解析
-        driver = ps.Driver()
-        driver.addStandardArgs()
-        driver.processCommandFiles(verilog_file, True, True)
-        driver.processOptions()
-        driver.parseAllSources()
-        
-        # 2. 创建编译单元
-        compilation = driver.createCompilation()
-        
-        # 3. 检查编译是否成功
-        if not driver.reportCompilation(compilation, True):
-            print("编译失败!")
+        try:
+            # 1. 创建Driver并解析
+            driver = ps.Driver()
+            driver.addStandardArgs()
+            
+            # 处理文件列表或单个文件
+            if verilog_file.endswith('.txt') or verilog_file.endswith('.F'):
+                # 文件列表格式
+                driver.processCommandFiles(verilog_file, True, True)
+            else:
+                # 单个文件
+                driver.addSourceText(verilog_file)
+                
+            driver.processOptions()
+            driver.parseAllSources()
+            
+            # 2. 创建编译单元
+            compilation = driver.createCompilation()
+            
+            # 3. 检查编译是否成功
+            success = driver.reportCompilation(compilation, False)  # 不输出详细信息
+            if not success:
+                print("编译失败!")
+                return False
+                
+            print(f"编译成功!")
+            
+            # 4. 获取根符号和所有模块定义
+            root = compilation.getRoot()
+            definitions = compilation.getDefinitions()
+            
+            print(f"找到 {len(definitions)} 个模块定义")
+            
+            # 5. 解析每个模块
+            for definition in definitions:
+                if definition.kind == ps.SymbolKind.Definition:
+                    self.parse_module(definition)
+                
+            # 6. 解析顶层实例
+            print(f"\n=== 顶层实例 ===")
+            for instance in root.topInstances:
+                self.parse_instance(instance)
+                
+            return True
+            
+        except Exception as e:
+            print(f"解析过程中出现错误: {e}")
+            import traceback
+            traceback.print_exc()
             return False
-            
-        print(f"编译成功!")
-        
-        # 4. 获取根符号和所有模块定义
-        root = compilation.getRoot()
-        definitions = compilation.getDefinitions()
-        
-        print(f"找到 {len(definitions)} 个模块定义")
-        
-        # 5. 解析每个模块
-        for definition in definitions:
-            self.parse_module(definition)
-            
-        # 6. 解析顶层实例
-        print(f"\n=== 顶层实例 ===")
-        for instance in root.topInstances:
-            self.parse_instance(instance)
-            
-        return True
     
     def parse_module(self, module_def):
         """解析模块定义"""
@@ -75,11 +92,20 @@ class DetailedSystemVerilogParser:
             'continuous_assigns': []
         }
         
-        # 遍历模块的所有成员
-        print(f"模块成员数量: {len(list(module_def.members))}")
-        
-        for member in module_def.members:
-            self.parse_module_member(member, module_info)
+        # 遍历模块的所有成员 - 使用正确的API
+        try:
+            # 对于DefinitionSymbol，我们需要遍历其body中的成员
+            if hasattr(module_def, 'body') and module_def.body:
+                members = list(module_def.body.members)
+                print(f"模块成员数量: {len(members)}")
+                
+                for member in members:
+                    self.parse_module_member(member, module_info)
+            else:
+                print("模块没有body或members")
+                
+        except Exception as e:
+            print(f"遍历模块成员时出错: {e}")
             
         self.modules[module_def.name] = module_info
         
@@ -137,30 +163,56 @@ class DetailedSystemVerilogParser:
     def parse_instance(self, instance):
         """解析模块实例"""
         print(f"  实例: {instance.name}")
-        print(f"    定义: {instance.body.name if hasattr(instance, 'body') and instance.body else 'unknown'}")
+        definition_name = "unknown"
+        
+        try:
+            if hasattr(instance, 'body') and instance.body:
+                definition_name = instance.body.name
+            elif hasattr(instance, 'definition') and instance.definition:
+                definition_name = instance.definition.name
+        except:
+            pass
+            
+        print(f"    定义: {definition_name}")
         
         instance_info = {
             'name': instance.name,
-            'definition': instance.body.name if hasattr(instance, 'body') and instance.body else 'unknown',
+            'definition': definition_name,
             'connections': []
         }
         
         # 解析端口连接
-        if hasattr(instance, 'body') and instance.body:
-            for connection in instance.body.portConnections:
-                conn_info = self.parse_port_connection(connection)
-                instance_info['connections'].append(conn_info)
+        try:
+            if hasattr(instance, 'body') and instance.body and hasattr(instance.body, 'portConnections'):
+                for connection in instance.body.portConnections:
+                    conn_info = self.parse_port_connection(connection)
+                    instance_info['connections'].append(conn_info)
+        except Exception as e:
+            print(f"    端口连接解析失败: {e}")
                 
         return instance_info
     
     def parse_port_connection(self, connection):
         """解析端口连接"""
-        conn_info = {
-            'port': connection.port.name if hasattr(connection, 'port') else 'unknown',
-            'expression': self.parse_expression(connection.expression) if hasattr(connection, 'expression') else 'unconnected'
-        }
-        print(f"      连接: .{conn_info['port']}({conn_info['expression']})")
-        return conn_info
+        try:
+            port_name = "unknown"
+            expr_text = "unconnected"
+            
+            if hasattr(connection, 'port') and connection.port:
+                port_name = connection.port.name
+                
+            if hasattr(connection, 'expression') and connection.expression:
+                expr_text = self.parse_expression(connection.expression)
+                
+            conn_info = {
+                'port': port_name,
+                'expression': expr_text
+            }
+            print(f"      连接: .{conn_info['port']}({conn_info['expression']})")
+            return conn_info
+        except Exception as e:
+            print(f"      端口连接解析错误: {e}")
+            return {'port': 'error', 'expression': 'error'}
     
     def parse_procedural_block(self, block):
         """解析过程块(always, initial等)"""
@@ -181,13 +233,26 @@ class DetailedSystemVerilogParser:
         """解析连续赋值语句"""
         print(f"  连续赋值")
         
-        assign_info = {
-            'left': self.parse_expression(assign.assignment.left) if hasattr(assign, 'assignment') else 'unknown',
-            'right': self.parse_expression(assign.assignment.right) if hasattr(assign, 'assignment') else 'unknown'
-        }
-        
-        print(f"    {assign_info['left']} = {assign_info['right']}")
-        return assign_info
+        try:
+            left_expr = "unknown"
+            right_expr = "unknown"
+            
+            if hasattr(assign, 'assignment') and assign.assignment:
+                if hasattr(assign.assignment, 'left'):
+                    left_expr = self.parse_expression(assign.assignment.left)
+                if hasattr(assign.assignment, 'right'):
+                    right_expr = self.parse_expression(assign.assignment.right)
+            
+            assign_info = {
+                'left': left_expr,
+                'right': right_expr
+            }
+            
+            print(f"    {assign_info['left']} = {assign_info['right']}")
+            return assign_info
+        except Exception as e:
+            print(f"    连续赋值解析错误: {e}")
+            return {'left': 'error', 'right': 'error'}
     
     def parse_statement(self, stmt):
         """递归解析语句"""
