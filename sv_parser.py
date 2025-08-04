@@ -19,6 +19,7 @@ class ModuleInfo:
     always_blocks: List[Dict[str, Any]]
     assignments: List[Dict[str, Any]]
     control_flows: List[Dict[str, Any]]
+    assertions: List[Dict[str, Any]]
 
 
 @dataclass
@@ -46,16 +47,31 @@ class ControlFlowInfo:
     location: Optional[str] = None
 
 
+@dataclass
+class AssertInfo:
+    """断言语句信息"""
+    assert_type: str  # assert, assume, cover, etc.
+    condition: str
+    signals: List[str]  # 断言中涉及的信号
+    location: Optional[str] = None
+
+
 class SystemVerilogParser:
     """SystemVerilog解析器"""
     
     def __init__(self):
         self.modules = []
         self.current_module = None
+        self.source_manager = None
+        self.source_text = None  # 保存源码文本用于行号计算
         
     def parse_file(self, filename: str) -> List[ModuleInfo]:
         """解析SystemVerilog文件"""
         try:
+            # 读取源码文本
+            with open(filename, 'r', encoding='utf-8') as f:
+                self.source_text = f.read()
+            
             # 创建语法树
             tree = SyntaxTree.fromFile(filename)
             if len(tree.diagnostics) > 0:
@@ -66,6 +82,10 @@ class SystemVerilogParser:
             # 创建编译单元
             compilation = Compilation()
             compilation.addSyntaxTree(tree)
+            print(f"compilation type: {type(compilation)}")
+            
+            # 保存源码管理器用于位置信息转换
+            self.source_manager = compilation.sourceManager
             
             # 解析所有模块
             self._parse_modules(compilation)
@@ -79,6 +99,9 @@ class SystemVerilogParser:
     def parse_text(self, text: str) -> List[ModuleInfo]:
         """解析SystemVerilog文本"""
         try:
+            # 保存源码文本
+            self.source_text = text
+            
             # 创建语法树
             tree = SyntaxTree.fromText(text)
             if len(tree.diagnostics) > 0:
@@ -89,6 +112,9 @@ class SystemVerilogParser:
             # 创建编译单元
             compilation = Compilation()
             compilation.addSyntaxTree(tree)
+            
+            # 保存源码管理器用于位置信息转换
+            self.source_manager = compilation.sourceManager
             
             # 解析所有模块
             self._parse_modules(compilation)
@@ -106,7 +132,8 @@ class SystemVerilogParser:
         # 获取顶层实例
         top_instances = compilation.getRoot().topInstances
         
-        for instance in top_instances:
+        for instance in top_instances: # instanceSymbol
+            print(f"解析模块 from top: {instance.name}, type: {type(instance)}")
             module_info = self._parse_module(instance)
             if module_info:
                 self.modules.append(module_info)
@@ -131,13 +158,17 @@ class SystemVerilogParser:
             # 获取控制流语句
             control_flows = self._extract_control_flows(instance)
             
+            # 获取断言语句
+            assertions = self._extract_assertions(instance)
+            
             return ModuleInfo(
                 name=module_name,
                 ports=ports,
                 instances=instances,
                 always_blocks=always_blocks,
                 assignments=assignments,
-                control_flows=control_flows
+                control_flows=control_flows,
+                assertions=assertions
             )
             
         except Exception as e:
@@ -193,10 +224,16 @@ class SystemVerilogParser:
     
     def _parse_always_block(self, block) -> Optional[Dict[str, Any]]:
         """解析always块"""
+        print(f"[DEBUG] analyzing always_block: {block.name}, type: {type(block)}")
         try:
             sensitivity_list = []
             block_type = "unknown"
             statements = []
+
+            if hasattr(block, 'body'):
+                print(f"[DEBUG] always_block {block.kind} body: {block.body}, type: {type(block.body)}")
+            else:
+                print(f"[DEBUG] always_block {block.kind} has no body")
             
             # 获取敏感列表
             if hasattr(block, 'body') and isinstance(block.body, TimedStatement):
@@ -400,14 +437,218 @@ class SystemVerilogParser:
             
         return control_flows
     
+    def _extract_assertions(self, instance) -> List[Dict[str, Any]]:
+        """提取断言语句"""
+        assertions = []
+        
+        class AssertionVisitor:
+            def __init__(self):
+                self.assertions = []
+            
+            def __call__(self, obj):
+                if isinstance(obj, Statement):
+                    stmt_kind = str(obj.kind)
+                    
+                    if 'Assert' in stmt_kind or 'Assume' in stmt_kind or 'Cover' in stmt_kind:
+                        assert_type = stmt_kind.replace('StatementKind.', '').lower()
+                        condition_str = None
+                        signals = []
+                        
+                        try:
+                            # 处理不同类型的断言
+                            if 'Immediate' in stmt_kind:
+                                # 立即断言 (assert, assume, cover)
+                                if hasattr(obj, 'cond'):
+                                    condition_str = str(obj.cond)
+                                    signals = self._extract_signals_from_expression(obj.cond)
+                                elif hasattr(obj, 'expr'):
+                                    condition_str = str(obj.expr)
+                                    signals = self._extract_signals_from_expression(obj.expr)
+                            elif 'Concurrent' in stmt_kind:
+                                # 并发断言 (property assertions)
+                                if hasattr(obj, 'propertySpec') and obj.propertySpec:
+                                    condition_str = str(obj.propertySpec)
+                                    # 尝试从property spec中提取信号
+                                    signals = self._extract_signals_from_expression(obj.propertySpec)
+                                elif hasattr(obj, 'body') and obj.body:
+                                    condition_str = str(obj.body)
+                                    signals = self._extract_signals_from_expression(obj.body)
+                        except Exception as e:
+                            print(f"解析断言条件时出错: {e}")
+                            condition_str = None
+                        
+                        assert_info = {
+                            'type': assert_type,
+                            'condition': condition_str,
+                            'signals': signals,
+                            'location': self._get_location(obj)
+                        }
+                        self.assertions.append(assert_info)
+        
+        visitor = AssertionVisitor()
+        visitor._get_location = self._get_location
+        visitor._extract_signals_from_expression = self._extract_signals_from_expression
+        
+        try:
+            instance.visit(visitor)
+            assertions = visitor.assertions
+        except Exception as e:
+            print(f"提取断言时出错: {e}")
+            pass
+            
+        return assertions
+    
+    def _extract_signals_from_expression(self, expr) -> List[str]:
+        """从表达式中提取信号名称"""
+        signals = []
+        
+        class SignalExtractor:
+            def __init__(self):
+                self.signals = set()
+            
+            def __call__(self, obj):
+                if isinstance(obj, NamedValueExpression):
+                    symbol_ref = obj.getSymbolReference()
+                    if symbol_ref and hasattr(symbol_ref, 'name'):
+                        self.signals.add(symbol_ref.name)
+                elif hasattr(obj, 'symbol') and hasattr(obj.symbol, 'name'):
+                    self.signals.add(obj.symbol.name)
+        
+        try:
+            extractor = SignalExtractor()
+            
+            # 处理不同类型的表达式
+            if hasattr(expr, 'visit'):
+                expr.visit(extractor)
+            elif hasattr(expr, 'expr') and hasattr(expr.expr, 'visit'):
+                # 对于ClockingAssertionExpr等复合表达式，递归访问子表达式
+                expr.expr.visit(extractor)
+            elif hasattr(expr, 'body') and hasattr(expr.body, 'visit'):
+                expr.body.visit(extractor)
+            else:
+                # 尝试直接从字符串表示中提取信号名（粗略方法）
+                expr_str = str(expr)
+                import re
+                # 简单的正则表达式匹配可能的信号名
+                potential_signals = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', expr_str)
+                for sig in potential_signals:
+                    # 过滤掉常见的关键字、操作符和类名
+                    if sig not in ['posedge', 'negedge', 'disable', 'iff', 'property', 'assert', 'assume', 'cover', 'past',
+                                   'AssertionExpr', 'AssertionExprKind', 'Clocking', 'Expression', 'ExpressionKind', 'BinaryOp']:
+                        extractor.signals.add(sig)
+            
+            signals = list(extractor.signals)
+        except Exception as e:
+            print(f"从表达式提取信号时出错: {e}")
+            # 最后的备用方案：从字符串表示中提取
+            try:
+                expr_str = str(expr)
+                import re
+                potential_signals = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', expr_str)
+                signals = [sig for sig in potential_signals 
+                          if sig not in ['posedge', 'negedge', 'disable', 'iff', 'property', 'assert', 'assume', 'cover', 'past',
+                                         'AssertionExpr', 'AssertionExprKind', 'Clocking', 'Expression', 'ExpressionKind', 'BinaryOp']]
+                signals = list(set(signals))  # 去重
+            except:
+                pass
+            
+        return signals
+    
     def _get_location(self, obj) -> Optional[str]:
         """获取对象在源码中的位置"""
         try:
-            if hasattr(obj, 'location'):
-                return str(obj.location)
-        except:
+            # 尝试多种可能的位置属性
+            if hasattr(obj, 'location') and obj.location:
+                loc = obj.location
+                return self._format_location(loc)
+            elif hasattr(obj, 'sourceRange') and obj.sourceRange:
+                return self._format_location(obj.sourceRange)
+            elif hasattr(obj, 'syntax') and obj.syntax and hasattr(obj.syntax, 'sourceRange'):
+                return self._format_location(obj.syntax.sourceRange)
+            elif hasattr(obj, 'getLocation'):
+                loc = obj.getLocation()
+                if loc:
+                    return self._format_location(loc)
+            elif hasattr(obj, 'range'):
+                return self._format_location(obj.range)
+        except Exception as e:
+            print(f"获取位置信息时出错: {e}")
             pass
         return None
+    
+    def _format_location(self, loc) -> str:
+        """格式化位置信息"""
+        try:
+            # 尝试使用SourceManager转换位置信息
+            if self.source_manager and hasattr(loc, 'start'):
+                try:
+                    # 对于SourceRange，获取开始位置
+                    start_loc = loc.start
+                    if hasattr(start_loc, 'buffer') and hasattr(start_loc, 'offset'):
+                        # 尝试从源码管理器获取行列信息
+                        line_col = self.source_manager.getLineColumn(start_loc)
+                        if line_col:
+                            line, col = line_col
+                            return f"行 {line}:{col}"
+                except:
+                    pass
+            
+            # 尝试获取行列信息
+            if hasattr(loc, 'start') and hasattr(loc, 'end'):
+                start = loc.start
+                end = loc.end
+                if hasattr(start, 'line') and hasattr(start, 'column'):
+                    if hasattr(end, 'line') and hasattr(end, 'column'):
+                        return f"行 {start.line}:{start.column}-{end.line}:{end.column}"
+                    else:
+                        return f"行 {start.line}:{start.column}"
+                elif hasattr(start, 'offset'):
+                    # 尝试手动计算行号
+                    line_col = self._offset_to_line_column(start.offset)
+                    if line_col:
+                        line, col = line_col
+                        return f"行 {line}:{col}"
+                    return f"偏移 {start.offset}"
+            elif hasattr(loc, 'line') and hasattr(loc, 'column'):
+                return f"行 {loc.line}:{loc.column}"
+            elif hasattr(loc, 'offset'):
+                line_col = self._offset_to_line_column(loc.offset)
+                if line_col:
+                    line, col = line_col
+                    return f"行 {line}:{col}"
+                return f"偏移 {loc.offset}"
+            else:
+                # 如果无法提取具体信息，返回字符串表示
+                loc_str = str(loc)
+                if 'line' in loc_str.lower() or 'offset' in loc_str.lower():
+                    return loc_str
+                else:
+                    return f"位置 {loc_str}"
+        except Exception as e:
+            print(f"格式化位置信息时出错: {e}")
+            pass
+        return str(loc)
+    
+    def _offset_to_line_column(self, offset: int) -> Optional[tuple]:
+        """将字符偏移转换为行列号"""
+        if not self.source_text or offset < 0:
+            return None
+        
+        try:
+            # 计算行号
+            text_before_offset = self.source_text[:offset]
+            line = text_before_offset.count('\n') + 1
+            
+            # 计算列号
+            last_newline = text_before_offset.rfind('\n')
+            if last_newline == -1:
+                column = offset + 1
+            else:
+                column = offset - last_newline
+            
+            return (line, column)
+        except:
+            return None
     
     def print_analysis(self, modules: List[ModuleInfo]):
         """打印分析结果"""
@@ -457,6 +698,17 @@ class SystemVerilogParser:
                         print(f"  {flow['type']}: <无法显示条件>")
                 if len(module.control_flows) > 5:
                     print(f"  ... 还有 {len(module.control_flows) - 5} 个控制流语句")
+            
+            # 断言语句信息
+            if module.assertions:
+                print(f"\n断言语句 ({len(module.assertions)}):")
+                for assertion in module.assertions:
+                    try:
+                        print(f"  {assertion['type']}: {assertion['condition']}")
+                        if assertion['signals']:
+                            print(f"    涉及信号: {', '.join(assertion['signals'])}")
+                    except Exception as e:
+                        print(f"  {assertion['type']}: <无法显示断言信息>")
 
 
 def main():
