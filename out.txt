@@ -18,7 +18,7 @@ __slang_major__ 8
 __slang_minor__ 1
 parse name: <class 'pyslang.IdentifierNameSyntax'>
 configRoot: None
-defaultLibrary: <pyslang.SourceLibrary object at 0x70496fef10f0>
+defaultLibrary: <pyslang.SourceLibrary object at 0x72077a6f21b0>
 trees amount: 1
 type of tree: <class 'pyslang.SyntaxTree'>
 [print tree end] ............................
@@ -28,7 +28,7 @@ instance: top type: <class 'pyslang.InstanceSymbol'>
         body type: <class 'pyslang.InstanceBodySymbol'>
         array name: top
         array path: []
-syntaxTreeNode: <pyslang.SyntaxTree object at 0x704970032cb0>
+syntaxTreeNode: <pyslang.SyntaxTree object at 0x72077a6f21f0>
 modules type: <class 'list'>
 module type: <class 'pyslang.DefinitionSymbol'>
 queue hierachicalPath: queue
@@ -47,38 +47,85 @@ definitionsymbol count: 2
 modules:[DefinitionSymbol("queue"), DefinitionSymbol("top")]
 successful_compilation: True
 reportMacros:
-[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x704970351730>
+[main]my_visitor_for_symbol: <helpers.slang_helpers.SymbolicDFS object at 0x72077b3869f0>
 Executing for 1 clock cycles
 sv_module_name: queue
 type of queue: <class 'pyslang.DefinitionSymbol'>
 instanceCount of a module: 2
 init run sv
-[count_conditionals_sv] queue defaultNetType: Symbol(SymbolKind.NetType, "wire")
-[count_conditionals_sv] definitionKind: DefinitionKind.Module
-[count_conditionals_sv] definitionKind.value: 0
-[count_conditionals_sv] decalredType: None
-[count_conditionals_sv] declaringDefinition: None
-[count_conditionals_sv] hierarchicalPath: queue
-[count_conditionals_sv] kind : SymbolKind.Definition
-[count_conditionals_sv] articleKind: <bound method PyCapsule.getArticleKindString of DefinitionSymbol("queue")>
-[count_conditionals_sv] queue syntax kind : <bound method PyCapsule.__getitem__ of SyntaxNode(SyntaxKind.ModuleDeclaration)>
-[count_conditionals_sv] next_sibling: None
+[count_conditionals_sv] ========== Starting Analysis ==========
+[count_conditionals_sv] Module: queue
+[count_conditionals_sv] Module Type: <class 'pyslang.DefinitionSymbol'>
+[count_conditionals_sv] Initial paths: 1
+[count_conditionals_sv] Definition Kind: DefinitionKind.Module
+[count_conditionals_sv] Default Net Type: Symbol(SymbolKind.NetType, "wire")
+[count_conditionals_sv] Starting module traversal...
+[count_conditionals_sv] Visiting module syntax tree...
+[count_conditionals_sv] Looking for module items in: ModuleDeclarationSyntax
+[count_conditionals_sv] Found module members list
+[count_conditionals_sv] Found ProceduralBlockSyntax
+[count_conditionals_sv] Visiting procedural block statement: TimingControlStatementSyntax
+[count_conditionals_sv] Found ConditionalStatement #1
+[count_conditionals_sv]   Paths: 1 -> 2
+[count_conditionals_sv] Found ConditionalStatement #2
+[count_conditionals_sv]   Paths: 2 -> 4
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Found ConditionalExpression (ternary) #1
+[count_conditionals_sv]   Paths: 4 -> 8
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Looking for module body...
+[count_conditionals_sv] Module traversal completed
+[count_conditionals_sv] ========== Analysis Summary ==========
+[count_conditionals_sv] Module: queue
+[count_conditionals_sv] Total nodes visited: 1
+[count_conditionals_sv] Node types seen: ['DefinitionSymbol']
+[count_conditionals_sv] Procedural blocks found: 1
+[count_conditionals_sv] Control flow breakdown:
+[count_conditionals_sv]   - If statements: 2
+[count_conditionals_sv]   - Case statements: 0
+[count_conditionals_sv]   - Loop statements: 0
+[count_conditionals_sv]   - Ternary operators: 1
+[count_conditionals_sv]   - Total conditionals: 3
+[count_conditionals_sv] Path count: 1 -> 8
+[count_conditionals_sv] ==========================================
+init_runs, queue has queue.num_paths = 8
 module_count_sv:
 name: module
 sv_module_name: top
 type of top: <class 'pyslang.DefinitionSymbol'>
 instanceCount of a module: 0
 init run sv
-[count_conditionals_sv] top defaultNetType: Symbol(SymbolKind.NetType, "wire")
-[count_conditionals_sv] definitionKind: DefinitionKind.Module
-[count_conditionals_sv] definitionKind.value: 0
-[count_conditionals_sv] decalredType: None
-[count_conditionals_sv] declaringDefinition: None
-[count_conditionals_sv] hierarchicalPath: top
-[count_conditionals_sv] kind : SymbolKind.Definition
-[count_conditionals_sv] articleKind: <bound method PyCapsule.getArticleKindString of DefinitionSymbol("top")>
-[count_conditionals_sv] top syntax kind : <bound method PyCapsule.__getitem__ of SyntaxNode(SyntaxKind.ModuleDeclaration)>
-[count_conditionals_sv] next_sibling: None
+[count_conditionals_sv] ========== Starting Analysis ==========
+[count_conditionals_sv] Module: top
+[count_conditionals_sv] Module Type: <class 'pyslang.DefinitionSymbol'>
+[count_conditionals_sv] Initial paths: 1
+[count_conditionals_sv] Definition Kind: DefinitionKind.Module
+[count_conditionals_sv] Default Net Type: Symbol(SymbolKind.NetType, "wire")
+[count_conditionals_sv] Starting module traversal...
+[count_conditionals_sv] Visiting module syntax tree...
+[count_conditionals_sv] Looking for module items in: ModuleDeclarationSyntax
+[count_conditionals_sv] Found module members list
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions
+[count_conditionals_sv] Looking for module body...
+[count_conditionals_sv] Module traversal completed
+[count_conditionals_sv] ========== Analysis Summary ==========
+[count_conditionals_sv] Module: top
+[count_conditionals_sv] Total nodes visited: 1
+[count_conditionals_sv] Node types seen: ['DefinitionSymbol']
+[count_conditionals_sv] Procedural blocks found: 0
+[count_conditionals_sv] Control flow breakdown:
+[count_conditionals_sv]   - If statements: 0
+[count_conditionals_sv]   - Case statements: 0
+[count_conditionals_sv]   - Loop statements: 0
+[count_conditionals_sv]   - Ternary operators: 0
+[count_conditionals_sv]   - Total conditionals: 0
+[count_conditionals_sv] Path count: 1 -> 1
+[count_conditionals_sv] ==========================================
+init_runs, top has top.num_paths = 1
 module_count_sv:
 name: module
 [execute_sv]Branch points explored: 0
@@ -93,9 +140,9 @@ not a symbol, but <class 'str'>
 module name: <class 'str'>
 not a symbol, but <class 'str'>
 [SlangSymbolVisitor.visit]Visiting symbol: queue of kind SymbolKind.Definition
-[SlangSymbolVisitor.visit]Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x70496fef3130>
+[SlangSymbolVisitor.visit]Symbol ID: 0, Source Range: <pyslang.SourceRange object at 0x72077b1cbbb0>
 [SlangSymbolVisitor.visit]Visiting symbol: top of kind SymbolKind.Definition
-[SlangSymbolVisitor.visit]Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x70496fef3470>
+[SlangSymbolVisitor.visit]Symbol ID: 1, Source Range: <pyslang.SourceRange object at 0x72077a704970>
 symbol_visitor branches:0
 symbol_visitor paths:0
-Elapsed time 0.01319670499999992
+Elapsed time 0.0208044639999998

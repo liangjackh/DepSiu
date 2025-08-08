@@ -400,48 +400,364 @@ class ExecutionEngine:
 
     def count_conditionals_sv(self, m: ExecutionManager, module) -> None: # DefinitionSymbol
         """Count control flow paths for PySlang AST."""
-        print(f"[count_conditionals_sv] {module.name} defaultNetType: {module.defaultNetType}")
-        print(f"[count_conditionals_sv] definitionKind: {module.definitionKind}")
-        print(f"[count_conditionals_sv] definitionKind.value: {module.definitionKind.value}")
-        print(f"[count_conditionals_sv] decalredType: {module.declaredType}")
-        print(f"[count_conditionals_sv] declaringDefinition: {module.declaringDefinition}")
-        print(f"[count_conditionals_sv] hierarchicalPath: {module.hierarchicalPath}")
-        print(f"[count_conditionals_sv] kind : {module.kind}")
-        print(f"[count_conditionals_sv] articleKind: {module.getArticleKindString}")
-        print(f"[count_conditionals_sv] {module.name} syntax kind : {module.syntax.__getitem__}")
-        #print(f"----------test members begins-----------")
-        #for name, member in module.definitionKind.__members__.items():
-        #    print(f"name, member, member.value: {name}, {type(member)}, {member.value}")
-
-        #print(f"----------test members ends  -----------")
-
-        next_sibling = module.nextSibling
-        if next_sibling is not None:
-            print(f"[count_conditionals_sv] next_sibling: {next_sibling.name}")
-        else:
-            print("[count_conditionals_sv] next_sibling: None")
-
-        #if isinstance(module., pyslang.ast.BlockStatement):
-        #    stmts = items.items
-        #else:
-        #    stmts = items if isinstance(items, list) else [items]
-
-        #for item in stmts:
-        #    if isinstance(item, pyslang.ast.IfStatement):
-        #        m.num_paths *= 2
-        #        self.count_conditionals_sv(m, item.true_stmt)
-        #        self.count_conditionals_sv(m, item.false_stmt)
-        #    elif isinstance(item, pyslang.ast.CaseStatement):
-        #        for case in item.items:
-        #            m.num_paths *= 2
-        #            self.count_conditionals_sv(m, case.stmt)
-        #    elif isinstance(item, pyslang.ast.LoopStatement):
-        #        m.num_paths *= 2
-        #        self.count_conditionals_sv(m, item.stmt)
-        #    elif isinstance(item, pyslang.ast.BlockStatement):
-        #        self.count_conditionals_sv(m, item.items)
-        #    elif isinstance(item, pyslang.ast.ProceduralBlock):
-        #        self.count_conditionals_sv(m, item.stmt)
+        try:
+            # Import pyslang modules we need
+            import pyslang as ps
+            from pyslang import SymbolKind, ProceduralBlockSymbol, Statement
+            
+            print(f"[count_conditionals_sv] ========== Starting Analysis ==========")
+            print(f"[count_conditionals_sv] Module: {module.name}")
+            print(f"[count_conditionals_sv] Module Type: {type(module)}")
+            print(f"[count_conditionals_sv] Initial paths: {m.num_paths}")
+            
+            # Debug: Show module properties
+            if hasattr(module, 'definitionKind'):
+                print(f"[count_conditionals_sv] Definition Kind: {module.definitionKind}")
+            if hasattr(module, 'defaultNetType'):
+                print(f"[count_conditionals_sv] Default Net Type: {module.defaultNetType}")
+                
+            # Initialize path counting visitor
+            class ConditionalCounter:
+                def __init__(self, manager: ExecutionManager):
+                    self.manager = manager
+                    self.conditional_count = 0
+                    self.if_count = 0
+                    self.case_count = 0 
+                    self.loop_count = 0
+                    self.ternary_count = 0  # Add counter for ternary operators
+                    self.procedural_blocks = 0
+                    self.total_nodes_visited = 0
+                    self.node_types_seen = set()
+                    
+                def __call__(self, obj):
+                    """Visit function for pyslang AST traversal"""
+                    try:
+                        self.total_nodes_visited += 1
+                        node_type = type(obj).__name__
+                        self.node_types_seen.add(node_type)
+                        
+                        ## Debug: Log every 100th node visit to avoid spam
+                        #if self.total_nodes_visited % 100 == 0:
+                        #    print(f"[count_conditionals_sv] Visited {self.total_nodes_visited} nodes so far...")
+                        
+                        # Check if this is a Statement
+                        if isinstance(obj, Statement):
+                            stmt_kind = str(obj.kind)
+                            
+                            print(f"[count_conditionals_sv] Processing Statement: {stmt_kind}")
+                            
+                            # Count conditional statements and update paths
+                            if 'If' in stmt_kind:
+                                old_paths = self.manager.num_paths
+                                self.manager.num_paths *= 2
+                                self.conditional_count += 1
+                                self.if_count += 1
+                                print(f"[count_conditionals_sv] Found If statement #{self.if_count}")
+                                print(f"[count_conditionals_sv]   Paths: {old_paths} -> {self.manager.num_paths}")
+                                
+                                # Try to extract condition information
+                                try:
+                                    if hasattr(obj, 'cond') and obj.cond:
+                                        print(f"[count_conditionals_sv]   Condition: {str(obj.cond)[:100]}")
+                                except:
+                                    pass
+                                
+                            elif 'Case' in stmt_kind:
+                                # For case statements, we need to count the number of cases
+                                # Default to 2 paths if we can't determine case count
+                                case_multiplier = 2
+                                try:
+                                    if hasattr(obj, 'items') and obj.items:
+                                        case_multiplier = len(obj.items)
+                                        print(f"[count_conditionals_sv]   Case has {case_multiplier} items")
+                                    else:
+                                        print(f"[count_conditionals_sv]   Case items not accessible, using default multiplier")
+                                except Exception as e:
+                                    print(f"[count_conditionals_sv]   Error accessing case items: {e}")
+                                    pass
+                                
+                                old_paths = self.manager.num_paths
+                                self.manager.num_paths *= case_multiplier
+                                self.conditional_count += 1
+                                self.case_count += 1
+                                print(f"[count_conditionals_sv] Found Case statement #{self.case_count}")
+                                print(f"[count_conditionals_sv]   Paths: {old_paths} -> {self.manager.num_paths} (x{case_multiplier})")
+                                
+                                # Try to extract case expression
+                                try:
+                                    if hasattr(obj, 'expr') and obj.expr:
+                                        print(f"[count_conditionals_sv]   Expression: {str(obj.expr)[:100]}")
+                                except:
+                                    pass
+                                
+                            elif 'For' in stmt_kind or 'While' in stmt_kind:
+                                old_paths = self.manager.num_paths
+                                self.manager.num_paths *= 2  # Loop vs no-loop paths
+                                self.conditional_count += 1
+                                self.loop_count += 1
+                                print(f"[count_conditionals_sv] Found Loop statement #{self.loop_count} ({stmt_kind})")
+                                print(f"[count_conditionals_sv]   Paths: {old_paths} -> {self.manager.num_paths}")
+                                
+                        # Check if this is a procedural block (always/initial)
+                        elif isinstance(obj, ProceduralBlockSymbol):
+                            self.procedural_blocks += 1
+                            print(f"[count_conditionals_sv] Found procedural block #{self.procedural_blocks}: {obj.name}")
+                            print(f"[count_conditionals_sv]   Block kind: {obj.kind if hasattr(obj, 'kind') else 'unknown'}")
+                            
+                            # Visit the body of the procedural block
+                            if hasattr(obj, 'body') and obj.body:
+                                try:
+                                    print(f"[count_conditionals_sv]   Visiting block body...")
+                                    obj.body.visit(self)
+                                    print(f"[count_conditionals_sv]   Finished visiting block body")
+                                except Exception as e:
+                                    print(f"[count_conditionals_sv]   Error visiting block body: {e}")
+                                    pass
+                            else:
+                                print(f"[count_conditionals_sv]   Block has no body or body not accessible")
+                                    
+                    except Exception as e:
+                        # Don't let individual node errors stop the traversal
+                        print(f"[count_conditionals_sv] Error processing node {node_type}: {e}")
+                        if self.manager.debug:
+                            import traceback
+                            print(f"[count_conditionals_sv] Traceback: {traceback.format_exc()}")
+                        pass
+            
+            # Create visitor instance
+            counter = ConditionalCounter(m)
+            
+            # Visit the module to count conditionals
+            print(f"[count_conditionals_sv] Starting module traversal...")
+            try:
+                # Visit the module symbol itself
+                module.visit(counter)
+                
+                # Visit the syntax tree to find procedural blocks and statements
+                print(f"[count_conditionals_sv] Visiting module syntax tree...")
+                if hasattr(module, 'syntax') and module.syntax:
+                    try:
+                        # Only visit the module items (body), not the entire syntax tree
+                        self._visit_module_items(module.syntax, counter)
+                    except Exception as e:
+                        print(f"[count_conditionals_sv] Error visiting syntax tree: {e}")
+                
+                # Try to access module body through symbol hierarchy
+                print(f"[count_conditionals_sv] Looking for module body...")
+                try:
+                    # Look for body in the module's scope
+                    if hasattr(module, 'body') and module.body:
+                        print(f"[count_conditionals_sv] Found module body, visiting...")
+                        module.body.visit(counter)
+                            
+                except Exception as e:
+                    print(f"[count_conditionals_sv] Error accessing module body: {e}")
+                
+                print(f"[count_conditionals_sv] Module traversal completed")
+            except Exception as e:
+                print(f"[count_conditionals_sv] Error visiting module {module.name}: {e}")
+                import traceback
+                print(f"[count_conditionals_sv] Traceback: {traceback.format_exc()}")
+                # Fallback: assume at least 1 path if no conditionals found
+                if m.num_paths == 1 and counter.conditional_count == 0:
+                    m.num_paths = 1
+            
+            # Print comprehensive summary
+            print(f"[count_conditionals_sv] ========== Analysis Summary ==========")
+            print(f"[count_conditionals_sv] Module: {module.name}")
+            print(f"[count_conditionals_sv] Total nodes visited: {counter.total_nodes_visited}")
+            print(f"[count_conditionals_sv] Node types seen: {sorted(list(counter.node_types_seen))}")
+            print(f"[count_conditionals_sv] Procedural blocks found: {counter.procedural_blocks}")
+            print(f"[count_conditionals_sv] Control flow breakdown:")
+            print(f"[count_conditionals_sv]   - If statements: {counter.if_count}")
+            print(f"[count_conditionals_sv]   - Case statements: {counter.case_count}")
+            print(f"[count_conditionals_sv]   - Loop statements: {counter.loop_count}")
+            print(f"[count_conditionals_sv]   - Ternary operators: {counter.ternary_count}")
+            print(f"[count_conditionals_sv]   - Total conditionals: {counter.conditional_count}")
+            print(f"[count_conditionals_sv] Path count: 1 -> {m.num_paths}")
+            print(f"[count_conditionals_sv] ==========================================")
+                    
+        except Exception as e:
+            print(f"[count_conditionals_sv] Fatal error in count_conditionals_sv: {e}")
+            import traceback
+            print(f"[count_conditionals_sv] Traceback: {traceback.format_exc()}")
+            # Ensure we have at least 1 path
+            if m.num_paths < 1:
+                m.num_paths = 1
+    
+    def _visit_module_items(self, module_syntax, counter):
+        """Helper method to visit only module items (body content)"""
+        try:
+            print(f"[count_conditionals_sv] Looking for module items in: {type(module_syntax).__name__}")
+            
+            # For ModuleDeclarationSyntax, we want to find the items (member list)
+            if hasattr(module_syntax, 'items') and module_syntax.items:
+                print(f"[count_conditionals_sv] Found module items list")
+                for item in module_syntax.items:
+                    if item and hasattr(item, 'kind'):
+                        kind_str = str(item.kind)
+                        # Visit procedural blocks and continuous assignments
+                        if any(relevant in kind_str for relevant in ['ProceduralBlock', 'ContinuousAssign', 'DataDeclaration']):
+                            print(f"[count_conditionals_sv] Processing module item: {kind_str}")
+                            self._visit_syntax_node(item, counter)
+                        else:
+                            # Still visit other items but don't print debug info for simple declarations
+                            self._visit_syntax_node(item, counter)
+            
+            # Alternative: look for members attribute
+            elif hasattr(module_syntax, 'members') and module_syntax.members:
+                print(f"[count_conditionals_sv] Found module members list")
+                for member in module_syntax.members:
+                    if member and hasattr(member, 'kind'):
+                        self._visit_syntax_node(member, counter)
+            
+            # Try to access child nodes that might contain module items
+            else:
+                print(f"[count_conditionals_sv] Searching for module content recursively")
+                for attr_name in ['items', 'members', 'statements', 'body']:
+                    if hasattr(module_syntax, attr_name):
+                        attr = getattr(module_syntax, attr_name)
+                        if attr and hasattr(attr, '__iter__') and not isinstance(attr, str):
+                            for item in attr:
+                                if item and hasattr(item, 'kind'):
+                                    kind_str = str(item.kind)
+                                    if 'ProceduralBlock' in kind_str or 'Always' in kind_str:
+                                        print(f"[count_conditionals_sv] Found procedural content: {kind_str}")
+                                        self._visit_syntax_node(item, counter)
+                                    elif any(flow in kind_str for flow in ['If', 'Case', 'Loop', 'For', 'While']):
+                                        print(f"[count_conditionals_sv] Found control flow: {kind_str}")
+                                        self._visit_syntax_node(item, counter)
+                        break
+                        
+        except Exception as e:
+            print(f"[count_conditionals_sv] Error in _visit_module_items: {e}")
+            if counter.manager.debug:
+                import traceback
+                print(f"[count_conditionals_sv] Traceback: {traceback.format_exc()}")
+    
+    def _visit_syntax_node(self, syntax_node, counter):
+        """Helper method to recursively visit syntax tree nodes for control flow analysis"""
+        try:
+            # Import required pyslang syntax node types
+            from pyslang import ProceduralBlockSyntax
+            
+            node_type = type(syntax_node).__name__
+            
+            # Check for procedural blocks (always, initial)
+            if isinstance(syntax_node, ProceduralBlockSyntax):
+                print(f"[count_conditionals_sv] Found ProceduralBlockSyntax")
+                counter.procedural_blocks += 1
+                # Visit the statement inside the procedural block
+                if hasattr(syntax_node, 'statement') and syntax_node.statement:
+                    print(f"[count_conditionals_sv] Visiting procedural block statement: {type(syntax_node.statement).__name__}")
+                    self._visit_syntax_node(syntax_node.statement, counter)
+                else:
+                    print(f"[count_conditionals_sv] Procedural block has no statement attribute")
+                    # Try alternative attributes
+                    for attr in ['body', 'stmt', 'statements']:
+                        if hasattr(syntax_node, attr):
+                            attr_val = getattr(syntax_node, attr)
+                            if attr_val:
+                                print(f"[count_conditionals_sv] Found alternative attribute {attr}: {type(attr_val).__name__}")
+                                self._visit_syntax_node(attr_val, counter)
+                                break
+                return
+            
+            # Check for conditional statements by examining the kind
+            if hasattr(syntax_node, 'kind') and syntax_node.kind:
+                kind_str = str(syntax_node.kind)
+                
+                # Only count specific conditional statement types
+                if kind_str == 'SyntaxKind.ConditionalStatement':
+                    old_paths = counter.manager.num_paths
+                    counter.manager.num_paths *= 2
+                    counter.conditional_count += 1
+                    counter.if_count += 1
+                    print(f"[count_conditionals_sv] Found ConditionalStatement #{counter.if_count}")
+                    print(f"[count_conditionals_sv]   Paths: {old_paths} -> {counter.manager.num_paths}")
+                    
+                elif 'CaseStatement' in kind_str:
+                    # Try to count case items
+                    case_multiplier = 2  # Default
+                    try:
+                        if hasattr(syntax_node, 'items') and syntax_node.items:
+                            case_multiplier = len(list(syntax_node.items))
+                    except:
+                        pass
+                    
+                    old_paths = counter.manager.num_paths
+                    counter.manager.num_paths *= case_multiplier
+                    counter.conditional_count += 1
+                    counter.case_count += 1
+                    print(f"[count_conditionals_sv] Found CaseStatement #{counter.case_count}")
+                    print(f"[count_conditionals_sv]   Paths: {old_paths} -> {counter.manager.num_paths}")
+                    
+                elif any(loop_type in kind_str for loop_type in ['LoopStatement', 'ForLoopStatement', 'WhileLoopStatement']):
+                    old_paths = counter.manager.num_paths
+                    counter.manager.num_paths *= 2
+                    counter.conditional_count += 1
+                    counter.loop_count += 1
+                    print(f"[count_conditionals_sv] Found LoopStatement #{counter.loop_count}")
+                    print(f"[count_conditionals_sv]   Paths: {old_paths} -> {counter.manager.num_paths}")
+                    
+                elif 'ConditionalExpression' in kind_str:
+                    # Handle ternary operators (condition ? true_expr : false_expr)
+                    old_paths = counter.manager.num_paths
+                    counter.manager.num_paths *= 2
+                    counter.conditional_count += 1
+                    counter.ternary_count += 1
+                    print(f"[count_conditionals_sv] Found ConditionalExpression (ternary) #{counter.ternary_count}")
+                    print(f"[count_conditionals_sv]   Paths: {old_paths} -> {counter.manager.num_paths}")
+            
+            # Handle continuous assignments - need to check their expressions for conditional operators
+            if hasattr(syntax_node, 'kind') and 'ContinuousAssign' in str(syntax_node.kind):
+                print(f"[count_conditionals_sv] Found ContinuousAssign, checking for conditional expressions")
+                # Visit the assignment to look for ternary operators in the RHS expression
+            
+            # Recursively visit relevant child nodes
+            # Try multiple ways to access child nodes
+            visited_child = False
+            
+            # Method 1: statement attribute
+            if hasattr(syntax_node, 'statement') and syntax_node.statement:
+                self._visit_syntax_node(syntax_node.statement, counter)
+                visited_child = True
+                
+            # Method 1.5: expression attribute (for assignments)
+            elif hasattr(syntax_node, 'expr') and syntax_node.expr:
+                self._visit_syntax_node(syntax_node.expr, counter)
+                visited_child = True
+                
+            # Method 2: statements attribute (list)
+            elif hasattr(syntax_node, 'statements') and syntax_node.statements:
+                for stmt in syntax_node.statements:
+                    if stmt and hasattr(stmt, 'kind'):
+                        self._visit_syntax_node(stmt, counter)
+                visited_child = True
+                
+            # Method 3: iterate through the node if it's iterable
+            elif hasattr(syntax_node, '__iter__'):
+                try:
+                    children = list(syntax_node)
+                    if children:
+                        for child in children:
+                            if child and hasattr(child, 'kind'):
+                                # Only recurse into control flow relevant nodes and expressions
+                                child_kind = str(child.kind)
+                                if any(relevant in child_kind for relevant in ['Statement', 'Block', 'List', 'Expression', 'Assignment']):
+                                    self._visit_syntax_node(child, counter)
+                        visited_child = True
+                except Exception as e:
+                    if counter.manager.debug:
+                        print(f"[count_conditionals_sv] Error iterating children: {e}")
+                    pass
+                        
+        except Exception as e:
+            print(f"[count_conditionals_sv] Error in _visit_syntax_node: {e}")
+            if counter.manager.debug:
+                import traceback
+                print(f"[count_conditionals_sv] Traceback: {traceback.format_exc()}")
+            pass
 
         #def lhs_signals_sv(self, m: ExecutionManager, items) -> None:
         #    """Collect written signals for PySlang AST."""
@@ -505,7 +821,7 @@ class ExecutionEngine:
         #TODO
         self.count_conditionals_sv(m, module) # module:DefinitionSymbol
         #print(f"init_runs, {module.name} has CONDITIONALs: {m.conditional_num}, FOR statements: {m.stmt_for_num}, CASE statements: {m.stmt_case_num}")
-        #print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
+        print(f"init_runs, {module.name} has {module.name}.num_paths = {m.num_paths}") 
         #self.lhs_signals_sv(m, module.items)
         #self.get_assertions_sv(m, module.items)
         m.init_run_flag = False

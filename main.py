@@ -69,6 +69,16 @@ class Visitor_instance:
             self.count_definitionsymbol += 1
         return ps.VisitAction.Advance
 
+class Visitor_instance_1:
+    def __init__(self):
+        self.count_proceduralBlockSymbol = 0
+        self.count_definitionsymbol = 0
+    def __call__(self, node: Node):
+        """Visit a node and increment the count."""
+        print(f"[visitor_1] node type: {type(node)}, kind: {node.kind}")
+        if isinstance(node, ps.DefinitionSymbol):
+            self.count_definitionsymbol += 1
+        return ps.VisitAction.Advance
 
 def main():
     """Entrypoint of the program."""
@@ -183,6 +193,7 @@ def main():
 
 
         v_ins = Visitor_instance()
+        v_ins_1 = Visitor_instance_1()
         for item in trees:
             print(f"syntaxTreeNode: {item}")
         modules =  compilation.getDefinitions() # list[DefinitionSymbol]
@@ -193,6 +204,7 @@ def main():
             print(f"{item.name} lexicalPath: {item.lexicalPath}")
             print(f"{item.name}  syntax type: {type(item.syntax)}")
             item.visit(v_ins.visit)
+            #item.visit(v_ins_1)
             print(f"proceduralBlockSymbol count: {v_ins.count_proceduralBlockSymbol}")
             print(f"definitionsymbol count: {v_ins.count_definitionsymbol}")
         #always_blocks = compilation.getProceduralBlocks()
